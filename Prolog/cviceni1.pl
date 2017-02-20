@@ -88,3 +88,17 @@ deda(X, Y) :-
   muz(X),
   rodic(X, Z),
   rodic(Z, Y).
+
+% Obdobně jako pro muz/1 a zena/1 můžeme použít více klauzulí i pro
+% odvozovací pravidla.
+
+% manzele(X, Y)
+% X je manžel, Y manželka
+manzele(jirka, jitka).
+
+% Symetrická verze, kde nezáleží na pořadí.
+manzeleSym(X, Y) :- manzele(X, Y).
+manzeleSym(X, Y) :- manzele(Y, X).
+
+% Syntaktická zkratka:
+% manzeleSym(X, Y) :- manzele(X, Y); manzele(Y, X).
