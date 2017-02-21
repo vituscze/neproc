@@ -15,7 +15,7 @@ zena(marie).
 zena(adela).
 zena(jitka).
 
-% Klauzule nemusí být pouze unární, můžeme např. definovat relaci X je
+% Hlava klauzule nemusí být pouze unární, můžeme např. definovat relaci X je
 % rodičem Y:
 
 % rodic(X, Y)
