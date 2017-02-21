@@ -21,4 +21,21 @@ Podmínky pro zápočet
 
 - Domácí úlohy
 - Zápočtový program
+- *Zápočet je nutný k přihlášení na zkoušku*
 
+Zápočtový program
+-----------------
+
+- Netriviální úloha řešená v Prologu nebo Haskellu
+- Součástí programu je také dokumentace (uživatelská, programátorská) a testovací data
+- Prezentace po dohodě, obvykle v labu MS
+- Téma dohodou, obvykle se téma vybírá v polovině semestru
+- Seznam témat např. [zde](http://kti.mff.cuni.cz/~hric/vyuka/pl_prikl_win.pdf), případně téma vlastní 
+
+Domácí úlohy
+------------
+
+- Úloha každé dva týdny, deadline vždy do dalšího cvičení, řešení posílejte na mail
+- Hodnotí se především správnost, ale také přehlednost a srozumitelnost kódu a efektivita
+- Pro zápočet je zapotřebí alespoň 60% bodů, 50% bodů z úloh v Prologu a 50% bodů z úloh v Haskellu
+- Celkem 7 úloh: 3 v Prologu, 4 v Haskellu 
