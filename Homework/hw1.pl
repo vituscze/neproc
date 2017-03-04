@@ -34,6 +34,15 @@
 % Můžete použít např. následující reprezentaci:
 %
 % 13[dec] = 1101[bin] = b(1, b(0, b(1, b(1, e))))
+%
+% Příklad použití:
+% addBin(b(1, b(0, b(1, e))), b(1, b(1, b(0, b(1, e)))), R).
+% R = b(0, b(0, b(0, b(0, b(1, e))))).
+%
+% resp.
+%
+% addBin([1, 0, 1], [1, 1, 0, 1], R).
+% R = [0, 0, 0, 0, 1]. 
 
 toNat(N, R) :-
   integer(N),
