@@ -57,3 +57,4 @@ Domácí úlohy
 | Martin Safko      |        8 |
 | Lubomír Schmidt   |        3 |
 | František Dostál  |        3 |
+| ABC               |       14 |
