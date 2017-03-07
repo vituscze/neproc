@@ -41,6 +41,19 @@ Domácí úlohy
 - Celkem 7 úloh: 3 v Prologu, 4 v Haskellu
 - Řešení posílejte mailem na vituscze@gmail.com
 
-_Zadané úlohy_
+**Zadané úlohy**
 
 - (Prolog) Implementace dělení a Fibonacciho čísel. `Homework/hw1.pl`
+
+**Hodnocení**
+
+| Jméno             | 1. úloha |
+| ----------------- | --------:|
+| Jan Dubský        |        9 |
+| Lukáš Březina     |        9 |
+| Michal Lehončák   |       15 |
+| Jan Soukup        |       15 |
+| Hana Nekvindová   |       15 |
+| Martin Safko      |        8 |
+| Lubomír Schmidt   |        3 |
+| František Dostál  |        3 |
