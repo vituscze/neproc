@@ -44,6 +44,7 @@ Domácí úlohy
 **Zadané úlohy**
 
 - (Prolog) Implementace dělení a Fibonacciho čísel. `Homework/hw1.pl`
+- (Prolog) Zplošťování seznamů, transpozice matice. `Homework/hw2.pl`
 
 **Hodnocení**
 
@@ -58,3 +59,5 @@ Domácí úlohy
 | Lubomír Schmidt   |        3 |
 | František Dostál  |        3 |
 | ABC               |       14 |
+| Václav Balcar     |        7 |
+| Arek Antoniewicz  |        7 |
