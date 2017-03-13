@@ -135,37 +135,3 @@ comb(N, XS, [X|R]) :-
   N2 is N - 1,
   split(XS, X, Rem),
   comb(N2, Rem, R).
-
-% Otáčení seznamu.
-% Problém: kvadratická časová složitost. Přidání na konec seznamu je
-% O(n) operace, dohromady
-% n + (n - 1) + (n - 1) + ... + 2 + 1 = n(n + 1)/2 = O(n^2)
-revBad([], []).
-revBad([X|XS], R2) :-
-  revBad(XS, R),
-  append(R, [X], R2).
-
-% Řešení: použijeme pomocnou proměnnou, ve které postupně konstruujeme výsledek.
-% Tato proměnná je tzv. akumulátor.
-rev(XS, R) :- rev_(XS, [], R).
-
-rev_([], A, A).
-rev_([X|XS], A, R) :-
-  rev_(XS, [X|A], R).
-
-% TCO - Tail Call Optimization
-% Pokud je poslední podcíl rekurzivní výskyt definovaného predikátu, předchozí
-% podcíle jsou deterministické a neexistuje další nevyzkoušená větev výpočtu,
-% můžeme rekurzi implementovat efektivně (nemusí se vytvářet stack frame).
-
-lenTCO(X, R) :- lenTCO_(X, 0, R).
-
-lenTCO_([], A, A).
-lenTCO_([_|T], A, R) :- A2 is A + 1, lenTCO_(T, A2, R).
-
-middle(XS, R) :- middle_(XS, XS, R).
-
-middle_([X|_], [], X).
-middle_([X|_], [_], X).
-middle_([_|R1], [_,_|R2], X) :-
-  middle_(R1, R2, X).
