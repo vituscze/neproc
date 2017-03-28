@@ -111,7 +111,25 @@ sat(F) :-
 % (nedeterministicky) vytvoří model a pak jen zkusíme, jestli je F
 % pravdivá v tomto modelu.
 
+
+mergeU(XS, [], XS) :- !.
+mergeU([], YS, YS) :- !.
+mergeU([X|XS], [Y|YS], R) :-
+  ( X @< Y -> merge(XS, [Y|YS], S), R = [X|S]
+  ; X == Y -> merge(XS, YS, S), R = [X|S]
+  ; merge([X|XS], YS, S), R = [Y|S]
+  ).
+
 % Doplňte definice následujících predikátů.
-vars(F, Vars).
+vars(X, [X]) :- atom(X).
+vars(non F, R) :- vars(F, R).
+vars(F, RR) :-
+  F =.. [H, L, R],
+  member(H, [ekv, imp, or, and]),
+  vars(L, R1),
+  vars(R, R2),
+  mergeU(R1, R2, RR).
+
+
 genModel(Vars, Model).
 eval(F, Model, Value).  
