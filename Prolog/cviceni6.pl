@@ -24,9 +24,9 @@ sat(F) :-
 mergeU(XS, [], XS) :- !.
 mergeU([], YS, YS) :- !.
 mergeU([X|XS], [Y|YS], R) :-
-  ( X @< Y -> merge(XS, [Y|YS], S), R = [X|S]
-  ; X == Y -> merge(XS, YS, S), R = [X|S]
-  ; merge([X|XS], YS, S), R = [Y|S]
+  ( X @< Y -> mergeU(XS, [Y|YS], S), R = [X|S]
+  ; X == Y -> mergeU(XS, YS, S), R = [X|S]
+  ; mergeU([X|XS], YS, S), R = [Y|S]
   ).
 
 
