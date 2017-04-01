@@ -63,3 +63,4 @@ Domácí úlohy
 | Arek Antoniewicz  |        7 |        8 |
 | Petra Doubravová  |        5 |       10 |
 | Klára Scholleová  |        7 |       10 |
+| Tonda             |          |        9 |
