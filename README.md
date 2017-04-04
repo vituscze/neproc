@@ -45,22 +45,23 @@ Domácí úlohy
 
 - (Prolog) Implementace dělení a Fibonacciho čísel. `Homework/hw1.pl`
 - (Prolog) Zplošťování seznamů, transpozice matice. `Homework/hw2.pl`
+- (Prolog) Prohledávání stavového prostoru, regulární výrazy. `Homework/hw3.pl`
 
 **Hodnocení**
 
-| Jméno             | 1. úloha | 2. úloha |
-| ----------------- | --------:| --------:|
-| Jan Dubský        |        9 |        8 |
-| Lukáš Březina     |        9 |        9 |
-| Michal Lehončák   |       15 |        8 |
-| Jan Soukup        |       15 |       10 |
-| Hana Nekvindová   |       15 |       10 |
-| Martin Safko      |        8 |        5 |
-| Lubomír Schmidt   |        3 |        7 |
-| František Dostál  |        3 |        4 |
-| ABC               |       14 |        5 |
-| Václav Balcar     |        7 |        8 |
-| Arek Antoniewicz  |        7 |        8 |
-| Petra Doubravová  |        5 |       10 |
-| Klára Scholleová  |        7 |       10 |
-| Tonda             |          |        9 |
+| Jméno             | 1. úloha | 2. úloha | 3. úloha |
+| ----------------- | --------:| --------:| --------:|
+| Jan Dubský        |        9 |        8 |        7 |
+| Lukáš Březina     |        9 |        9 |          |
+| Michal Lehončák   |       15 |        8 |        8 |
+| Jan Soukup        |       15 |       10 |          |
+| Hana Nekvindová   |       15 |       10 |          |
+| Martin Safko      |        8 |        5 |        6 |
+| Lubomír Schmidt   |        3 |        7 |          |
+| František Dostál  |        3 |        4 |          |
+| ABC               |       14 |        5 |          |
+| Václav Balcar     |        7 |        8 |        5 |
+| Arek Antoniewicz  |        7 |        8 |        8 |
+| Petra Doubravová  |        5 |       10 |          |
+| Klára Scholleová  |        7 |       10 |          |
+| Tonda             |          |        9 |        8 |
