@@ -171,7 +171,7 @@ addTwo = add 2
 --
 -- Syntaktická zkratka:
 -- (+ 2) 3 --> 3 + 2
--- (2 +) 3 --> 2 + 2
+-- (2 +) 3 --> 2 + 3
 -- (/ 2)
 --
 -- Funkce, které vracejí funkce jako návratové hodnoty jsou v Haskellu skoro
