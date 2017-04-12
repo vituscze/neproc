@@ -44,14 +44,15 @@ import Data.Char
 -- [10,9,8,7,6,5,4,3,2,1]
 --
 -- Pro case-insensitive třídění se vám může hodit funkce toLower :: Char -> Char
--- z modulu Data.Char.
+-- z modulu Data.Char. Abyste tuto funkci mohli použít, napište na začátek
+-- souboru 'import Data.Char' (viz tohle zadání).
 --
 --   ciSort :: [String] -> [String]
 --
 -- > ciSort ["Sort", "me"]
 -- ["me","Sort"]
 
-compAbs :: (Num a) => a -> a -> Bool
+compAbs :: (Ord a, Num a) => a -> a -> Bool
 compAbs x y = abs x < abs y
 
 -- > sortWith compAbs [-10,-7..8]
