@@ -59,7 +59,7 @@ Domácí úlohy
 | Hana Nekvindová   |       15 |       10 |        9 |          |
 | Martin Safko      |        8 |        5 |        6 |        9 |
 | Lubomír Schmidt   |        3 |        7 |          |          |
-| František Dostál  |        3 |        4 |        8 |          |
+| František Dostál  |        3 |        4 |        8 |        7 |
 | ABC               |       14 |        5 |          |          |
 | Václav Balcar     |        7 |        8 |        5 |        6 |
 | Arek Antoniewicz  |        7 |        8 |        8 |          |
