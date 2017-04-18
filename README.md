@@ -50,19 +50,19 @@ Domácí úlohy
 
 **Hodnocení**
 
-| Jméno             | 1. úloha | 2. úloha | 3. úloha |
-| ----------------- | --------:| --------:| --------:|
-| Jan Dubský        |        9 |        8 |        7 |
-| Lukáš Březina     |        9 |        9 |        2 |
-| Michal Lehončák   |       15 |        8 |        8 |
-| Jan Soukup        |       15 |       10 |          |
-| Hana Nekvindová   |       15 |       10 |        9 |
-| Martin Safko      |        8 |        5 |        6 |
-| Lubomír Schmidt   |        3 |        7 |          |
-| František Dostál  |        3 |        4 |        8 |
-| ABC               |       14 |        5 |          |
-| Václav Balcar     |        7 |        8 |        5 |
-| Arek Antoniewicz  |        7 |        8 |        8 |
-| Petra Doubravová  |        5 |       10 |          |
-| Klára Scholleová  |        7 |       10 |          |
-| Tonda             |          |        9 |        8 |
+| Jméno             | 1. úloha | 2. úloha | 3. úloha | 4. úloha |
+| ----------------- | --------:| --------:| --------:| --------:|
+| Jan Dubský        |        9 |        8 |        7 |        9 |
+| Lukáš Březina     |        9 |        9 |        2 |          |
+| Michal Lehončák   |       15 |        8 |        8 |       12 |
+| Jan Soukup        |       15 |       10 |          |       15 |
+| Hana Nekvindová   |       15 |       10 |        9 |          |
+| Martin Safko      |        8 |        5 |        6 |        9 |
+| Lubomír Schmidt   |        3 |        7 |          |          |
+| František Dostál  |        3 |        4 |        8 |          |
+| ABC               |       14 |        5 |          |          |
+| Václav Balcar     |        7 |        8 |        5 |        6 |
+| Arek Antoniewicz  |        7 |        8 |        8 |          |
+| Petra Doubravová  |        5 |       10 |          |          |
+| Klára Scholleová  |        7 |       10 |          |       10 |
+| Tonda             |          |        9 |        8 |       10 |
