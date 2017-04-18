@@ -53,10 +53,10 @@ Domácí úlohy
 | Jméno             | 1. úloha | 2. úloha | 3. úloha | 4. úloha |
 | ----------------- | --------:| --------:| --------:| --------:|
 | Jan Dubský        |        9 |        8 |        7 |        9 |
-| Lukáš Březina     |        9 |        9 |        2 |          |
+| Lukáš Březina     |        9 |        9 |        2 |       14 |
 | Michal Lehončák   |       15 |        8 |        8 |       12 |
 | Jan Soukup        |       15 |       10 |          |       15 |
-| Hana Nekvindová   |       15 |       10 |        9 |          |
+| Hana Nekvindová   |       15 |       10 |        9 |       10 |
 | Martin Safko      |        8 |        5 |        6 |        9 |
 | Lubomír Schmidt   |        3 |        7 |          |          |
 | František Dostál  |        3 |        4 |        8 |        7 |
