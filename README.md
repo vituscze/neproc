@@ -63,6 +63,6 @@ Domácí úlohy
 | ABC               |       14 |        5 |          |          |
 | Václav Balcar     |        7 |        8 |        5 |        6 |
 | Arek Antoniewicz  |        7 |        8 |        8 |          |
-| Petra Doubravová  |        5 |       10 |          |          |
+| Petra Doubravová  |        5 |       10 |          |       10 |
 | Klára Scholleová  |        7 |       10 |          |       10 |
 | Tonda             |          |        9 |        8 |       10 |
