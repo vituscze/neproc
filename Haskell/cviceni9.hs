@@ -32,7 +32,7 @@ i x = x
 test :: Int -> Int
 test x =
  x + 2  -- v pořádku, pokračování předchozí řádky
- 
+
 test2 :: Int -> Int
 test2 x = z
   where
@@ -153,8 +153,8 @@ foldLeft f acc (x:xs) = foldLeft f (f acc x) xs
 --  1  (:)       == foldl f z =>        f   3
 --     / \                             / \
 --    2  (:)                          f   2
---       / \                         / \  
---      3   []                      z   1     
+--       / \                         / \
+--      3   []                      z   1
 
 reverse' :: [a] -> [a]
 reverse' = foldl (\acc x -> x:acc) []
