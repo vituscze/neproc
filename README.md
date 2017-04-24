@@ -30,7 +30,7 @@ Zápočtový program
 - Součástí programu je také dokumentace (uživatelská, programátorská) a testovací data
 - Prezentace po dohodě, obvykle v labu MS
 - Téma dohodou, obvykle se téma vybírá v polovině semestru
-- Seznam témat např. [zde](http://kti.mff.cuni.cz/~hric/vyuka/pl_prikl_win.pdf), případně téma vlastní 
+- Seznam témat např. [zde](http://kti.mff.cuni.cz/~hric/vyuka/pl_prikl_win.pdf) nebo [zde](http://ksvi.mff.cuni.cz/~dvorak/vyuka/14/NPRG005x01/programy.html), případně téma vlastní
 
 Domácí úlohy
 ------------
@@ -47,22 +47,23 @@ Domácí úlohy
 - (Prolog) Zplošťování seznamů, transpozice matice. `Homework/hw2.pl`
 - (Prolog) Prohledávání stavového prostoru, regulární výrazy. `Homework/hw3.pl`
 - (Haskell) Funkce vyššího řádu, třídění. `Homework/hw4.pl`
+- (Haskell) Trie `Homework/hw5.pl`
 
 **Hodnocení**
 
-| Jméno             | 1. úloha | 2. úloha | 3. úloha | 4. úloha |
-| ----------------- | --------:| --------:| --------:| --------:|
-| Jan Dubský        |        9 |        8 |        7 |        9 |
-| Lukáš Březina     |        9 |        9 |        2 |       14 |
-| Michal Lehončák   |       15 |        8 |        8 |       12 |
-| Jan Soukup        |       15 |       10 |          |       15 |
-| Hana Nekvindová   |       15 |       10 |        9 |       10 |
-| Martin Safko      |        8 |        5 |        6 |        9 |
-| Lubomír Schmidt   |        3 |        7 |          |          |
-| František Dostál  |        3 |        4 |        8 |        7 |
-| ABC               |       14 |        5 |          |          |
-| Václav Balcar     |        7 |        8 |        5 |        6 |
-| Arek Antoniewicz  |        7 |        8 |        8 |          |
-| Petra Doubravová  |        5 |       10 |          |       10 |
-| Klára Scholleová  |        7 |       10 |          |       10 |
-| Tonda             |          |        9 |        8 |       10 |
+| Jméno             | 1. úloha | 2. úloha | 3. úloha | Prolog | 4. úloha |
+| ----------------- | --------:| --------:| --------:|:------:| --------:|
+| Jan Dubský        |        9 |        8 |        7 |     OK |        9 |
+| Lukáš Březina     |        9 |        9 |        2 |     OK |       14 |
+| Michal Lehončák   |       15 |        8 |        8 |     OK |       12 |
+| Jan Soukup        |       15 |       10 |          |     OK |       15 |
+| Hana Nekvindová   |       15 |       10 |        9 |     OK |       10 |
+| Martin Safko      |        8 |        5 |        6 |     OK |        9 |
+| Lubomír Schmidt   |        3 |        7 |          |        |          |
+| František Dostál  |        3 |        4 |        8 |     OK |        7 |
+| ABC               |       14 |        5 |          |     OK |        8 |
+| Václav Balcar     |        7 |        8 |        5 |     OK |        6 |
+| Arek Antoniewicz  |        7 |        8 |        8 |     OK |          |
+| Petra Doubravová  |        5 |       10 |          |     OK |       10 |
+| Klára Scholleová  |        7 |       10 |          |     OK |       10 |
+| Tonda             |          |        9 |        8 |     OK |       10 |
