@@ -54,16 +54,16 @@ Domácí úlohy
 | Jméno             | 1. úloha | 2. úloha | 3. úloha | Prolog | 4. úloha | 5. úloha |
 | ----------------- | --------:| --------:| --------:|:------:| --------:| --------:|
 | Jan Dubský        |        9 |        8 |        7 |     OK |        9 |       13 |
-| Lukáš Březina     |        9 |        9 |        2 |     OK |       14 |          |
+| Lukáš Březina     |        9 |        9 |        2 |     OK |       14 |        3 |
 | Michal Lehončák   |       15 |        8 |        8 |     OK |       12 |       14 |
 | Jan Soukup        |       15 |       10 |          |     OK |       15 |        8 |
-| Hana Nekvindová   |       15 |       10 |        9 |     OK |       10 |          |
+| Hana Nekvindová   |       15 |       10 |        9 |     OK |       10 |        6 |
 | Martin Safko      |        8 |        5 |        6 |     OK |        9 |        7 |
 | Lubomír Schmidt   |        3 |        7 |          |        |          |          |
-| František Dostál  |        3 |        4 |        8 |     OK |        7 |          |
+| František Dostál  |        3 |        4 |        8 |     OK |        7 |       12 |
 | ABC               |       14 |        5 |          |     OK |        8 |          |
-| Václav Balcar     |        7 |        8 |        5 |     OK |        6 |          |
+| Václav Balcar     |        7 |        8 |        5 |     OK |        6 |        9 |
 | Arek Antoniewicz  |        7 |        8 |        8 |     OK |          |          |
 | Petra Doubravová  |        5 |       10 |          |     OK |       10 |        7 |
 | Klára Scholleová  |        7 |       10 |          |     OK |       10 |       15 |
-| Tonda             |          |        9 |        8 |     OK |       10 |          |
+| Tonda             |          |        9 |        8 |     OK |       10 |       12 |
