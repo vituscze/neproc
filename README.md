@@ -46,8 +46,9 @@ Domácí úlohy
 - (Prolog) Implementace dělení a Fibonacciho čísel. `Homework/hw1.pl`
 - (Prolog) Zplošťování seznamů, transpozice matice. `Homework/hw2.pl`
 - (Prolog) Prohledávání stavového prostoru, regulární výrazy. `Homework/hw3.pl`
-- (Haskell) Funkce vyššího řádu, třídění. `Homework/hw4.pl`
-- (Haskell) Trie `Homework/hw5.pl`
+- (Haskell) Funkce vyššího řádu, třídění. `Homework/hw4.hs`
+- (Haskell) Trie `Homework/hw5.hs`
+- (Haskell) Monadické kombinátory, parsování `Homework/hw6.hs` **DEADLINE: 2017-05-23**
 
 **Hodnocení**
 
