@@ -49,6 +49,7 @@ Domácí úlohy
 - (Haskell) Funkce vyššího řádu, třídění. `Homework/hw4.hs`
 - (Haskell) Trie `Homework/hw5.hs`
 - (Haskell) Monadické kombinátory, parsování `Homework/hw6.hs` **DEADLINE: 2017-05-23**
+- (Haskell) Topologické uspořádání, řídké matice `Homework/hw7.hs` **DEADLINE: 2017-06-06**
 
 **Hodnocení**
 
