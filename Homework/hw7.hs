@@ -21,7 +21,8 @@ import Data.Map (Map)
 --
 --   https://www.haskell.org/hoogle/
 --
--- 1) Orientovaný graf lze jako mapa mezi vrcholy a seznamy jejich sousedů.
+-- 1) Orientovaný graf lze reprezentovat jako mapa mezi vrcholy a seznamy
+-- jejich sousedů.
 
 type Vertex = Int
 
