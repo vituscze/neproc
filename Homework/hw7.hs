@@ -4,6 +4,8 @@ import Data.Map (Map)
 
 -- 7. úloha
 --
+-- DEADLINE: 2017-06-06
+--
 -- Vyberte si jednu úlohu a vyřešte ji. Pokud odevzdáte obě, druhá se počítá
 -- jako bonus.
 --
