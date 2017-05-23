@@ -56,16 +56,16 @@ Domácí úlohy
 | Jméno             | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ----------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
 | Jan Dubský        |  9 |  8 |  7 |     OK |  9 | 13 |  8 |    |      OK | OK |
-| Lukáš Březina     |  9 |  9 |  2 |     OK | 14 |  3 |    |    |         |    |
+| Lukáš Březina     |  9 |  9 |  2 |     OK | 14 |  3 |  7 |    |      OK | OK |
 | Michal Lehončák   | 15 |  8 |  8 |     OK | 12 | 14 |    |    |      OK | OK |
 | Jan Soukup        | 15 | 10 |    |     OK | 15 |  8 | 10 |    |      OK | OK |
-| Hana Nekvindová   | 15 | 10 |  9 |     OK | 10 |  6 |    |    |         |    |
-| Martin Safko      |  8 |  5 |  6 |     OK |  9 |  7 |    |    |         |    |
+| Hana Nekvindová   | 15 | 10 |  9 |     OK | 10 |  6 | 17 |    |      OK | OK |
+| Martin Safko      |  8 |  5 |  6 |     OK |  9 |  7 |  6 |    |      OK |    |
 | Lubomír Schmidt   |  3 |  7 |    |        |    |    |    |    |         |    |
-| František Dostál  |  3 |  4 |  8 |     OK |  7 | 12 |    |    |         |    |
+| František Dostál  |  3 |  4 |  8 |     OK |  7 | 12 |  9 |    |      OK | OK |
 | ABC               | 14 |  5 |    |     OK |  8 |    |    |    |         |    |
-| Václav Balcar     |  7 |  8 |  5 |     OK |  6 |  9 |    |    |         |    |
-| Arek Antoniewicz  |  7 |  8 |  8 |     OK |    |    | 14 |    |         |    |
-| Petra Doubravová  |  5 | 10 |    |     OK | 10 |  7 |    |    |         |    |
+| Václav Balcar     |  7 |  8 |  5 |     OK |  6 |  9 |  9 |    |      OK | OK |
+| Arek Antoniewicz  |  7 |  8 |  8 |     OK |    |    | 14 |  7 |      OK | OK |
+| Petra Doubravová  |  5 | 10 |    |     OK | 10 |  7 |  8 |    |      OK |    |
 | Klára Scholleová  |  7 | 10 |    |     OK | 10 | 15 |    |    |      OK | OK |
 | Tonda             |    |  9 |  8 |     OK | 10 | 12 |    |    |      OK |    |
