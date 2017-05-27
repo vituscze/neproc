@@ -8,6 +8,8 @@ Zdroje
 
 - [Learn Prolog Now](http://www.learnprolognow.org/)
 - [Learn You a Haskell for Great Good](http://learnyouahaskell.com/)
+- [Real World Haskell](http://book.realworldhaskell.org/)
+- [Haskell Wikibook](https://en.wikibooks.org/wiki/Haskell)
 
 Programovací nástroje
 ---------------------
