@@ -62,12 +62,12 @@ Domácí úlohy
 | Michal Lehončák   | 15 |  8 |  8 |     OK | 12 | 14 |    |    |      OK | OK |
 | Jan Soukup        | 15 | 10 |    |     OK | 15 |  8 | 10 |    |      OK | OK |
 | Hana Nekvindová   | 15 | 10 |  9 |     OK | 10 |  6 | 17 |    |      OK | OK |
-| Martin Safko      |  8 |  5 |  6 |     OK |  9 |  7 |  6 |    |      OK |    |
+| Martin Safko      |  8 |  5 |  6 |     OK |  9 |  7 |  6 |  6 |      OK | OK |
 | Lubomír Schmidt   |  3 |  7 |    |        |    |    |    |    |         |    |
 | František Dostál  |  3 |  4 |  8 |     OK |  7 | 12 |  9 |    |      OK | OK |
 | ABC               | 14 |  5 |    |     OK |  8 |    |    |    |         |    |
 | Václav Balcar     |  7 |  8 |  5 |     OK |  6 |  9 |  9 |    |      OK | OK |
 | Arek Antoniewicz  |  7 |  8 |  8 |     OK |    |    | 14 |  7 |      OK | OK |
-| Petra Doubravová  |  5 | 10 |    |     OK | 10 |  7 |  8 |    |      OK |    |
+| Petra Doubravová  |  5 | 10 |    |     OK | 10 |  7 |  8 |  5 |      OK | OK |
 | Klára Scholleová  |  7 | 10 |    |     OK | 10 | 15 |    |    |      OK | OK |
-| Tonda             |    |  9 |  8 |     OK | 10 | 12 |    |    |      OK |    |
+| Tonda             |    |  9 |  8 |     OK | 10 | 12 |    | 10 |      OK | OK |
