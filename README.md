@@ -44,3 +44,5 @@ Domácí úlohy
 - Řešení posílejte mailem na vituscze@gmail.com
 
 **Zadané úlohy**
+
+- Logaritmus a Fibonacci (do 9.3.)
