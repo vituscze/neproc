@@ -46,3 +46,24 @@ Domácí úlohy
 **Zadané úlohy**
 
 - Logaritmus a Fibonacci (do 9.3.)
+
+**Hodnocení**
+
+| Jméno              | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
+| ------------------ | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
+| Václav Volhejn     | 20 |    |    | OK     |    |    |    |    |         |    |
+| Jan Spidus         |  5 |    |    |        |    |    |    |    |         |    |
+| Jan Kolombo        | 18 |    |    | OK     |    |    |    |    |         |    |
+| Radek Chalupa      | 10 |    |    |        |    |    |    |    |         |    |
+| Matěj Kukula       | 10 |    |    |        |    |    |    |    |         |    |
+| Jaroslav Vedral    | 12 |    |    |        |    |    |    |    |         |    |
+| Daniel Novák       | 15 |    |    | OK     |    |    |    |    |         |    |
+| Erik Mitro         | 10 |    |    |        |    |    |    |    |         |    |
+| David Burian       | 10 |    |    |        |    |    |    |    |         |    |
+| Zdeněk Pavlátka    |  8 |    |    |        |    |    |    |    |         |    |
+| Mário Mitro        | 10 |    |    |        |    |    |    |    |         |    |
+| Richard Hladík     | 10 |    |    |        |    |    |    |    |         |    |
+| Jakub Fajnor       | 10 |    |    |        |    |    |    |    |         |    |
+| Lubomír Wiedermann | 10 |    |    |        |    |    |    |    |         |    |
+| Sofya Sherstneva   |  7 |    |    |        |    |    |    |    |         |    |
+| Jan Jukl           |  3 |    |    |        |    |    |    |    |         |    |
