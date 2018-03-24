@@ -52,18 +52,19 @@ Domácí úlohy
 | Jméno              | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------ | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
 | Václav Volhejn     | 20 |    |    | OK     |    |    |    |    |         |    |
-| Jan Spidus         |  5 |    |    |        |    |    |    |    |         |    |
-| Jan Kolombo        | 18 |    |    | OK     |    |    |    |    |         |    |
-| Radek Chalupa      | 10 |    |    |        |    |    |    |    |         |    |
-| Matěj Kukula       | 10 |    |    |        |    |    |    |    |         |    |
-| Jaroslav Vedral    | 12 |    |    |        |    |    |    |    |         |    |
-| Daniel Novák       | 15 |    |    | OK     |    |    |    |    |         |    |
-| Erik Mitro         | 10 |    |    |        |    |    |    |    |         |    |
-| David Burian       | 10 |    |    |        |    |    |    |    |         |    |
-| Zdeněk Pavlátka    |  8 |    |    |        |    |    |    |    |         |    |
-| Mário Mitro        | 10 |    |    |        |    |    |    |    |         |    |
+| Jan Spidus         |  5 | 10 |    | OK     |    |    |    |    |         |    |
+| Jan Kolombo        | 18 |  7 |    | OK     |    |    |    |    |         |    |
+| Radek Chalupa      | 10 |  7 |    | OK     |    |    |    |    |         |    |
+| Matěj Kukula       | 10 |  4 |    |        |    |    |    |    |         |    |
+| Jaroslav Vedral    | 12 | 16 |    | OK     |    |    |    |    |         |    |
+| Daniel Novák       | 15 |  9 |    | OK     |    |    |    |    |         |    |
+| Erik Mitro         | 10 |  9 |    | OK     |    |    |    |    |         |    |
+| David Burian       | 10 |  9 |    | OK     |    |    |    |    |         |    |
+| Zdeněk Pavlátka    |  8 |  9 |    | OK     |    |    |    |    |         |    |
+| Mário Mitro        | 10 | 10 |    | OK     |    |    |    |    |         |    |
 | Richard Hladík     | 10 |    |    |        |    |    |    |    |         |    |
-| Jakub Fajnor       | 10 |    |    |        |    |    |    |    |         |    |
-| Lubomír Wiedermann | 10 |    |    |        |    |    |    |    |         |    |
-| Sofya Sherstneva   |  7 |    |    |        |    |    |    |    |         |    |
-| Jan Jukl           |  3 |    |    |        |    |    |    |    |         |    |
+| Jakub Fajnor       | 10 | 10 |    | OK     |    |    |    |    |         |    |
+| Lubomír Wiedermann | 10 |  9 |    | OK     |    |    |    |    |         |    |
+| Sofya Sherstneva   |  7 |  5 |    |        |    |    |    |    |         |    |
+| Jan Jukl           |  3 | 14 |    | OK     |    |    |    |    |         |    |
+| David Bělíček      |    |  9 |    |        |    |    |    |    |         |    |
