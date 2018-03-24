@@ -62,7 +62,7 @@ Domácí úlohy
 | David Burian       | 10 |  9 |    | OK     |    |    |    |    |         |    |
 | Zdeněk Pavlátka    |  8 |  9 |    | OK     |    |    |    |    |         |    |
 | Mário Mitro        | 10 | 10 |    | OK     |    |    |    |    |         |    |
-| Richard Hladík     | 10 |    |    |        |    |    |    |    |         |    |
+| Richard Hladík     | 10 |  8 |    | OK     |    |    |    |    |         |    |
 | Jakub Fajnor       | 10 | 10 |    | OK     |    |    |    |    |         |    |
 | Lubomír Wiedermann | 10 |  9 |    | OK     |    |    |    |    |         |    |
 | Sofya Sherstneva   |  7 |  5 |    |        |    |    |    |    |         |    |
