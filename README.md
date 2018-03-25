@@ -46,6 +46,8 @@ Domácí úlohy
 **Zadané úlohy**
 
 - Logaritmus a Fibonacci (do 9.3.)
+- Seznamy (do 23.3.)
+- Prohledávání (do 13.4.)
 
 **Hodnocení**
 
@@ -54,7 +56,7 @@ Domácí úlohy
 | Václav Volhejn     | 20 |    |    | OK     |    |    |    |    |         |    |
 | Jan Spidus         |  5 | 10 |    | OK     |    |    |    |    |         |    |
 | Jan Kolombo        | 18 |  7 |    | OK     |    |    |    |    |         |    |
-| Radek Chalupa      | 10 |  7 |    | OK     |    |    |    |    |         |    |
+| Radek Chalupa      | 10 |  9 |    | OK     |    |    |    |    |         |    |
 | Matěj Kukula       | 10 |  4 |    |        |    |    |    |    |         |    |
 | Jaroslav Vedral    | 12 | 16 |    | OK     |    |    |    |    |         |    |
 | Daniel Novák       | 15 |  9 |    | OK     |    |    |    |    |         |    |
