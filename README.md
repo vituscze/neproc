@@ -57,16 +57,16 @@ Domácí úlohy
 | Jan Spidus         |  5 | 10 |    | OK     |    |    |    |    |         |    |
 | Jan Kolombo        | 18 |  7 |    | OK     |    |    |    |    |         |    |
 | Radek Chalupa      | 10 |  9 |    | OK     |    |    |    |    |         |    |
-| Matěj Kukula       | 10 |  4 |    |        |    |    |    |    |         |    |
+| Matěj Kukula       | 10 |  4 |  7 | OK     |    |    |    |    |         |    |
 | Jaroslav Vedral    | 12 | 16 |    | OK     |    |    |    |    |         |    |
-| Daniel Novák       | 15 |  9 |    | OK     |    |    |    |    |         |    |
+| Daniel Novák       | 15 |  9 | 10 | OK     |    |    |    |    |         |    |
 | Erik Mitro         | 10 |  9 |    | OK     |    |    |    |    |         |    |
 | David Burian       | 10 |  9 |    | OK     |    |    |    |    |         |    |
-| Zdeněk Pavlátka    |  8 |  9 |    | OK     |    |    |    |    |         |    |
+| Zdeněk Pavlátka    |  8 |  9 |  8 | OK     |    |    |    |    |         |    |
 | Mário Mitro        | 10 | 10 |    | OK     |    |    |    |    |         |    |
 | Richard Hladík     | 10 |  8 |    | OK     |    |    |    |    |         |    |
 | Jakub Fajnor       | 10 | 10 |    | OK     |    |    |    |    |         |    |
 | Lubomír Wiedermann | 10 |  9 |    | OK     |    |    |    |    |         |    |
-| Sofya Sherstneva   |  7 |  5 |    |        |    |    |    |    |         |    |
-| Jan Jukl           |  3 | 14 |    | OK     |    |    |    |    |         |    |
-| David Bělíček      |    |  9 |    |        |    |    |    |    |         |    |
+| Sofya Sherstneva   |  7 |  5 |  5 | OK     |    |    |    |    |         |    |
+| Jan Jukl           |  3 | 14 |  9 | OK     |    |    |    |    |         |    |
+| David Bělíček      |    |  9 |  7 | OK     |    |    |    |    |         |    |
