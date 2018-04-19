@@ -48,6 +48,7 @@ Domácí úlohy
 - Logaritmus a Fibonacci (do 9.3.)
 - Seznamy (do 23.3.)
 - Prohledávání (do 13.4.)
+- Funkce (do 27.4.)
 
 **Hodnocení**
 
