@@ -55,20 +55,20 @@ Domácí úlohy
 
 | Jméno              | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------ | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
-| Václav Volhejn     | 20 |    |    | OK     | 15 |    |    |    |         |    |
+| Václav Volhejn     | 20 |    |    | OK     | 15 |  9 |    |    | OK      | OK |
 | Jan Spidus         |  5 | 10 |    | OK     |  9 |    |    |    |         |    |
-| Jan Kolombo        | 18 |  7 |    | OK     |  9 |    |    |    |         |    |
+| Jan Kolombo        | 18 |  7 |    | OK     |  9 |  7 |    |    |         |    |
 | Radek Chalupa      | 10 |  9 |    | OK     | 10 |    |    |    |         |    |
 | Matěj Kukula       | 10 |  4 |  7 | OK     |  3 |    |    |    |         |    |
-| Jaroslav Vedral    | 12 | 16 |    | OK     |  8 |    |    |    |         |    |
-| Daniel Novák       | 15 |  9 | 10 | OK     |  7 |    |    |    |         |    |
+| Jaroslav Vedral    | 12 | 16 |    | OK     |  8 |  3 |    |    |         |    |
+| Daniel Novák       | 15 |  9 | 10 | OK     |  7 |  5 |    |    |         |    |
 | Erik Mitro         | 10 |  9 |    | OK     |  7 |    |    |    |         |    |
-| David Burian       | 10 |  9 |    | OK     | 10 |    |    |    |         |    |
+| David Burian       | 10 |  9 |    | OK     | 10 | 10 |    |    | OK      |    |
 | Zdeněk Pavlátka    |  8 |  9 |  8 | OK     | 10 |    |    |    |         |    |
 | Mário Mitro        | 10 | 10 |    | OK     |  0 |    |    |    |         |    |
-| Richard Hladík     | 10 |  8 |    | OK     |    |    |    |    |         |    |
+| Richard Hladík     | 10 |  8 |    | OK     |    | 20 |    |    | OK      |    |
 | Jakub Fajnor       | 10 | 10 |    | OK     | 10 |    |    |    |         |    |
 | Lubomír Wiedermann | 10 |  9 |    | OK     | 10 |    |    |    |         |    |
 | Sofya Sherstneva   |  7 |  5 |  5 | OK     |  5 |    |    |    |         |    |
-| Jan Jukl           |  3 | 14 |  9 | OK     | 14 |    |    |    |         |    |
-| David Bělíček      |    |  9 |  7 | OK     | 13 |    |    |    |         |    |
+| Jan Jukl           |  3 | 14 |  9 | OK     | 14 | 14 |    |    | OK      | OK |
+| David Bělíček      |    |  9 |  7 | OK     | 13 | 15 |    |    | OK      | OK |
