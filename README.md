@@ -49,7 +49,8 @@ Domácí úlohy
 - Seznamy (do 23.3.)
 - Prohledávání (do 13.4.)
 - Funkce (do 27.4.)
-- Trie (do 11.5)
+- Trie (do 11.5.)
+- Monády (do 25.4.)
 
 **Hodnocení**
 
