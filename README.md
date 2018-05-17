@@ -62,10 +62,10 @@ Domácí úlohy
 | Matěj Kukula       | 10 |  4 |  7 | OK     |  3 |    |    |    |         |    |
 | Jaroslav Vedral    | 12 | 16 |    | OK     |  8 |  3 |    |    |         |    |
 | Daniel Novák       | 15 |  9 | 10 | OK     |  7 |  5 |    |    |         |    |
-| Erik Mitro         | 10 |  9 |    | OK     |  7 |    |    |    |         |    |
+| Erik Mitro         | 10 |  9 |    | OK     |  7 |  5 |    |    |         |    |
 | David Burian       | 10 |  9 |    | OK     | 10 | 10 |    |    | OK      |    |
 | Zdeněk Pavlátka    |  8 |  9 |  8 | OK     | 10 |    |    |    |         |    |
-| Mário Mitro        | 10 | 10 |    | OK     |  0 |    |    |    |         |    |
+| Mário Mitro        | 10 | 10 |    | OK     |  0 |  4 |    |    |         |    |
 | Richard Hladík     | 10 |  8 |    | OK     |    | 20 |    |    | OK      |    |
 | Jakub Fajnor       | 10 | 10 |    | OK     | 10 |    |    |    |         |    |
 | Lubomír Wiedermann | 10 |  9 |    | OK     | 10 |    |    |    |         |    |
