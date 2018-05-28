@@ -51,6 +51,7 @@ Domácí úlohy
 - Funkce (do 27.4.)
 - Trie (do 11.5.)
 - Monády (do 25.4.)
+- Matice/topologické třídění (do 30.9.)
 
 **Hodnocení**
 
