@@ -200,7 +200,7 @@ filter' p (x:xs) =
     if p x
     then x:filter' p xs
     else   filter' p xs
-  
+
 -- Standardní knihovna: filter
 --
 -- > filter odd [1..10]
@@ -251,7 +251,7 @@ cubeArea :: Double -> Double
 cubeArea x =
     let squareArea = x * x
     in  6 * squareArea
-  
+
 -- Stejně tak pro pattern matching existuje alternativa, která se dá použít
 -- jako výraz.
 

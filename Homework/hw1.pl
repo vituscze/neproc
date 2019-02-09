@@ -2,7 +2,7 @@
 %
 % a) Implementujte logaritmus o základu 2 (dolní celou část) na unárně
 % reprezentovaných číslech.
-% 
+%
 % logtwo(+N, ?Vysledek)
 %
 % Nápověda: Může se vám hodit pomocný predikát pro půlení.
@@ -46,7 +46,7 @@
 % resp.
 %
 % addBin([1, 0, 1], [1, 1, 0, 1], R).
-% R = [0, 0, 0, 0, 1]. 
+% R = [0, 0, 0, 0, 1].
 
 toNat(N, R) :-
   integer(N),

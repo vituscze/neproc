@@ -114,4 +114,4 @@ sat(F) :-
 % Doplňte definice následujících predikátů.
 vars(F, Vars).
 genModel(Vars, Model).
-eval(F, Model, Value).  
+eval(F, Model, Value).

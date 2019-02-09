@@ -208,37 +208,41 @@ instance Functor RoseTree where
 --     fmap _ (Left e)  = Left e
 --     fmap f (Right a) = Right (f a)
 --
--- Monoid: množina s asociativní binární operací a neutrálním prvkem.
+-- Semigroup: množina s asociativní binární operací
+-- Monoid: Semigroup s neutrálním prvkem
+--
+-- > :i Semigroup
+-- class Semigroup a where
+--     (<>) :: a -> a -> a
+--     ...
 --
 -- > :i Monoid
 -- class Monoid a where
---   mempty :: a
---   mappend :: a -> a -> a
---   mconcat :: [a] -> a
+--     mempty :: a
+--     ...
+--
+-- instance Semigroup [a] where
+--     (<>) = (++)
 --
 -- instance Monoid [a] where
---     mempty  = []
---     mappend = (++)
-
-infixr 6 <>
-
-(<>) :: (Monoid a) => a -> a -> a
-(<>) = mappend
-
--- Infixní verze mappend, k nalezení v modulu Data.Monoid.
+--     mempty = []
 --
 -- Pro číselné typy známe dva monoidy: sčítání s nulou, násobení s jedničkou.
 
 newtype Sum a = Sum { getSum :: a }
 newtype Product a = Product { getProduct :: a }
 
+instance (Num a) => Semigroup (Sum a) where
+    Sum a <> Sum b = Sum (a + b)
+
 instance (Num a) => Monoid (Sum a) where
     mempty = Sum 0
-    Sum a `mappend` Sum b = Sum (a + b)
+
+instance (Num a) => Semigroup (Product a) where
+    Product a <> Product b = Product (a * b)
 
 instance (Num a) => Monoid (Product a) where
     mempty = Product 1
-    Product a `mappend` Product b = Product (a * b)
 
 -- Proč se bavíme o monoidech? Nedávno jsme si ukazovali funkce 'foldr' a
 -- 'foldl'. Podobně jako 'Functor' zobecňuje 'map' (na 'fmap'), tak 'Foldable'

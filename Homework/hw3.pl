@@ -15,7 +15,7 @@
 % Navrhěte řešení zobecněného problému pro M misionářů, L lidojedů a R řek.
 %
 % solve(+M, +L, +R, ?Path).
-% 
+%
 % M, L, R jsou vstupní čísla. Path je nalezená cesta (seznam stavů od
 % počátečního ke koncovému).
 %
@@ -52,7 +52,7 @@
 % S = 0, E = 4 ; % řetězec acbc na pozici 0
 % S = E, E = 1 ; % prázdný řetězec na pozici 1
 % S = E, E = 2 ; % prázdný řetězec na pozici 2
-% S = 2, E = 4 ; % řetězec bc na pozici 2 
+% S = 2, E = 4 ; % řetězec bc na pozici 2
 % S = E, E = 3 ; % prázdný řetězec na pozici 3
 % S = E, E = 4 ; % prázdný řetězec na pozici 4
 % false.
@@ -67,4 +67,3 @@
 :- op(150, yf,  .*).
 :- op(200, xfy, .:).
 :- op(250, xfy, .+).
- 

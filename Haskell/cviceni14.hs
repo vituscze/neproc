@@ -24,18 +24,18 @@ data Config
     , height :: Int
     , center :: Complex Double
     , step   :: Double
-    , limit  :: Int    
+    , limit  :: Int
     }
-    
+
 pixelToComplex :: Config -> Int -> Int -> Complex Double
 pixelToComplex Config{..} x y =
     (cx + xsteps * step) :+ (cy + ysteps * step)
   where
     cx :+ cy = center
-    
+
     xsteps = fromIntegral $ x - width  `div` 2
     ysteps = fromIntegral $ y - height `div` 2
-    
+
 color :: Int -> Pixel8
 color = fromIntegral
 

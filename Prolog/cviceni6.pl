@@ -38,7 +38,7 @@ vars(F, RR) :-
   vars(L, R1),
   vars(R, R2),
   mergeU(R1, R2, RR).
-  
+
 % Operátor =..
 %
 % Skládání/rozebírání termů. Lze použít oběma směry.
@@ -55,7 +55,7 @@ vars(F, RR) :-
 %
 % Další specifičtější operace:
 % functor(Term, Func, Arity)
-% arg(N,Term,Arg) 
+% arg(N,Term,Arg)
 
 % Doplňte definice následujících predikátů.
 genModel(Vars, Model).
@@ -117,7 +117,7 @@ g(XS, YS, R) :-
   append(XS, [4,5,6], XS1),
   append(YS, [a,b,c], YS1),
   append(XS1, YS1, R).
-  
+
 % ?- X = [1|Y]-Y, f(X, X, R).
 % false.
 %
@@ -131,14 +131,14 @@ line(N, [_|R]) :-
   N > 0,
   N2 is N - 1,
   line(N2, R).
-  
+
 matrix(_, 0, []).
 matrix(N, M, [R|RS]) :-
   M > 0,
   M2 is M - 1,
   line(N, R),
   matrix(N, M2, RS).
-  
+
 m2l([], []).
 m2l([X|XS], R) :-
   m2l(XS, R1),
@@ -147,4 +147,3 @@ m2l([X|XS], R) :-
 % Naplníme prvky matice pomocí zploštěného seznamu.
 % ?- matrix(2,3,R), m2l(R,[a,b,c,d,e,f]).
 % R = [[a,b],[c,d],[e,f]].
-        

@@ -78,10 +78,10 @@ half(s(s(X)), s(R)) :- half(X, R).
 % být vždy stejně efektivní - vhodné použít dvě specializované definice.
 subtract(X, Y, R) :- add(Y, R, X).
 
-% Použití sčítání na rozklad čísla.  
+% Použití sčítání na rozklad čísla.
 weird(X, R) :-
   add(A, B, X),
-  mult(A, B, R).      
+  mult(A, B, R).
 
 % Odbočka: deklarativní vs procedurální správnost programu
 %

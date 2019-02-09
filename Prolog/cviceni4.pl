@@ -34,7 +34,7 @@ middle_([X|_], [], X).
 middle_([X|_], [_], X).
 middle_([_|R1], [_,_|R2], X) :-
   middle_(R1, R2, X).
-  
+
 % Binární stromy
 % Prolog nemá zabudované nástroje podobně jako pro seznamy, ale stromy
 % se dají stavět podobně: strom je buď prádzný (nil) nebo je to uzel s
@@ -56,14 +56,14 @@ elemTree(X, t(L, _, _)) :-
 elemTree(X, t(_, X, _)).
 elemTree(X, t(_, _, R)) :-
   elemTree(X, R).
-  
+
 % Hloubka stromu.
 depth(nil, 0).
 depth(t(L, _, R), H) :-
   depth(L, HL),
   depth(R, HR),
   H is 1 + max(HL, HR).
-  
+
 % Velikost stromu.
 %
 % Taky by se dalo implementovat pomocí akumulátoru.
@@ -71,8 +71,8 @@ size(nil, 0).
 size(t(L, _, R), S) :-
   size(L, SL),
   size(R, SR),
-  S is 1 + SL + SR.  
-  
+  S is 1 + SL + SR.
+
 % Převod na seznam.
 toList(T, L) :- toList_(T, [], L).
 
@@ -81,14 +81,14 @@ toList_(t(L, X, R), A, A4) :-
   toList_(R, A, A2),
   A3 = [X|A2],
   toList_(L, A3, A4).
-  
+
 % Setřídený seznam, bez opakování.
 isSorted([]).
 isSorted([_]).
 isSorted([X,Y|R]) :-
   X < Y,
   isSorted([Y|R]).
-  
+
 % Binární vyhledávací stromy.
 isBST(T) :-
   toList(T, L),
@@ -96,7 +96,7 @@ isBST(T) :-
 
 % elemTree prohledává celý strom, pro BVS stačí prohledat pouze jednu
 % větev.
-  
+
 bstInsert(X, nil, t(nil, X, nil)).
 bstInsert(X, t(L, X, R), t(L, X, R)).
 bstInsert(X, t(L, Y, R), t(New, Y, R)) :-
@@ -104,7 +104,7 @@ bstInsert(X, t(L, Y, R), t(New, Y, R)) :-
   bstInsert(X, L, New).
 bstInsert(X, t(L, Y, R), t(L, Y, New)) :-
   X > Y,
-  bstInsert(X, R, New).       
+  bstInsert(X, R, New).
 
 % Řez
 % Občas by se nám hodilo kontroloval backtracking, např. aby Prolog zbytečně

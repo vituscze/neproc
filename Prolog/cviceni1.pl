@@ -4,8 +4,8 @@
 % pomocí Hornovských klauzulí. Ty v Prologu vypadají takto:
 %   H :- B1, B2, ... Bn.
 % Tohle odpovídá implikaci B1 & B2 & ... & Bn -> H. B je tělo klauzule,
-% H je její hlava. Tělo může být prázdné, pak klauzule jen udává nějaký 
-% fakt. 
+% H je její hlava. Tělo může být prázdné, pak klauzule jen udává nějaký
+% fakt.
 
 muz(jirka).
 muz(pavel).
@@ -54,7 +54,7 @@ rodic(pavel, jirka).
 % X = adam;
 % false.
 %
-% false nám říká, že další řešení už neexistují. 
+% false nám říká, že další řešení už neexistují.
 
 % Nová fakta můžeme odvodit pomocí pravidel. Pokud víme, že X je žena a Y
 % je rodičem X, pak X je dcerou Y. Tohle můžeme v Prologu vyjádřit pomocí
@@ -80,7 +80,7 @@ sestra(X, Y) :-
 
 % Pozor: pokud vynecháme poslední řádku, tak bude X svou vlastním sestrou
 % (např. sestra(marie, marie)). X \= Y říká, že X a Y jsou různé (nelze je
-% unifikovat, bude příště). 
+% unifikovat, bude příště).
 
 % deda(X, Y)
 % X je dědou Y.
