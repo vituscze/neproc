@@ -21,7 +21,7 @@ nat(s(X)) :- nat(X).
 %
 % Když se Prolog snaží splnit nějaký dotaz a má na výběr více možností
 % (predikát definovaný pomocí více než jedné klauzule), zkusí postupně
-% ty klauzle, jejichž hlava pasuje na dotaz.
+% ty klauzule, jejichž hlava pasuje na dotaz.
 %
 % Hlava klauzule pasuje na dotaz, pokud je lze unifikovat, tj. najít hodnoty
 % proměnných tž. po dosazení jsou hlava a dotaz stejné. Prolog vždy hledá
