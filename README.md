@@ -45,13 +45,7 @@ Domácí úlohy
 
 **Zadané úlohy**
 
-- Logaritmus a Fibonacci (do 9.3.)
-- Seznamy (do 23.3.)
-- Prohledávání (do 13.4.)
-- Funkce (do 27.4.)
-- Trie (do 11.5.)
-- Monády (do 25.4.)
-- Matice/topologické třídění (do 30.9.)
+- Logaritmus a Fibonacci (do 8.3.)
 
 **Hodnocení**
 
