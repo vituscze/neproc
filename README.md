@@ -51,3 +51,16 @@ Domácí úlohy
 
 | Jméno              | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------ | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
+| Vilém Zouhar       | 15 |    |    |     OK |    |    |    |    |         |    |
+| Tomáš Zasadil      |  7 |    |    |        |    |    |    |    |         |    |
+| Jiří Škrobánek     | 15 |    |    |     OK |    |    |    |    |         |    |
+| Vojtěch Břečka     | 10 |    |    |        |    |    |    |    |         |    |
+| Lukáš Lánský       | 13 |    |    |        |    |    |    |    |         |    |
+| Václav Luňák       | 10 |    |    |        |    |    |    |    |         |    |
+| Jiří Filek         | 10 |    |    |        |    |    |    |    |         |    |
+| Michal Vacek       | 10 |    |    |        |    |    |    |    |         |    |
+| Martina Fusková    | 10 |    |    |        |    |    |    |    |         |    |
+| Radek Chalupa      | 10 |    |    |        |    |    |    |    |         |    |
+| Beast              | 10 |    |    |        |    |    |    |    |         |    |
+| Matyáš Brabec      |  7 |    |    |        |    |    |    |    |         |    |
+| Matěj Kopčil       | 15 |    |    |     OK |    |    |    |    |         |    |
