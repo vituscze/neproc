@@ -195,7 +195,7 @@ zena(lenka).
 % once najde pouze první řešení
 % once(P) :- P, !.
 
-max3(X, Y, R) :-
+max4(X, Y, R) :-
   ( X < Y -> R = Y
   ; R = X
   ).
