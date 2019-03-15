@@ -125,6 +125,13 @@ max(A, B, A) :- A >= B.
 max2(A, B, B) :- A < B, !.
 max2(A, B, A) :- A >= B.
 
+% Pozor:
+
+max3(A, B, B) :- A < B, !.
+max3(A, _, A).
+
+% Co se stane pokud položíme dotaz max3(1,2,1)?
+
 p(1).
 p(X) :- r(X).
 p(6).
