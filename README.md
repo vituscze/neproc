@@ -46,21 +46,23 @@ Domácí úlohy
 **Zadané úlohy**
 
 - Logaritmus a Fibonacci (do 8.3.)
+- Listy a matice (do 22.3.)
+- Prohledávání stavového prostoru (do 5.4.)
 
 **Hodnocení**
 
 | Jméno              | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------ | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
-| Vilém Zouhar       | 15 |    |    |     OK |    |    |    |    |         |    |
-| Tomáš Zasadil      |  7 |    |    |        |    |    |    |    |         |    |
-| Jiří Škrobánek     | 15 |    |    |     OK |    |    |    |    |         |    |
-| Vojtěch Břečka     | 10 |    |    |        |    |    |    |    |         |    |
+| Vilém Zouhar       | 15 | 10 |    |     OK |    |    |    |    |         |    |
+| Tomáš Zasadil      |  7 | 12 |    |     OK |    |    |    |    |         |    |
+| Jiří Škrobánek     | 15 | 10 |    |     OK |    |    |    |    |         |    |
+| Vojtěch Břečka     | 10 | 10 |    |     OK |    |    |    |    |         |    |
 | Lukáš Lánský       | 13 |    |    |        |    |    |    |    |         |    |
-| Václav Luňák       | 10 |    |    |        |    |    |    |    |         |    |
-| Jiří Filek         | 10 |    |    |        |    |    |    |    |         |    |
-| Michal Vacek       | 10 |    |    |        |    |    |    |    |         |    |
-| Martina Fusková    | 10 |    |    |        |    |    |    |    |         |    |
-| Radek Chalupa      | 10 |    |    |        |    |    |    |    |         |    |
+| Václav Luňák       | 10 | 10 |    |     OK |    |    |    |    |         |    |
+| Jiří Filek         | 10 |  7 |    |     OK |    |    |    |    |         |    |
+| Michal Vacek       | 10 |  8 |    |     OK |    |    |    |    |         |    |
+| Martina Fusková    | 10 |  7 |    |     OK |    |    |    |    |         |    |
+| Radek Chalupa      | 10 | 10 |    |     OK |    |    |    |    |         |    |
 | Beast              | 10 |    |    |        |    |    |    |    |         |    |
-| Matyáš Brabec      |  7 |    |    |        |    |    |    |    |         |    |
-| Matěj Kopčil       | 15 |    |    |     OK |    |    |    |    |         |    |
+| Matyáš Brabec      |  7 | 10 |    |     OK |    |    |    |    |         |    |
+| Matěj Kopčil       | 15 | 10 |    |     OK |    |    |    |    |         |    |
