@@ -74,20 +74,20 @@ data Point = Point { getX :: Double, getY :: Double }
 -- Také můžeme definovat rekurzivní typy.
 
 data IntTree = IntLeaf | IntNode Int IntTree IntTree
-  deriving (Show, Eq)
+    deriving (Show, Eq)
 
 insert :: Int -> IntTree -> IntTree
 insert x IntLeaf = IntNode x IntLeaf IntLeaf
 insert x (IntNode y l r)
-  | x <  y    = IntNode y (insert x l) r
-  | x == y    = IntNode x l r
-  | otherwise = IntNode y l (insert x r)
+    | x <  y    = IntNode y (insert x l) r
+    | x == y    = IntNode x l r
+    | otherwise = IntNode y l (insert x r)
 
 -- Pokud definujeme strom takovýmto způsobem, budeme potřebovat kopii pro
 -- každý datový typ. Řešení: datový typ parametrizujeme typovou proměnnou.
 
 data Tree a = Leaf | Node a (Tree a) (Tree a)
-  deriving (Show, Eq)
+    deriving (Show, Eq)
 
 insert' :: (Ord a) => a -> Tree a -> Tree a
 insert' = undefined
@@ -165,9 +165,9 @@ instance Show BoolFn where
 data Optional a = Empty | Value a
 
 -- instance Eq (Optional a) where
---    Empty   == Empty   = True
---    Value x == Value y = ???
---    _       == _       = False
+--     Empty   == Empty   = True
+--     Value x == Value y = ???
+--     _       == _       = False
 --
 -- Na místo ??? zjevně patří x == y, ale o typu a nic nevíme, speciálně nevíme,
 -- jestli se vůbec dá porovnávat.
@@ -175,9 +175,9 @@ data Optional a = Empty | Value a
 -- Kvůli tomu se do definice instancí dají přidat podmínky na vnitřní typy:
 
 instance (Eq a) => Eq (Optional a) where
-   Empty   == Empty   = True
-   Value x == Value y = x == y
-   _       == _       = False
+    Empty   == Empty   = True
+    Value x == Value y = x == y
+    _       == _       = False
 
 -- Pokud se hodnoty typu a dají porovnávat, pak lze porovnávat i hodnoty typu
 -- Optional a.

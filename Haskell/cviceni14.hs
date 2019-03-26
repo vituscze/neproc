@@ -12,9 +12,9 @@ converge :: Int
 converge lim c = go 0 0
   where
     go steps z@(x :+ y)
-      | steps == lim = lim
-      | absSq <= 4   = go (steps + 1) (z ^ 2 + c)
-      | otherwise    = steps
+        | steps == lim = lim
+        | absSq <= 4   = go (steps + 1) (z ^ 2 + c)
+        | otherwise    = steps
       where
         absSq = x * x + y * y
 
