@@ -3,24 +3,27 @@ import Data.Char
 -- 4. úloha
 --
 -- 1) Implementuje následující (tři) funkce:
---
---   on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
---
+
+on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
+on = undefined
+
 -- on f g  aplikuje g na oba dva argumenty a pak aplikuje f.
 --
 -- > (max `on` abs) (-5) 4
 -- 5
---
---   while :: (a -> Bool) -> (a -> a) -> a -> a
---
+
+while :: (a -> Bool) -> (a -> a) -> a -> a
+while = undefined
+
 -- while c f  opakovaně aplikuje funkci f na svůj argument a to dokud platí
 -- podmínka daná funkcí c.
 --
 -- > while (<100) (*2) 1
 -- 128
---
---   pairwise :: (a -> a -> a) -> [a] -> [a]
---
+
+pairwise :: (a -> a -> a) -> [a] -> [a]
+pairwise = undefined
+
 -- pairwise f  aplikuje funkci f na dva po sobě jdoucí prvky seznamu,
 -- všechny výsledné hodnoty shromáždí do nového seznamu. Pokud má seznam lichou
 -- délku, poslední prvek zůstává nezměněn.
@@ -31,10 +34,13 @@ import Data.Char
 --
 -- 2) Implementujte mergesort a použijte ho pro case-insensitive třídění
 -- řetězců.
---
---   mergeWith :: (a -> a -> Bool) -> [a] -> [a] -> [a]
---   sortWith  :: (a -> a -> Bool) -> [a] -> [a]
---
+
+mergeWith :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+mergeWith = undefined
+
+sortWith  :: (a -> a -> Bool) -> [a] -> [a]
+sortWith = undefined
+
 -- Prvním argumentem je funkce, která provádí porovnávání.
 --
 -- > sortWith (<) [10,9..1]
@@ -46,9 +52,10 @@ import Data.Char
 -- Pro case-insensitive třídění se vám může hodit funkce toLower :: Char -> Char
 -- z modulu Data.Char. Abyste tuto funkci mohli použít, napište na začátek
 -- souboru 'import Data.Char' (viz tohle zadání).
---
---   ciSort :: [String] -> [String]
---
+
+ciSort :: [String] -> [String]
+ciSort = undefined
+
 -- > ciSort ["Sort", "me"]
 -- ["me","Sort"]
 
