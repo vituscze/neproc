@@ -1,39 +1,25 @@
-import Data.Char
-
 -- 4. úloha
 --
--- 1) Implementuje následující (tři) funkce:
+-- 1) Implementujte kódování a dekódování RLE (https://en.wikipedia.org/wiki/Run-length_encoding):
 
-on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
-on = undefined
+-- >>> rleEncode "hello"
+-- [(1,'h'),(1,'e'),(2,'l'),(1,'o')]
+rleEncode :: (Eq a) => [a] -> [(Int, a)]
+rleEncode = undefined
 
--- on f g  aplikuje g na oba dva argumenty a pak aplikuje f.
---
--- > (max `on` abs) (-5) 4
--- 5
+-- >>> rleDecode [(1,'h'),(1,'e'),(2,'l'),(1,'o')]
+-- "hello"
+rleDecode :: [(Int, a)] -> [a]
+rleDecode = undefined
 
-while :: (a -> Bool) -> (a -> a) -> a -> a
-while = undefined
+-- 2) Definujte nekonečný seznam všech prvočísel. Pokuste se o efektivní řešení.
 
--- while c f  opakovaně aplikuje funkci f na svůj argument a to dokud platí
--- podmínka daná funkcí c.
---
--- > while (<100) (*2) 1
--- 128
+-- >>> take 5 primes
+-- [2,3,5,7,11]
+primes :: [Integer]
+primes = undefined
 
-pairwise :: (a -> a -> a) -> [a] -> [a]
-pairwise = undefined
-
--- pairwise f  aplikuje funkci f na dva po sobě jdoucí prvky seznamu,
--- všechny výsledné hodnoty shromáždí do nového seznamu. Pokud má seznam lichou
--- délku, poslední prvek zůstává nezměněn.
---
--- > pairwise (+) [1..9]
--- [3,7,11,15,9]
---
---
--- 2) Implementujte mergesort a použijte ho pro case-insensitive třídění
--- řetězců.
+-- 3) Implementujte mergesort.
 
 mergeWith :: (a -> a -> Bool) -> [a] -> [a] -> [a]
 mergeWith = undefined
@@ -49,26 +35,30 @@ sortWith = undefined
 -- > sortWith (>) [10,9..1]
 -- [10,9,8,7,6,5,4,3,2,1]
 --
--- Pro case-insensitive třídění se vám může hodit funkce toLower :: Char -> Char
--- z modulu Data.Char. Abyste tuto funkci mohli použít, napište na začátek
--- souboru 'import Data.Char' (viz tohle zadání).
-
-ciSort :: [String] -> [String]
-ciSort = undefined
-
--- > ciSort ["Sort", "me"]
--- ["me","Sort"]
-
-compAbs :: (Ord a, Num a) => a -> a -> Bool
-compAbs x y = abs x < abs y
-
--- > sortWith compAbs [-10,-7..8]
--- [-1,2,-4,5,-7,8,-10]
---
---
 -- BONUS)
 --
--- Implementujte sortWith bez použití rekurze. Mohou se vám hodit funkce
--- probírané na cvičení.
+-- Implementujte následující funkce:
+
+-- combinations n x vygeneruje seznam všech kombinací délky n ze seznamu x.
+-- Na pořadí kombinací ve výsledném seznamu nezáleží.
 --
--- mergeWith může být rekurzivně definovaný.
+-- >>> combinations 2 "abcd"
+-- ["ab","ac","ad","bc","bd","cd"]
+combinations :: Int -> [a] -> [[a]]
+combinations = undefined
+
+-- permutations x vygeneruje seznam všech permutací. Na pořadí permutací ve
+-- výsledném seznamu nezáleží.
+--
+-- >>> permutations "abc"
+-- ["abc","acb","bac","bca","cab","cba"]
+permutations :: [a] -> [[a]]
+permutations = undefined
+
+-- Pomocí těchto funkcí definujte "variace" (občas najdete v české literatuře,
+-- v angličtině pro to termín asi neexistuje): kombinace, kde záleží na pořadí
+--
+-- >>> variations 2 "abc"
+-- ["ab","ba","ac","ca","bc","cb"]
+variations :: Int -> [a] -> [[a]]
+variations = undefined
