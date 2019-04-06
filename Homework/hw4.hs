@@ -4,11 +4,13 @@
 
 -- >>> rleEncode "hello"
 -- [(1,'h'),(1,'e'),(2,'l'),(1,'o')]
+--
 rleEncode :: (Eq a) => [a] -> [(Int, a)]
 rleEncode = undefined
 
 -- >>> rleDecode [(1,'h'),(1,'e'),(2,'l'),(1,'o')]
 -- "hello"
+--
 rleDecode :: [(Int, a)] -> [a]
 rleDecode = undefined
 
@@ -16,6 +18,7 @@ rleDecode = undefined
 
 -- >>> take 5 primes
 -- [2,3,5,7,11]
+--
 primes :: [Integer]
 primes = undefined
 
@@ -29,10 +32,10 @@ sortWith = undefined
 
 -- Prvním argumentem je funkce, která provádí porovnávání.
 --
--- > sortWith (<) [10,9..1]
+-- >>> sortWith (<) [10,9..1]
 -- [1,2,3,4,5,6,7,8,9,10]
 --
--- > sortWith (>) [10,9..1]
+-- >>> sortWith (>) [10,9..1]
 -- [10,9,8,7,6,5,4,3,2,1]
 --
 -- BONUS)
@@ -44,6 +47,7 @@ sortWith = undefined
 --
 -- >>> combinations 2 "abcd"
 -- ["ab","ac","ad","bc","bd","cd"]
+--
 combinations :: Int -> [a] -> [[a]]
 combinations = undefined
 
@@ -51,7 +55,8 @@ combinations = undefined
 -- výsledném seznamu nezáleží.
 --
 -- >>> permutations "abc"
--- ["abc","acb","bac","bca","cab","cba"]
+-- ["abc","bac","bca","acb","cab","cba"]
+--
 permutations :: [a] -> [[a]]
 permutations = undefined
 
@@ -60,5 +65,6 @@ permutations = undefined
 --
 -- >>> variations 2 "abc"
 -- ["ab","ba","ac","ca","bc","cb"]
+--
 variations :: Int -> [a] -> [[a]]
 variations = undefined

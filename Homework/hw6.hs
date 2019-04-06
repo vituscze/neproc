@@ -1,77 +1,9 @@
-import Data.Char
+import qualified Control.Monad as M
+import           Data.Char
 
 -- 6. úloha
 --
--- DEADLINE: 2017-05-23
---
--- 1) Definujte následující funkce:
-
-mapMonad :: (Monad m) => (a -> m b) -> [a] -> m [b]
-mapMonad = undefined
-
--- 'mapMonad f l' aplikuje funkci 'f' na každý prvek seznamu 'l', provede
--- výslednou akci (typu 'm b') a všechny výsledky (typu 'b') uloží do seznamu.
---
--- > let assoc = [(1, "hi"), (2, "hello")]
---
--- > mapMonad (\k -> lookup k assoc) [1,2]
--- Just ["hi","hello"]
---
--- > mapMonad (\k -> lookup k assoc) [1,2,3]
--- Nothing
---
--- > mapMonad (\x -> [-x, x]) [1..3]
--- [[-1,-2,-3],[-1,-2,3],[-1,2,-3],[-1,2,3],[1,-2,-3],[1,-2,3],[1,2,-3],[1,2,3]]
-
-liftM :: (Monad m) => (a -> b) -> m a -> m b
-liftM = undefined
-
--- 'liftM f ma' provede akci 'ma' a na výsledek aplikuje funkci 'f'. Je to
--- vlastně 'fmap', jenom implementovaný pomocí monadických operací (>>=,
--- return), resp. do notace.
---
--- > liftM (^2) Nothing
--- Nothing
---
--- > liftM (^2) (Just 4)
--- Just 16
---
--- > liftM (^2) [1..3]
--- [1,4,9]
-
-ap :: (Monad m) => m (a -> b) -> m a -> m b
-ap = undefined
-
--- 'ap mf ma' nejprve provede akci 'mf' (a získá funkci 'f' typu 'a -> b'),
--- poté provede akci 'ma' (a získá hodnotu 'a' typu 'a') a nakonec vrátí
--- výsledek aplikace 'f a'.
---
--- > ap (Just (+1)) (Just 2)
--- Just 3
---
--- > liftM (,) "abc" `ap` [1,2]
--- [('a',1),('a',2),('b',1),('b',2),('c',1),('c',2)]
-
-join :: (Monad m) => m (m a) -> m a
-join = undefined
-
--- 'join mm' nejprve provede akci 'mm' (a získá další akci 'm' typu 'm a'),
--- kterou pak následně provede.
---
--- > join [[1,2,3],[4],[5,6]]
--- [1,2,3,4,5,6]
---
--- > join Nothing
--- Nothing
---
--- > join $ Just Nothing
--- Nothing
---
--- > join $ Just (Just 2)
--- Just 2
---
---
--- 2) Jednoduchý backtrackovací parser lze reprezentovat jako funkci, která
+-- 1) Jednoduchý backtrackovací parser lze reprezentovat jako funkci, která
 -- na vstup dostane text, který cheme parsovat, a vrátí zpět buď 'Nothing'
 -- (pokud parser neuspěl) nebo 'Just (a,s)', kde 'a' je naparsovaná hodnota
 -- a 's' je zbytek vstupu (tj. to, co parser nezkonzumoval).
@@ -118,104 +50,114 @@ orElse = undefined
 -- Just ('a',"bc")
 --
 -- > runParser (satisfy (== 'a') `orElse` satisfy (== 'b')) "bc"
--- Just ('b', "c")
+-- Just ('b',"c")
 --
 -- > runParser (satisfy (== 'a') `orElse` satisfy (== 'b')) "c"
 -- Nothing
 --
 --
 -- Máme základní parser a výběr mezi dvěma (a více) parsery. Zbývá implementovat
--- spojování parserů. To zařídí instance typové třídy 'Monad'. Deklarace je
--- připravná, stačí jen doplnit definice 'return' a '(>>=)'.
+-- spojování parserů.
+
+parserReturn :: a -> Parser a
+parserReturn = undefined
+
+-- 'parserReturn a' je parser, který vždy uspěje a vrátí hodnotu 'a'. Vstupní
+-- text ponechá beze změny.
 --
--- Pro definici '(>>=)' doporučuji:
---
---   Parser m >>= f = ...
+-- runParser (parserReturn 1) "abc" == Just (1,"abc")
+
+parserBind :: Parser a -> (a -> Parser b) -> Parser b
+parserBind = undefined
+
+-- 'parserBind m f' nejprve spustí parser m. Pokud tenhle parser uspěje s hodnotou
+-- 'a', tak pustí parser 'f a'.
 
 instance Functor Parser where
-    fmap = liftM
+    fmap = M.liftM
 
 instance Applicative Parser where
     pure  = return
-    (<*>) = ap
+    (<*>) = M.ap
 
 instance Monad Parser where
-    return = undefined
-    (>>=)  = undefined
+    return = parserReturn
+    (>>=)  = parserBind
 
--- 'return a' je parser, který vždy uspěje s hodnotou 'a' a vstupní text
--- ponechá beze změny.
---
--- > runParser (return True) "abc"
--- Just (True,"abc")
---
--- 'm >>= f' je parser, který nejprve provede 'm' (a získá hodnotu 'a'
--- typu 'a'), potom vezme funkci 'f', aplikuje ji na 'a' a dostane parser typu
--- 'Parser b', který pak provede.
+-- Správnost implementace 'satisfy', 'parserReturn' a 'parserBind' pomůže
+-- ověřit následující definice. Pokud se v GHCi zeptáte na hodnotu 'correct',
+-- měli byste dostat zpět 'True'.
+correct :: Bool
+correct = and
+    [ p ""    == Nothing
+    , p "a"   == Nothing
+    , p " "   == Nothing
+    , p " a"  == Nothing
+    , p "  "  == Nothing
+    , p "aa"  == Nothing
+    , p "a "  == Just ("a ", "")
+    , p "a b" == Just ("a ", "b")
+    ]
+  where
+    p = runParser $ do
+        a <- satisfy (not . isSpace)
+        b <- satisfy isSpace
+        return [a,b]
 
-parseTwo :: Parser String
-parseTwo = do
-    a <- satisfy (not . isSpace)
-    b <- satisfy (not . isSpace)
-    return [a,b]
+-- 2) V této části nepoužívejte konstruktor 'Parser'. Místo toho parsery
+-- sestavte pomocí dříve definovaných funkcí.
 
--- > runParser parseTwo "a c"
--- Nothing
---
--- > runParser parseTwo "abc"
--- Just ("ab","c")
---
--- BONUS) (za 10 bodů) Implementuje následující:
-
-string :: String -> Parser ()
+string :: String -> Parser String
 string = undefined
 
--- 'string s' je parser, který parsuje přesně řetězec 's'. Samotný parser
--- v tomto případě nic nevrací, protože by to bylo zbytečné (dostali bychom
--- stejný řetězec jako na vstupu).
+-- 'string s' je parser, který parsuje přesně řetězec 's'. Parser vrací
+-- naparsovaný řetězec.
 --
 -- > runParser (string "hello") "hello there"
--- Just (()," there")
+-- Just ("hello"," there")
 --
 -- > runParser (string "hello") "hell"
 -- Nothing
 
-skipMany :: Parser a -> Parser ()
-skipMany = undefined
+many :: Parser a -> Parser [a]
+many = undefined
 
-skipSome :: Parser a -> Parser ()
-skipSome = undefined
+some :: Parser a -> Parser [a]
+some = undefined
 
--- Funkce 'skipMany' a 'skipSome' dostanou jako vstup parser 'p' a aplikují jej,
--- dokud 'p' neselže. Výsledky parseru 'p' se jednoduše zahodí.
+-- Funkce 'many' a 'some' dostanou jako vstup parser 'p' a aplikují jej,
+-- dokud 'p' neselže. Výsledky všech použití parseru 'p' se nashromáždí
+-- do seznamu.
 --
--- 'skipMany' přeskočí 0 nebo více výskytů. 'skipSome' přeskočí 1 nebo více
--- výskytů.
+-- 'many' zkusí najít 0 a více výskutů. 'some' zkusí najít 1 a více výskytů.
 --
 -- Hint: Bude se vám hodit funkce 'orElse'.
 --
--- Hint: 'skipSome' a 'skipMany' se dají jednoduše definovat mutuální rekurzí,
--- tj. 'skipSome' je definovaný pomocí 'skipMany', 'skipMany' pomocí 'skipSome'.
+-- Hint: 'some' a 'many' se dají jednoduše definovat mutuální rekurzí,
+-- tj. 'some' je definovaný pomocí 'many', 'many' pomocí 'some'.
 --
--- > runParser (skipSome $ string "ab") "aabab"
+-- > runParser (some $ string "ab") "aabab"
 -- Nothing
 --
--- > runParser (skipSome $ string "ab") "ababababbb"
--- Just ((),"bb")
+-- > runParser (some $ string "ab") "ababababbb"
+-- Just (["ab","ab","ab","ab"],"bb")
 --
 -- > runParser (skipMany $ string "ab") "aaaaaaa"
--- Just ((),"aaaaaaa")
+-- Just ([],"aaaaaaa")
+
+-- BONUS) Implementuje následující parser. Stejně jako v předchozí části
+-- nepoužívejte 'Parser' explicitně.
 
 whitespace :: Parser ()
 whitespace = undefined
 
--- Na závěr nějaký pořádný parser. Pokud chcete parsovat nějaký zdrojový kód,
--- velice často potřebujete přeskakovat bílé znaky (mezery, tabulátory, konce
--- řádků). Normálně by tohle šlo vyřešit snadno pomocí:
+-- Pokud chcete parsovat nějaký zdrojový kód, velice často potřebujete přeskakovat
+-- bílé znaky (mezery, tabulátory, konce řádků). Normálně by tohle šlo vyřešit
+-- snadno pomocí:
 --
---   skipSpaces = skipMany $ satisfy isSpace
+--   spaces = many $ satisfy isSpace
 --
--- Funkce isSpace je z modulu Data.Char.
+-- Funkce 'isSpace' je z modulu Data.Char.
 --
 -- Ale ve většině zdrojových kódu se také objevují komentáře, které se
 -- také musejí přeskočit.
@@ -225,7 +167,7 @@ whitespace = undefined
 -- "//", nebo víceřádkové, začínající "/*" a končící "*/".
 --
 -- Použijte přitom dříve definované funkce, bude se vám hodit 'string',
--- 'satisfy', 'skipSome' a 'skipMany'.
+-- 'satisfy', 'some' a 'many'.
 --
 -- > runParser whitespace " x += 2;"
 -- Just ((),"x += 2;")
