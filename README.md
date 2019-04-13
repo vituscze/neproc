@@ -48,6 +48,7 @@ Domácí úlohy
 - Logaritmus a Fibonacci (do 8.3.)
 - Listy a matice (do 22.3.)
 - Prohledávání stavového prostoru, regex (do 5.4.)
+- Programování s funkcemi (do 19.4.)
 
 **Hodnocení**
 

@@ -23,38 +23,41 @@ import Data.Map (Map)
 --
 --   https://www.haskell.org/hoogle/
 --
--- 1) Orientovaný graf lze reprezentovat jako mapa mezi vrcholy a seznamy
--- jejich sousedů.
+-- Orientovaný graf lze reprezentovat jako mapa mezi vrcholem a seznamem hran, které
+-- v tomto vrcholu začínají. Hranu pak stačí popsat pouze druhým vrcholem a váhou.
 
 type Vertex = Int
+type Weight = Double
 
-newtype Graph = Graph (Map Vertex [Vertex])
+newtype Graph = Graph (Map Vertex [(Vertex, Weight)])
     deriving (Show)
 
 -- Např.:
 --
---   0 ---> 1
---   ^      |
---   |      v
---   `----- 2
+--      1
+--   0 --> 1
+--   ^     | 1
+-- 1 |     v
+--   `---- 2
 --
 -- odpovídá:
 
 example1 :: Graph
-example1 = Graph $ Map.fromList [(0, [1]), (1, [2]), (2, [0])]
+example1 = Graph $ Map.fromList [(0, [(1,1)]), (1, [(2,1)]), (2, [(0,1)])]
 
 -- nebo
---
---          ,-------------.
---          |             v
---   0 ---> 1 ---> 2 ---> 3
---   |             ^
---   `-------------´
+--               4
+--         ,-----------.
+--      1  |  3     5  v
+--   0 --> 1 --> 2 --> 3
+--   |           ^
+--   `-----------´
+--         2
 
 example2 :: Graph
-example2 = Graph $ Map.fromList [(0, [1, 2]), (1, [2, 3]), (2, [3]), (3, [])]
+example2 = Graph $ Map.fromList [(0, [(1,1), (2,2)]), (1, [(2,3), (3,4)]), (2, [(3,5)]), (3, [])]
 
--- Definujte funkci:
+-- 1) Definujte funkci:
 
 topSort :: Graph -> Maybe [Vertex]
 topSort = undefined
@@ -75,7 +78,7 @@ topSort = undefined
 
 checkTopSort :: Graph -> [Vertex] -> Bool
 checkTopSort (Graph g) top =
-    Map.foldrWithKey (\v es r -> all (go v) es && r) True g
+    Map.foldrWithKey (\v es r -> all (go v) (map fst es) && r) True g
   where
     check [x] = x
     check _   = False
@@ -85,69 +88,27 @@ checkTopSort (Graph g) top =
         j <- elemIndices vj top
         return (i < j)
 
--- > checkTopSort example2 [0,1,2,3]
+-- >>> checkTopSort example2 [0,1,2,3]
 -- True
 --
--- > checkTopSort example2 [1,2,0,3]
+-- >>> checkTopSort example2 [1,2,0,3]
 -- False
 --
--- 2) Řídké vektory a matice můžeme také reprezentovat pomocí mapy mezi indexy
--- a hodnotami.
+-- 2) Implementujte Floyd-Warshallův algoritmus.
 
-newtype Vector a = Vector (Map Int a)
-    deriving (Show, Eq)
+floydWarshall :: Graph -> Map (Vertex, Vertex) Weight
+floydWarshall = undefined
 
-newtype Matrix a = Matrix (Map (Int, Int) a)
-    deriving (Show, Eq)
-
--- Takto definovaný vektor (nebo matice) obsahuje pouze nenulové prvky, tento
--- invariant by měl platit pro každou funkci, kterou budete implementovat.
+-- Výsledkem je mapa, která pro každou dvojici vrcholů obsahuje
+-- délku nejkratší cesty mezi nimi.
 --
--- Např. jednotková matice velikosti 2x2:
-
-i2 :: Matrix Double
-i2 = Matrix $ Map.fromList [((1, 1), 1.0), ((2, 2), 1.0)]
-
-example3 :: Matrix Double
-example3 = Matrix $ Map.fromList [((1, 1), 2.0), ((1, 2), 1.0), ((2, 2), 1.0)]
-
--- Na konkrétním indexování (od nuly nebo od jedné) nezáleží.
+-- Předpokládejte, že vstupní graf neobsahuje negativní cykly
+-- (tj. není je třeba explicitně ošetřovat).
 --
--- Definujte:
+-- Hint: Double obsahuje kladné nekonečno, což se vám může hodit
+-- při implementaci. V Haskellu tuto hodnotu dostanete nejjednodušeji
+-- jako 1 / 0.
 
-scalar :: (Num a) => Vector a -> Vector a -> a
-scalar = undefined
-
--- scalar je jednoduše skalární součin dvou vektorů.
-
-plus :: (Eq a, Num a) => Matrix a -> Matrix a -> Matrix a
-plus = undefined
-
--- plus je součet dvou matic.
+-- >>> floydWarshall example1
+-- fromList [((0,0),0.0),((0,1),1.0),((0,2),2.0),((1,0),2.0),((1,1),0.0),((1,2),1.0),((2,0),1.0),((2,1),2.0),((2,2),0.0)]
 --
--- > plus i2 i2
--- Matrix (Map.fromList [((1,1),2.0),((2,2),2.0)])
-
-minus :: (Eq a, Num a) => Matrix a -> Matrix a -> Matrix a
-minus = undefined
-
--- minus je rozdíl dvou matic.
---
--- > minus i2 i2
--- Matrix (fromList [])
-
-transpose :: Matrix a -> Matrix a
-transpose = undefined
-
--- transpose provede transpozici matice.
---
--- > transpose example3
--- Matrix (fromList [((1,1),2.0),((2,1),1.0),((2,2),1.0)])
-
-mult :: (Eq a, Num a) => Matrix a -> Matrix a -> Matrix a
-mult = undefined
-
--- A nakonec, mult je násobení matic.
---
--- > mult example3 example3
--- Matrix (fromList [((1,1),4.0),((1,2),3.0),((2,2),1.0)])
