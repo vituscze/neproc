@@ -29,7 +29,10 @@ import Data.Map (Map)
 type Vertex = Int
 type Weight = Double
 
-newtype Graph = Graph (Map Vertex [(Vertex, Weight)])
+data Edge = Edge { vertex :: Vertex, weight :: Weight }
+    deriving (Show)
+
+newtype Graph = Graph (Map Vertex [Edge])
     deriving (Show)
 
 -- Např.:
@@ -43,7 +46,7 @@ newtype Graph = Graph (Map Vertex [(Vertex, Weight)])
 -- odpovídá:
 
 example1 :: Graph
-example1 = Graph $ Map.fromList [(0, [(1,1)]), (1, [(2,1)]), (2, [(0,1)])]
+example1 = Graph $ Map.fromList [(0,[Edge 1 1]),(1,[Edge 2 1]),(2,[Edge 0 1])]
 
 -- nebo
 --               4
@@ -55,43 +58,42 @@ example1 = Graph $ Map.fromList [(0, [(1,1)]), (1, [(2,1)]), (2, [(0,1)])]
 --         2
 
 example2 :: Graph
-example2 = Graph $ Map.fromList [(0, [(1,1), (2,2)]), (1, [(2,3), (3,4)]), (2, [(3,5)]), (3, [])]
+example2 = Graph $ Map.fromList [(0,[Edge 1 1,Edge 2 2]),(1,[Edge 2 3,Edge 3 4]),(2,[Edge 3 5]),(3,[])]
 
 -- 1) Definujte funkci:
 
-topSort :: Graph -> Maybe [Vertex]
-topSort = undefined
+topoSort :: Graph -> Maybe [Vertex]
+topoSort = undefined
 
--- topSort g najde nějaké topologické uspořádání vrcholů grafu g. Pokud žádné
--- neexistuje (tj. graf obsahuje cyklus), tak topSort g == Nothing.
+-- topoSort g najde nějaké topologické uspořádání vrcholů grafu g. Pokud žádné
+-- neexistuje (tj. graf obsahuje cyklus), tak topoSort g == Nothing.
 --
 -- Seznam [v1, v2, .. vn] je topologické uspořádání, pokud pro každou
 -- orientovanou hranu (vi, vj) platí i < j.
 --
--- > topSort example1
+-- > topoSort example1
 -- Nothing
 --
--- > topSort example2
+-- > topoSort example2
 -- Just [0,1,2,3]
 --
 -- Pro testování můžete použít tuto funkci:
 
-checkTopSort :: Graph -> [Vertex] -> Bool
-checkTopSort (Graph g) top =
-    Map.foldrWithKey (\v es r -> all (go v) (map fst es) && r) True g
+checkTopoSort :: Graph -> [Vertex] -> Bool
+checkTopoSort (Graph g) topo = Map.foldrWithKey (\v es r -> all (go v) (map vertex es) && r) True g
   where
     check [x] = x
     check _   = False
 
     go vi vj = check $ do
-        i <- elemIndices vi top
-        j <- elemIndices vj top
+        i <- elemIndices vi topo
+        j <- elemIndices vj topo
         return (i < j)
 
--- >>> checkTopSort example2 [0,1,2,3]
+-- >>> checkTopoSort example2 [0,1,2,3]
 -- True
 --
--- >>> checkTopSort example2 [1,2,0,3]
+-- >>> checkTopoSort example2 [1,2,0,3]
 -- False
 --
 -- 2) Implementujte Floyd-Warshallův algoritmus.
