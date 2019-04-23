@@ -142,7 +142,7 @@ some = undefined
 -- > runParser (some $ string "ab") "ababababbb"
 -- Just (["ab","ab","ab","ab"],"bb")
 --
--- > runParser (skipMany $ string "ab") "aaaaaaa"
+-- > runParser (many $ string "ab") "aaaaaaa"
 -- Just ([],"aaaaaaa")
 
 -- BONUS) Implementuje následující parser. Stejně jako v předchozí části
