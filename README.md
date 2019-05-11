@@ -55,16 +55,16 @@ Domácí úlohy
 
 | Jméno              | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------ | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
-| Vilém Zouhar       | 15 | 10 |    |     OK | 14 |    |    |    |         |    |
-| Tomáš Zasadil      |  7 | 12 |    |     OK | 13 |    |    |    |         |    |
-| Jiří Škrobánek     | 15 | 10 | 10 |     OK | 11 |    |    |    |         |    |
+| Vilém Zouhar       | 15 | 10 |    |     OK | 14 | 10 |    |    |      OK | OK |
+| Tomáš Zasadil      |  7 | 12 |    |     OK | 13 | 12 |    |    |      OK | OK |
+| Jiří Škrobánek     | 15 | 10 | 10 |     OK | 11 | 13 |    |    |      OK | OK |
 | Vojtěch Břečka     | 10 | 10 |    |     OK | 10 |    |    |    |         |    |
-| Lukáš Lánský       | 13 |    |  4 |     OK |    |    |    |    |         |    |
-| Václav Luňák       | 10 | 10 |    |     OK | 10 |    |    |    |         |    |
-| Jiří Filek         | 10 |  7 |  6 |     OK |  8 |    |    |    |         |    |
-| Michal Vacek       | 10 |  8 |    |     OK | 10 |    |    |    |         |    |
-| Martina Fusková    | 10 |  7 |  4 |     OK |  8 |    |    |    |         |    |
-| Radek Chalupa      | 10 | 10 |    |     OK | 14 |    |    |    |         |    |
+| Lukáš Lánský       | 13 |    |  4 |     OK |    | 12 |    |    |         |    |
+| Václav Luňák       | 10 | 10 |    |     OK | 10 |  6 |    |    |         |    |
+| Jiří Filek         | 10 |  7 |  6 |     OK |  8 |  8 |    |    |         |    |
+| Michal Vacek       | 10 |  8 |    |     OK | 10 |  4 |    |    |         |    |
+| Martina Fusková    | 10 |  7 |  4 |     OK |  8 |  7 |    |    |         |    |
+| Radek Chalupa      | 10 | 10 |    |     OK | 14 |  9 |    |    |      OK | OK |
 | Beast              | 10 |    |    |        |    |    |    |    |         |    |
 | Matyáš Brabec      |  7 | 10 | 10 |     OK | 10 |    |    |    |         |    |
-| Matěj Kopčil       | 15 | 10 |    |     OK |  9 |    |    |    |         |    |
+| Matěj Kopčil       | 15 | 10 |    |     OK |  9 |  5 |    |    |         |    |
