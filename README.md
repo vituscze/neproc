@@ -50,6 +50,7 @@ Domácí úlohy
 - Prohledávání stavového prostoru, regex (do 5.4.)
 - Programování s funkcemi (do 19.4.)
 - Trie (do 10.5.)
+- Monadické parsování (do 24.5.)
 
 **Hodnocení**
 
