@@ -42,3 +42,7 @@ Domácí úlohy
 - Pro zápočet je zapotřebí alespoň 60% bodů, 50% bodů z úloh v Prologu a 50% bodů z úloh v Haskellu
 - Celkem 7 úloh: 3 v Prologu, 4 v Haskellu
 - Řešení posílejte mailem na vituscze@gmail.com, předmět musí začínat `[NPRG]`
+
+### Zadané úlohy
+
+* Logaritmus a Fibonacci (do 4.3.)
