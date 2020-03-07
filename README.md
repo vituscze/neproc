@@ -46,3 +46,37 @@ Domácí úlohy
 ### Zadané úlohy
 
 * Logaritmus a Fibonacci (do 4.3.)
+
+### Hodnocení
+
+| Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
+| ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
+| Mikuláš Bačinský    | 10 |    |    |        |    |    |    |    |         |    |
+| Vojtěch Břečka      | 15 |    |    |     OK |    |    |    |    |         |    |
+| Tomáš Čelko         | 15 |    |    |     OK |    |    |    |    |         |    |
+| Katarína Dančejová  | 12 |    |    |        |    |    |    |    |         |    |
+| Vít Fojtík          | 14 |    |    |        |    |    |    |    |         |    |
+| Peter Grajcar       | 15 |    |    |     OK |    |    |    |    |         |    |
+| Dominik Jelínek     | 10 |    |    |        |    |    |    |    |         |    |
+| Agh Juraj           |  6 |    |    |        |    |    |    |    |         |    |
+| Aleš Kakos          |  7 |    |    |        |    |    |    |    |         |    |
+| Matěj Kopčil        | 15 |    |    |     OK |    |    |    |    |         |    |
+| Vít Koštejn         | 14 |    |    |        |    |    |    |    |         |    |
+| Janka Kucharíková   |  9 |    |    |        |    |    |    |    |         |    |
+| Michaela Mazná      | 10 |    |    |        |    |    |    |    |         |    |
+| Michal Medvecký     |  9 |    |    |        |    |    |    |    |         |    |
+| Matěj Míček         | 10 |    |    |        |    |    |    |    |         |    |
+| Marek Nagy          |  6 |    |    |        |    |    |    |    |         |    |
+| David Nápravník     |  9 |    |    |        |    |    |    |    |         |    |
+| Kristýna Neumannová |  8 |    |    |        |    |    |    |    |         |    |
+| Quoc Anh Nguyen     | 10 |    |    |        |    |    |    |    |         |    |
+| Radek Olšák         | 10 |    |    |        |    |    |    |    |         |    |
+| Dan Raffl           | 10 |    |    |        |    |    |    |    |         |    |
+| Václav Steinhauser  | 10 |    |    |        |    |    |    |    |         |    |
+| Tomáš Strnad        | 15 |    |    |     OK |    |    |    |    |         |    |
+| Vojtěch Švandelík   |  8 |    |    |        |    |    |    |    |         |    |
+| Šimon Tichý         |  5 |    |    |        |    |    |    |    |         |    |
+| František Trebuňa   | 14 |    |    |        |    |    |    |    |         |    |
+| marko               | 15 |    |    |     OK |    |    |    |    |         |    |
+| Čokoláda            | 10 |    |    |        |    |    |    |    |         |    |
+| Nika                | 15 |    |    |     OK |    |    |    |    |         |    |
