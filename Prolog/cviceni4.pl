@@ -199,3 +199,16 @@ max4(X, Y, R) :-
   ( X < Y -> R = Y
   ; R = X
   ).
+
+% Úlohy na procvičení.
+%
+% Pokud vaše řešení předchozích (domácích) úloh při odmítnutí produkovalo duplikátní výsledky,
+% upravte váš kód pomocí řezu tak, aby řešení bylo deterministické a dávalo jediný výsledek.
+%
+% Největší prvek stromu (zkuste pro obyčejný strom i pro binární vyhledávací).
+%
+% Perfektní binární vyhledávací strom ze setříděného seznamu. Pro každý vrchol by mělo platit,
+% že počty prvků v levém i pravém podstromu se liší maximálně o jedna.
+%
+% Mazání prvku z binárního vyhledávacího stromu.
+%
