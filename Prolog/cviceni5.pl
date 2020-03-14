@@ -20,12 +20,16 @@
 split([], [], []).
 split([X|XS], [X|R1], R2) :- split(XS, R2, R1).
 
-merge(XS, [], XS) :- !.
+merge(XS, [], XS) :- !.  % Řezem zaručíme, že pro merge([], [], R) nedostaneme dva stejné výsledky.
 merge([], YS, YS) :- !.
 merge([X|XS], [Y|YS], R) :-
   ( X @=< Y -> merge(XS, [Y|YS], S), R = [X|S]
   ; merge([X|XS], YS, S), R = [Y|S]
   ).
+
+% "if-then-else" je v Prologu k dispozici jako (If -> Then ; Else). Definice tohoto speciálního
+% predikátu obsahuje řez, takže podmínka se vyhodnotí právě jednou a pokud uspěje, tak se zároveň
+% odřízne Else větev.
 
 mergeSort([], []) :- !.
 mergeSort([X], [X]) :- !.
