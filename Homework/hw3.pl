@@ -13,6 +13,8 @@
 %      alespoň jeden misionář a ostře více lidojedů než misionářů)
 %
 % Navrhěte řešení zobecněného problému pro M misionářů, L lidojedů a R řek.
+% Každá řeka má jednu loďku. Loďku nelze mezi řekami přenášet. Pro jednoduchost
+% můžete předpokládat, že současně lze použít nejvýše jedna loďka.
 %
 % solve(+M, +L, +R, ?Path).
 %
