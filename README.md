@@ -53,21 +53,21 @@ Domácí úlohy
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
-| Mikuláš Bačinský    | 10 |  3 |    |        |    |    |    |    |         |    |
+| Mikuláš Bačinský    | 10 |  3 |  3 |     OK |    |    |    |    |         |    |
 | Vojtěch Břečka      | 15 | 10 |    |     OK |    |    |    |    |         |    |
-| Tomáš Čelko         | 15 |  9 |    |     OK |    |    |    |    |         |    |
-| Katarína Dančejová  | 12 |  4 |    |     OK |    |    |    |    |         |    |
+| Tomáš Čelko         | 15 |  9 | 10 |     OK |    |    |    |    |         |    |
+| Katarína Dančejová  | 12 |  4 |  4 |     OK |    |    |    |    |         |    |
 | Vít Fojtík          | 14 | 10 |    |     OK |    |    |    |    |         |    |
-| Peter Grajcar       | 15 | 10 |    |     OK |    |    |    |    |         |    |
+| Peter Grajcar       | 15 | 10 | 10 |     OK |    |    |    |    |         |    |
 | Dominik Jelínek     | 10 | 10 |    |     OK |    |    |    |    |         |    |
-| Agh Juraj           |  6 |  3 |    |        |    |    |    |    |         |    |
+| Agh Juraj           |  6 |  3 |  7 |     OK |    |    |    |    |         |    |
 | Aleš Kakos          |  7 | 10 |    |     OK |    |    |    |    |         |    |
-| Matěj Kopčil        | 15 | 18 |    |     OK |    |    |    |    |         |    |
+| Matěj Kopčil        | 15 | 18 | 20 |     OK |    |    |    |    |         |    |
 | Vít Koštejn         | 14 | 10 |    |     OK |    |    |    |    |         |    |
 | Janka Kucharíková   |  9 |  6 |    |     OK |    |    |    |    |         |    |
 | Michaela Mazná      | 10 |  8 |    |     OK |    |    |    |    |         |    |
 | Michal Medvecký     |  9 | 10 |    |     OK |    |    |    |    |         |    |
-| Matěj Míček         | 10 |  3 |    |        |    |    |    |    |         |    |
+| Matěj Míček         | 10 |  3 |  7 |     OK |    |    |    |    |         |    |
 | Marek Nagy          |  6 |  9 |    |     OK |    |    |    |    |         |    |
 | David Nápravník     |  9 |  8 |    |     OK |    |    |    |    |         |    |
 | Kristýna Neumannová |  8 | 14 |    |     OK |    |    |    |    |         |    |
@@ -78,12 +78,12 @@ Domácí úlohy
 | Tomáš Strnad        | 15 | 10 |    |     OK |    |    |    |    |         |    |
 | Vojtěch Švandelík   |  8 | 10 |    |     OK |    |    |    |    |         |    |
 | Šimon Tichý         |  5 |  9 |    |        |    |    |    |    |         |    |
-| František Trebuňa   | 14 | 17 |    |     OK |    |    |    |    |         |    |
-| marko               | 15 | 10 |    |     OK |    |    |    |    |         |    |
+| František Trebuňa   | 14 | 17 | 10 |     OK |    |    |    |    |         |    |
+| marko               | 15 | 10 |  7 |     OK |    |    |    |    |         |    |
 | Čokoláda            | 10 |  9 |    |     OK |    |    |    |    |         |    |
 | Nika                | 15 | 10 |    |     OK |    |    |    |    |         |    |
-| Patrik Beliansky    |    | 10 |    |        |    |    |    |    |         |    |
-| Milan Horňák        |    | 10 |    |        |    |    |    |    |         |    |
-| Milan Kotva         |    |  3 |    |        |    |    |    |    |         |    |
-| Renáta Strnadlová   |    | 10 |    |        |    |    |    |    |         |    |
-| Trollweryne         |    | 12 |    |        |    |    |    |    |         |    |
+| Patrik Beliansky    |    | 10 | 10 |     OK |    |    |    |    |         |    |
+| Milan Horňák        |    | 10 |  8 |     OK |    |    |    |    |         |    |
+| Milan Kotva         |    |  3 |  6 |        |    |    |    |    |         |    |
+| Renáta Strnadlová   |    | 10 |  6 |     OK |    |    |    |    |         |    |
+| Trollweryne         |    | 12 |  8 |     OK |    |    |    |    |         |    |
