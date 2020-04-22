@@ -48,6 +48,8 @@ Domácí úlohy
 * Logaritmus a Fibonacci (do 4.3.)
 * Seznamy (do 25.3.)
 * Prohledávání stavového prostoru, regex (do 8.4.)
+* Úvod do Haskellu (do 22.4.)
+* Trie (do 6.5.)
 
 ### Hodnocení
 

@@ -58,7 +58,7 @@ leq _             _             = False
 -- getY :: Point -> Double
 -- getY (Point _ y) = y
 --
--- Pokud máme datový typ, který má pouze jednu položku, tak můžeme tyhle funkce
+-- Pokud máme datový typ, který má pouze jednen konstruktor, tak můžeme tyhle funkce
 -- dostat zadarmo. Stačí tento typ definovat jako 'record'.
 
 data Point = Point { getX :: Double, getY :: Double }
@@ -90,7 +90,11 @@ data Tree a = Leaf | Node a (Tree a) (Tree a)
     deriving (Show, Eq)
 
 insert' :: (Ord a) => a -> Tree a -> Tree a
-insert' = undefined
+insert' x Leaf = Node x Leaf Leaf
+insert' x (Node y l r)
+    | x <  y    = Node y (insert' x l) r
+    | x == y    = Node x l r
+    | otherwise = Node y l (insert' x r)
 
 -- Původní IntTree je tedy Tree Int (podobně jako [Int]).
 --
