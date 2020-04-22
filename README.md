@@ -37,7 +37,7 @@ Zápočtový program
 Domácí úlohy
 ------------
 
-- Úloha každé dva týdny, deadline další středa 10:40
+- Úloha každé dva týdny, deadline taktéž dva týdny (středa 15:00)
 - Hodnotí se především správnost, ale také přehlednost a srozumitelnost kódu a efektivita
 - Pro zápočet je zapotřebí alespoň 60% bodů, 50% bodů z úloh v Prologu a 50% bodů z úloh v Haskellu
 - Celkem 7 úloh: 3 v Prologu, 4 v Haskellu
