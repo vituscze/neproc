@@ -56,36 +56,36 @@ Domácí úlohy
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|
 | Mikuláš Bačinský    | 10 |  3 |  3 |     OK |    |    |    |    |         |    |
-| Vojtěch Břečka      | 15 | 10 |    |     OK |    |    |    |    |         |    |
-| Tomáš Čelko         | 15 |  9 | 10 |     OK |    |    |    |    |         |    |
-| Katarína Dančejová  | 12 |  4 |  4 |     OK |    |    |    |    |         |    |
-| Vít Fojtík          | 14 | 10 |    |     OK |    |    |    |    |         |    |
-| Peter Grajcar       | 15 | 10 | 10 |     OK |    |    |    |    |         |    |
-| Dominik Jelínek     | 10 | 10 |    |     OK |    |    |    |    |         |    |
+| Vojtěch Břečka      | 15 | 10 |    |     OK | 10 |    |    |    |         |    |
+| Tomáš Čelko         | 15 |  9 | 10 |     OK | 12 |    |    |    |         |    |
+| Katarína Dančejová  | 12 |  4 |  4 |     OK | 12 |    |    |    |         |    |
+| Vít Fojtík          | 14 | 10 |    |     OK | 15 |    |    |    |         |    |
+| Peter Grajcar       | 15 | 10 | 10 |     OK | 15 |    |    |    |         |    |
+| Dominik Jelínek     | 10 | 10 |    |     OK | 15 |    |    |    |         |    |
 | Agh Juraj           |  6 |  3 |  7 |     OK |    |    |    |    |         |    |
-| Aleš Kakos          |  7 | 10 |    |     OK |    |    |    |    |         |    |
-| Matěj Kopčil        | 15 | 18 | 20 |     OK |    |    |    |    |         |    |
-| Vít Koštejn         | 14 | 10 |    |     OK |    |    |    |    |         |    |
+| Aleš Kakos          |  7 | 10 |    |     OK | 14 |    |    |    |         |    |
+| Matěj Kopčil        | 15 | 18 | 20 |     OK | 15 |    |    |    |         |    |
+| Vít Koštejn         | 14 | 10 |    |     OK |  9 |    |    |    |         |    |
 | Janka Kucharíková   |  9 |  6 |    |     OK |    |    |    |    |         |    |
-| Michaela Mazná      | 10 |  8 |    |     OK |    |    |    |    |         |    |
-| Michal Medvecký     |  9 | 10 |    |     OK |    |    |    |    |         |    |
-| Matěj Míček         | 10 |  3 |  7 |     OK |    |    |    |    |         |    |
-| Marek Nagy          |  6 |  9 |    |     OK |    |    |    |    |         |    |
+| Michaela Mazná      | 10 |  8 |    |     OK | 10 |    |    |    |         |    |
+| Michal Medvecký     |  9 | 10 |    |     OK |  9 |    |    |    |         |    |
+| Matěj Míček         | 10 |  3 |  7 |     OK |  8 |    |    |    |         |    |
+| Marek Nagy          |  6 |  9 |    |     OK | 12 |    |    |    |         |    |
 | David Nápravník     |  9 |  8 |    |     OK |    |    |    |    |         |    |
-| Kristýna Neumannová |  8 | 14 |    |     OK |    |    |    |    |         |    |
-| Quoc Anh Nguyen     | 10 |  9 |    |     OK |    |    |    |    |         |    |
+| Kristýna Neumannová |  8 | 14 |    |     OK | 15 |    |    |    |         |    |
+| Quoc Anh Nguyen     | 10 |  9 |    |     OK |  9 |    |    |    |         |    |
 | Radek Olšák         | 10 | 10 |    |     OK |    |    |    |    |         |    |
 | Dan Raffl           | 10 |  5 |    |     OK |    |    |    |    |         |    |
 | Václav Steinhauser  | 10 |  6 |    |     OK |    |    |    |    |         |    |
-| Tomáš Strnad        | 15 | 10 |    |     OK |    |    |    |    |         |    |
-| Vojtěch Švandelík   |  8 | 10 |    |     OK |    |    |    |    |         |    |
+| Tomáš Strnad        | 15 | 10 |    |     OK | 15 |    |    |    |         |    |
+| Vojtěch Švandelík   |  8 | 10 |    |     OK |  8 |    |    |    |         |    |
 | Šimon Tichý         |  5 |  9 |    |        |    |    |    |    |         |    |
-| František Trebuňa   | 14 | 17 | 10 |     OK |    |    |    |    |         |    |
-| marko               | 15 | 10 |  7 |     OK |    |    |    |    |         |    |
-| Čokoláda            | 10 |  9 |    |     OK |    |    |    |    |         |    |
-| Nika                | 15 | 10 |    |     OK |    |    |    |    |         |    |
+| František Trebuňa   | 14 | 17 | 10 |     OK | 15 |    |    |    |         |    |
+| marko               | 15 | 10 |  7 |     OK | 15 |    |    |    |         |    |
+| Čokoláda            | 10 |  9 |    |     OK |  9 |    |    |    |         |    |
+| Nika                | 15 | 10 |    |     OK | 15 |    |    |    |         |    |
 | Patrik Beliansky    |    | 10 | 10 |     OK |    |    |    |    |         |    |
-| Milan Horňák        |    | 10 |  8 |     OK |    |    |    |    |         |    |
+| Milan Horňák        |    | 10 |  8 |     OK | 10 |    |    |    |         |    |
 | Milan Kotva         |    |  3 |  6 |        |    |    |    |    |         |    |
-| Renáta Strnadlová   |    | 10 |  6 |     OK |    |    |    |    |         |    |
-| Trollweryne         |    | 12 |  8 |     OK |    |    |    |    |         |    |
+| Renáta Strnadlová   |    | 10 |  6 |     OK | 10 |    |    |    |         |    |
+| Trollweryne         |    | 12 |  8 |     OK | 13 |    |    |    |         |    |
