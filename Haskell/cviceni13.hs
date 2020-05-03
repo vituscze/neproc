@@ -85,6 +85,7 @@ greet = do
 -- Pokud chceme vytvořit binárku (tj. spustitelný soubor), musíme definovat
 -- speciální hodnotu main.
 
+main :: IO ()
 main = greet
 
 -- Pak můžeme jednoduše pustit GHC na zdrojový kód.
@@ -214,7 +215,7 @@ data Tree a = Leaf | Node (Tree a) a (Tree a)
 
 label :: Int -> Tree a -> (Tree Int, Int)
 label c  Leaf         = (Leaf, c)
-label c1 (Node l x r) = (Node l' x' r', c4)
+label c1 (Node l _ r) = (Node l' x' r', c4)
   where
     (l', c2) = label c1 l
     (x', c3) = (c2, c2 + 1)
@@ -262,7 +263,7 @@ instance Monad (State s) where
 
 label' :: Tree a -> State Int (Tree Int)
 label' Leaf         = return Leaf
-label' (Node l x r) = do
+label' (Node l _ r) = do
     l' <- label' l
     x' <- postIncrement
     r' <- label' r
