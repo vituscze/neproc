@@ -27,9 +27,8 @@ import Data.Map (Map)
 -- v tomto vrcholu začínají. Hranu pak stačí popsat pouze druhým vrcholem a váhou.
 
 type Vertex = Int
-type Weight = Double
 
-data Edge = Edge { vertex :: Vertex, weight :: Weight }
+data Edge = Edge { vertex :: Vertex, weight :: Double }
     deriving (Show)
 
 newtype Graph = Graph (Map Vertex [Edge])
@@ -98,7 +97,7 @@ checkTopoSort (Graph g) topo = Map.foldrWithKey (\v es r -> all (go v) (map vert
 --
 -- 2) Implementujte Floyd-Warshallův algoritmus.
 
-floydWarshall :: Graph -> Map (Vertex, Vertex) Weight
+floydWarshall :: Graph -> Map (Vertex, Vertex) Double
 floydWarshall = undefined
 
 -- Výsledkem je mapa, která pro každou dvojici vrcholů obsahuje
