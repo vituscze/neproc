@@ -26,11 +26,11 @@ import System.IO
 -- tedy nutné definovat instanci Applicative, ale pokud máme k dispozici
 -- instanci Monad, lze tohle udělat snadno.
 --
---   instance Applicative Parser where
+--   instance Applicative Maybe where
 --       pure  = return
 --       (<*>) = ap
 --
--- Funkce ap - viz 6. úloha.
+--   ap mf ma = do f <- mf; a <- ma; return (f a)
 --
 -- Je tedy lepší to dělat tak, že místo return implementujeme pure a v instanci
 -- typové třídy Monad pak jen napíšeme
@@ -130,9 +130,7 @@ getTwoLines = do
 -- které lze použít s monádami.
 
 when :: (Monad m) => Bool -> m () -> m ()
-when c m = if c
-    then m
-    else return ()
+when c m = if c then m else return ()
 
 unless :: (Monad m) => Bool -> m () -> m ()
 unless = when . not
