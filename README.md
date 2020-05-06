@@ -50,7 +50,7 @@ Domácí úlohy
 * Prohledávání stavového prostoru, regex (do 8.4.)
 * Úvod do Haskellu (do 22.4.)
 * Trie (do 6.5.)
-* Parser (do 30.5.)
+* Parser (do 20.5.)
 
 ### Hodnocení
 
