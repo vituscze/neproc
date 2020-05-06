@@ -74,7 +74,7 @@ Domácí úlohy
 | David Nápravník     |  9 |  8 |    |     OK |    |    |    |    |         |    |
 | Kristýna Neumannová |  8 | 14 |    |     OK | 15 |    |    |    |         |    |
 | Quoc Anh Nguyen     | 10 |  9 |    |     OK |  9 |    |    |    |         |    |
-| Radek Olšák         | 10 | 10 |    |     OK |    |    |    |    |         |    |
+| Radek Olšák         | 10 | 10 |    |     OK | 13 |    |    |    |         |    |
 | Dan Raffl           | 10 |  5 |    |     OK |    |    |    |    |         |    |
 | Václav Steinhauser  | 10 |  6 |    |     OK |    |    |    |    |         |    |
 | Tomáš Strnad        | 15 | 10 |    |     OK | 15 |    |    |    |         |    |
