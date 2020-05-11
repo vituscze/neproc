@@ -58,7 +58,7 @@ Domácí úlohy
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
 | Mikuláš Bačinský    | 10 |  3 |  3 |     OK |    |    |    |    |         |    |    |
 | Vojtěch Břečka      | 15 | 10 |    |     OK | 10 |    |    |    |         |    |    |
-| Tomáš Čelko         | 15 |  9 | 10 |     OK | 12 |  8 |    |    |      OK | OK |    |
+| Tomáš Čelko         | 15 |  9 | 10 |     OK | 12 |  8 |    |    |      OK | OK | OK |
 | Katarína Dančejová  | 12 |  4 |  4 |     OK | 12 | 13 |    |    |      OK | OK |    |
 | Vít Fojtík          | 14 | 10 |    |     OK | 15 | 20 |    |    |      OK | OK |    |
 | Peter Grajcar       | 15 | 10 | 10 |     OK | 15 | 20 |    |    |      OK | OK |    |
