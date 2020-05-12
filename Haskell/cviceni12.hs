@@ -234,3 +234,15 @@ root8'' x = do
     y <- sqrt' x
     z <- sqrt' y
     sqrt' z
+
+-- do notace lze přeložit zpět do obyčejného výrazu:
+--
+-- do a <- ma    ===  ma >>= \a ->
+--    mb              mb
+--
+-- do ma         ===  ma >>= \_ ->
+--    mb              mb
+--
+-- do let x = y  ===  let x = y
+--    ma              in  ma
+--
