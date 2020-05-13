@@ -19,7 +19,7 @@ executable cviceni14
   main-is:             Main.hs
   other-modules:       Mandelbrot, Config
   -- other-extensions:
-  build-depends:       base ^>=4.14.0.0, optparse-applicative, JuicyPixels
+  build-depends:       base ^>=4.14.0.0, JuicyPixels, optparse-applicative
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -Wall
