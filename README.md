@@ -51,6 +51,7 @@ Domácí úlohy
 * Úvod do Haskellu (do 22.4.)
 * Trie (do 6.5.)
 * Parser (do 20.5.)
+* Grafy (do 30.9.)
 
 ### Hodnocení
 
