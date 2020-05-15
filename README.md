@@ -74,7 +74,7 @@ Domácí úlohy
 | Matěj Míček         | 10 |  3 |  7 |     OK |  8 |  7 |    |    |         |    |    |
 | Marek Nagy          |  6 |  9 |    |     OK | 12 | 20 |    |    |      OK | OK |    |
 | David Nápravník     |  9 |  8 |    |     OK |    |  9 |    |    |         |    |    |
-| Kristýna Neumannová |  8 | 14 |    |     OK | 15 |  9 |    |    |      OK | OK |    |
+| Kristýna Neumannová |  8 | 14 |    |     OK | 15 |  9 |    |    |      OK | OK | OK |
 | Quoc Anh Nguyen     | 10 |  9 |    |     OK |  9 |    |    |    |         |    |    |
 | Radek Olšák         | 10 | 10 |    |     OK | 13 | 20 |    |    |      OK | OK |    |
 | Dan Raffl           | 10 |  5 |    |     OK |    |    |    |    |         |    |    |
