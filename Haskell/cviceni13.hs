@@ -266,3 +266,30 @@ label' (Node l _ r) = do
     x' <- postIncrement
     r' <- label' r
     return (Node l' x' r')
+
+-- Ještě poznámka na závěr. Možná vás napadla otázka, jestli je možné implementovat funkci
+-- extract :: (Monad m) => m a -> a.
+--
+-- Předpokládejme, že funkci extract máme k dispozici, pak můžeme definovat:
+--
+--   import System.Random
+--
+--   f :: Int -> Int
+--   f x = x + extract (randomRIO (0, 100))
+--
+-- kde randomRIO je funkce typu (Int, Int) -> IO Int, která vygeneruje náhodné číslo v daném
+-- rozmezí. Z definice je zřejmé, že se funkce f nemůže chovat jako matematická funkce, tj.
+-- pokud f zavoláme dvakrát se stejným argumentem, nemusíme dostat stejné výsledky. V obecnosti
+-- tedy funkci extract implementovat nelze.
+--
+-- To ovšem neznamená, že podobné funkce neexistují pro specifické monády. Např. pro Maybe máme:
+--
+--   extractMaybe :: a -> Maybe a -> a
+--   extractMaybe d Nothing  = d
+--   extractMaybe _ (Just x) = x
+--
+-- a pro State máme:
+--
+--   extractState :: s -> State s a -> a
+--   extractState s (State f) = fst (f s)
+--
