@@ -45,6 +45,8 @@ Domácí úlohy
 
 ### Zadané úlohy
 
+* Unární čísla (do 23.3.)
+
 ### Hodnocení
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
