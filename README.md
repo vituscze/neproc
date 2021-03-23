@@ -46,6 +46,7 @@ Domácí úlohy
 ### Zadané úlohy
 
 * Unární čísla (do 23.3.)
+* Seznamy (do 6.4.)
 
 ### Hodnocení
 
