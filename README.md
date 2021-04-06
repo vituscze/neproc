@@ -47,6 +47,7 @@ Domácí úlohy
 
 * Unární čísla (do 23.3.)
 * Seznamy (do 6.4.)
+* Stavový prostor a regexy (do 20.4.)
 
 ### Hodnocení
 
