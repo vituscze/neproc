@@ -55,13 +55,14 @@ Domácí úlohy
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
 | Lenka Kopfová       | 10 |    |    |        |    |    |    |    |         |    |    |
 | Qwedux              | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Bankai              | 10 |    |    |        |    |    |    |    |         |    |    |
-| David Nápravník     | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Jakub Komárek       | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Josefína            | 10 |    |    |        |    |    |    |    |         |    |    |
-| DR                  |  8 |    |    |        |    |    |    |    |         |    |    |
-| Rado                | 10 |    |    |        |    |    |    |    |         |    |    |
+| Bankai              | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
+| David Nápravník     | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Jakub Komárek       | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Josefína            | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
+| DR                  |  8 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Rado                | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Miesilželezo        | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Tobiáš Vavroch      | 10 |    |    |        |    |    |    |    |         |    |    |
 | Pogy                | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Kryštof Jungmann    | 10 |    |    |        |    |    |    |    |         |    |    |
+| Václav Steinhauser  | 15 |  7 |    |     OK |    |    |    |    |         |    |    |
