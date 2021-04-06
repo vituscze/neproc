@@ -31,7 +31,7 @@ singleton k v = Node2 Nil k v Nil
 
 {- | Finds the value associated to a given key, if it exists.
 
-> find 1 (fromList [(1, 'a')]) == Just a
+> find 1 (fromList [(1, 'a')]) == Just 'a'
 > find 0 (fromList [(1, 'a')]) == Nothing
 -}
 find :: (Ord k) => k -> Map k v -> Maybe v
