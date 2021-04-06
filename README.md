@@ -54,14 +54,14 @@ Domácí úlohy
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
 | Lenka Kopfová       | 10 |    |    |        |    |    |    |    |         |    |    |
-| Qwedux              | 15 |    |    |        |    |    |    |    |         |    |    |
+| Qwedux              | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Bankai              | 10 |    |    |        |    |    |    |    |         |    |    |
-| David Nápravník     | 15 |    |    |        |    |    |    |    |         |    |    |
-| Jakub Komárek       | 15 |    |    |        |    |    |    |    |         |    |    |
+| David Nápravník     | 15 |    |    |     OK |    |    |    |    |         |    |    |
+| Jakub Komárek       | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Josefína            | 10 |    |    |        |    |    |    |    |         |    |    |
 | DR                  |  8 |    |    |        |    |    |    |    |         |    |    |
 | Rado                | 10 |    |    |        |    |    |    |    |         |    |    |
-| Miesilželezo        | 15 |    |    |        |    |    |    |    |         |    |    |
+| Miesilželezo        | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Tobiáš Vavroch      | 10 |    |    |        |    |    |    |    |         |    |    |
-| Pogy                | 15 |    |    |        |    |    |    |    |         |    |    |
+| Pogy                | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Kryštof Jungmann    | 10 |    |    |        |    |    |    |    |         |    |    |
