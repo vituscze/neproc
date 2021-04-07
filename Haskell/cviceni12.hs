@@ -166,12 +166,13 @@ times as bs =
 -- Máme dva konkrétní příklady, teď tento koncept "spojování výpočtů" můžeme
 -- generalizovat.
 --
--- class (...) => Monad m where
+-- class Applicative m => Monad m where
 --     return :: a -> m a                  -- done, doneL
 --     (>>=)  :: m a -> (a -> m b) -> m b  -- andThen, andThenL
 --
 -- Pozn. return má možná trochu nešťastné jméno. Narozdíl od return
--- v ostatních jazycích nekončí výpočet.
+-- v ostatních jazycích nekončí výpočet. Místo return můžeme používat
+-- funkci pure (z typové třídy Applicative), která dělá to samé.
 
 weird :: Maybe Int
 weird =
