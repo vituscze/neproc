@@ -109,14 +109,14 @@ insert k v t = case go t of
             Split ca cbk cbv cc -> Done (Node3 a bk bv ca cbk cbv cc)
 
     go (Node3 a bk bv c dk dv e)
-        | k < bk     = case go a of
+        | k < bk    = case go a of
             Done a'             -> Done (Node3 a' bk bv c dk dv e)
             Split aa abk abv ac -> Split (Node2 aa abk abv ac) bk bv (Node2 c dk dv e)
-        | k == bk    = Done (Node3 a k v c dk dv e)
-        | k < dk     = case go c of
+        | k == bk   = Done (Node3 a k v c dk dv e)
+        | k < dk    = case go c of
             Done c'             -> Done (Node3 a bk bv c' dk dv e)
             Split ca cbk cbv cc -> Split (Node2 a bk bv ca) cbk cbv (Node2 cc dk dv e)
-        | k == dk    = Done (Node3 a bk bv c k v e)
-        | otherwise  = case go e of
+        | k == dk   = Done (Node3 a bk bv c k v e)
+        | otherwise = case go e of
             Done e'             -> Done (Node3 a bk bv c dk dv e')
             Split ea ebk ebv ec -> Split (Node2 a bk bv c) dk dv (Node2 ea ebk ebv ec)
