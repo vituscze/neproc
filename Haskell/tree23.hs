@@ -36,16 +36,16 @@ singleton k v = Node2 Nil k v Nil
 -}
 find :: (Ord k) => k -> Map k v -> Maybe v
 find _ Nil = Nothing
-find k (Node2 l xk xv r)
-    | k < xk    = find k l
-    | k == xk   = Just xv
-    | otherwise = find k r
-find k (Node3 l xk xv m yk yv r)
-    | k < xk    = find k l
-    | k == xk   = Just xv
-    | k < yk    = find k m
-    | k == yk   = Just yv
-    | otherwise = find k r
+find k (Node2 a bk bv c)
+    | k < bk    = find k a
+    | k == bk   = Just bv
+    | otherwise = find k c
+find k (Node3 a bk bv c dk dv e)
+    | k < bk    = find k a
+    | k == bk   = Just bv
+    | k < dk    = find k c
+    | k == dk   = Just dv
+    | otherwise = find k e
 
 {- | Calculate the depth of all leaf nodes. Internal function.
 
@@ -56,8 +56,8 @@ depths :: Map k v -> [Int]
 depths = go 0
   where
     go n Nil                   = [n]
-    go n (Node2 l _ _ r)       = concatMap (go (n + 1)) [l, r]
-    go n (Node3 l _ _ m _ _ r) = concatMap (go (n + 1)) [l, m, r]
+    go n (Node2 a _ _ c)       = concatMap (go (n + 1)) [a, c]
+    go n (Node3 a _ _ c _ _ e) = concatMap (go (n + 1)) [a, c, e]
 
 {- | Build a map from a list of key-value pairs.
 
@@ -76,10 +76,10 @@ toList :: Map k v -> [(k, v)]
 toList = flip go []
   where
     go Nil = id
-    go (Node2 l xk xv r) =
-        go l . ((xk, xv):) . go r
-    go (Node3 l xk xv m yk yv r) =
-        go l . ((xk, xv):) . go m . ((yk, yv):) . go r
+    go (Node2 a bk bv c) =
+        go a . ((bk, bv):) . go c
+    go (Node3 a bk bv c dk dv e) =
+        go a . ((bk, bv):) . go c . ((dk, dv):) . go e
 
 -- | Internal data type which represents the result of an insertion.
 data Inserted k v
@@ -95,28 +95,28 @@ present, the value is replaced.
 insert :: (Ord k) => k -> v -> Map k v -> Map k v
 insert k v t = case go t of
     Done t'         -> t'
-    Split l xk xv r -> Node2 l xk xv r
+    Split a bk bv c -> Node2 a bk bv c
   where
     go Nil = Split Nil k v Nil
 
-    go (Node2 l xk xv r)
-        | k < xk    = case go l of
-            Done l'           -> Done (Node2 l' xk xv r)
-            Split ll lk lv lr -> Done (Node3 ll lk lv lr xk xv r)
-        | k == xk   = Done (Node2 l k v r)
-        | otherwise = case go r of
-            Done r'           -> Done (Node2 l xk xv r')
-            Split rl rk rv rr -> Done (Node3 l xk xv rl rk rv rr)
+    go (Node2 a bk bv c)
+        | k < bk    = case go a of
+            Done a'             -> Done (Node2 a' bk bv c)
+            Split aa abk abv ac -> Done (Node3 aa abk abv ac bk bv c)
+        | k == bk   = Done (Node2 a k v c)
+        | otherwise = case go c of
+            Done c'             -> Done (Node2 a bk bv c')
+            Split ca cbk cbv cc -> Done (Node3 a bk bv ca cbk cbv cc)
 
-    go (Node3 l xk xv m yk yv r)
-        | k < xk     = case go l of
-            Done l'           -> Done (Node3 l' xk xv m yk yv r)
-            Split ll lk lv lr -> Split (Node2 ll lk lv lr) xk xv (Node2 m yk yv r)
-        | k == xk    = Done (Node3 l k v m yk yv r)
-        | k < yk     = case go m of
-            Done m'           -> Done (Node3 l xk xv m' yk yv r)
-            Split ml mk mv mr -> Split (Node2 l xk xv ml) mk mv (Node2 mr yk yv r)
-        | k == yk    = Done (Node3 l xk xv m k v r)
-        | otherwise  = case go r of
-            Done r'           -> Done (Node3 l xk xv m yk yv r')
-            Split rl rk rv rr -> Split (Node2 l xk xv m) yk yv (Node2 rl rk rv rr)
+    go (Node3 a bk bv c dk dv e)
+        | k < bk     = case go a of
+            Done a'             -> Done (Node3 a' bk bv c dk dv e)
+            Split aa abk abv ac -> Split (Node2 aa abk abv ac) bk bv (Node2 c dk dv e)
+        | k == bk    = Done (Node3 a k v c dk dv e)
+        | k < dk     = case go c of
+            Done c'             -> Done (Node3 a bk bv c' dk dv e)
+            Split ca cbk cbv cc -> Split (Node2 a bk bv ca) cbk cbv (Node2 cc dk dv e)
+        | k == dk    = Done (Node3 a bk bv c k v e)
+        | otherwise  = case go e of
+            Done e'             -> Done (Node3 a bk bv c dk dv e')
+            Split ea ebk ebv ec -> Split (Node2 a bk bv c) dk dv (Node2 ea ebk ebv ec)
