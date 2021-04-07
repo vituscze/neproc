@@ -7,14 +7,14 @@ data Map k v
     | Node3 (Map k v) k v (Map k v) k v (Map k v)  -- ^ 3-node
     deriving (Show)
 
-{- | An empty map.
+{- | The empty map.
 
 > empty == fromList []
 -}
 empty :: Map k v
 empty = Nil
 
-{- | Checks whether a map is empty.
+{- | Check whether a map is empty.
 
 > null empty == True
 -}
@@ -22,14 +22,14 @@ null :: Map k v -> Bool
 null Nil = True
 null _   = False
 
-{- | Creates a map containing exactly one key and a corresponding value.
+{- | Create a map containing exactly one key and its value.
 
 > singleton 1 'a' == fromList [(1, 'a')]
 -}
 singleton :: k -> v -> Map k v
 singleton k v = Node2 Nil k v Nil
 
-{- | Finds the value associated to a given key, if it exists.
+{- | Find the value associated with a given key, if it exists.
 
 > find 1 (fromList [(1, 'a')]) == Just 'a'
 > find 0 (fromList [(1, 'a')]) == Nothing
@@ -47,7 +47,7 @@ find k (Node3 l xk xv m yk yv r)
     | k == yk   = Just yv
     | otherwise = find k r
 
-{- | Internal function. Calculates the depth of all leaf nodes.
+{- | Calculate the depth of all leaf nodes. Internal function.
 
 >>> depths (fromList (zip [1..] "hello"))
 [2,2,2,2,2,2]
@@ -59,7 +59,7 @@ depths = go 0
     go n (Node2 l _ _ r)       = concatMap (go (n + 1)) [l, r]
     go n (Node3 l _ _ m _ _ r) = concatMap (go (n + 1)) [l, m, r]
 
-{- | Builds a map from a list of key-value pairs.
+{- | Build a map from a list of key-value pairs.
 
 >>> fromList [(1, 'a')]
 Node2 Nil 1 'a' Nil
@@ -67,7 +67,7 @@ Node2 Nil 1 'a' Nil
 fromList :: (Ord k) => [(k, v)] -> Map k v
 fromList = foldr (uncurry insert) empty
 
-{- | Returns a key-value pair list representing a given map.
+{- | Build a key-value pair list representing the given map.
 
 >>> toList (fromList [(1, 'a')])
 [(1,'a')]
@@ -81,12 +81,12 @@ toList = flip go []
     go (Node3 l xk xv m yk yv r) =
         go l . ((xk, xv):) . go m . ((yk, yv):) . go r
 
--- | Internal data type. Represents the result of an insertion.
+-- | Internal data type which represents the result of an insertion.
 data Inserted k v
     = Done (Map k v)                 -- ^ The insertion resulted in no change or in a node expansion
     | Split (Map k v) k v (Map k v)  -- ^ The insertion caused a node to split
 
-{- | Inserts a new key and an associated value into a map. If the key was already
+{- | Insert a new key and an associated value into a map. If the key was already
 present, the value is replaced.
 
 > insert 1 'b' (fromList [(1, 'a')]) == fromList [(1, 'b')]
