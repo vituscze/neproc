@@ -53,16 +53,19 @@ Domácí úlohy
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
-| Lenka Kopfová       | 10 |    |    |        |    |    |    |    |         |    |    |
-| Qwedux              | 15 |    |    |     OK |    |    |    |    |         |    |    |
+| Lenka Kopfová       | 10 |  9 |    |     OK |    |    |    |    |         |    |    |
+| Qwedux              | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Bankai              | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
 | David Nápravník     | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Jakub Komárek       | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Josefína            | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
 | DR                  |  8 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Rado                | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
-| Miesilželezo        | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Tobiáš Vavroch      | 10 |    |    |        |    |    |    |    |         |    |    |
-| Pogy                | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Kryštof Jungmann    | 10 |    |    |        |    |    |    |    |         |    |    |
+| Miesilželezo        | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Tobiáš Vavroch      | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Pogy                | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Kryštof Jungmann    | 10 |  9 |    |     OK |    |    |    |    |         |    |    |
 | Václav Steinhauser  | 15 |  7 |    |     OK |    |    |    |    |         |    |    |
+| DADE                |    |  8 |    |        |    |    |    |    |         |    |    |
+| Katarína Čičvarová  |    | 10 |    |        |    |    |    |    |         |    |    |
+| Miroslav Baňár      |    |  9 |    |        |    |    |    |    |         |    |    |
