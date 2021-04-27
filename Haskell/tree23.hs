@@ -7,6 +7,27 @@ data Map k v
     | Node3 (Map k v) k v (Map k v) k v (Map k v)  -- ^ 3-node
     deriving (Show)
 
+data Ordering3
+    = LT1  -- ^ Less than the first
+    | EQ1  -- ^ Equal to the first
+    | BTW  -- ^ Between
+    | EQ2  -- ^ Equal to the second
+    | GT2  -- ^ Greater than the second
+    deriving (Show)
+
+{- | Compare a value with two ordered values.
+
+> compare3 2 1 3 == BTW
+-}
+compare3 :: (Ord a) => a -> a -> a -> Ordering3
+compare3 k x y = case compare k x of
+    LT -> LT1
+    EQ -> EQ1
+    GT -> case compare k y of
+        LT -> BTW
+        EQ -> EQ2
+        GT -> GT2
+
 {- | The empty map.
 
 > empty == fromList []
@@ -36,16 +57,16 @@ singleton k v = Node2 Nil k v Nil
 -}
 find :: (Ord k) => k -> Map k v -> Maybe v
 find _ Nil = Nothing
-find k (Node2 a bk bv c)
-    | k < bk    = find k a
-    | k == bk   = Just bv
-    | otherwise = find k c
-find k (Node3 a bk bv c dk dv e)
-    | k < bk    = find k a
-    | k == bk   = Just bv
-    | k < dk    = find k c
-    | k == dk   = Just dv
-    | otherwise = find k e
+find k (Node2 a bk bv c) = case compare k bk of
+    LT -> find k a
+    EQ -> Just bv
+    GT -> find k c
+find k (Node3 a bk bv c dk dv e) = case compare3 k bk dk of
+    LT1 -> find k a
+    EQ1 -> Just bv
+    BTW -> find k c
+    EQ2 -> Just dv
+    GT2 -> find k e
 
 {- | Calculate the depth of all leaf nodes. Internal function.
 
@@ -99,24 +120,24 @@ insert k v t = case go t of
   where
     go Nil = Split Nil k v Nil
 
-    go (Node2 a bk bv c)
-        | k < bk    = case go a of
+    go (Node2 a bk bv c) = case compare k bk of
+        LT -> case go a of
             Done a'             -> Done (Node2 a' bk bv c)
             Split aa abk abv ac -> Done (Node3 aa abk abv ac bk bv c)
-        | k == bk   = Done (Node2 a k v c)
-        | otherwise = case go c of
+        EQ -> Done (Node2 a k v c)
+        GT -> case go c of
             Done c'             -> Done (Node2 a bk bv c')
             Split ca cbk cbv cc -> Done (Node3 a bk bv ca cbk cbv cc)
 
-    go (Node3 a bk bv c dk dv e)
-        | k < bk    = case go a of
+    go (Node3 a bk bv c dk dv e) = case compare3 k bk dk of
+        LT1 -> case go a of
             Done a'             -> Done (Node3 a' bk bv c dk dv e)
             Split aa abk abv ac -> Split (Node2 aa abk abv ac) bk bv (Node2 c dk dv e)
-        | k == bk   = Done (Node3 a k v c dk dv e)
-        | k < dk    = case go c of
+        EQ1 -> Done (Node3 a k v c dk dv e)
+        BTW -> case go c of
             Done c'             -> Done (Node3 a bk bv c' dk dv e)
             Split ca cbk cbv cc -> Split (Node2 a bk bv ca) cbk cbv (Node2 cc dk dv e)
-        | k == dk   = Done (Node3 a bk bv c k v e)
-        | otherwise = case go e of
+        EQ2 -> Done (Node3 a bk bv c k v e)
+        GT2 -> case go e of
             Done e'             -> Done (Node3 a bk bv c dk dv e')
             Split ea ebk ebv ec -> Split (Node2 a bk bv c) dk dv (Node2 ea ebk ebv ec)
