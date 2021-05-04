@@ -57,14 +57,14 @@ Domácí úlohy
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
 | Lenka Kopfová       | 10 |  9 |    |     OK |    |    |    |    |         |    |    |
 | Qwedux              | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
-| Bankai              | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
-| David Nápravník     | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Bankai              | 10 | 10 |    |     OK | 15 |    |    |    |         |    |    |
+| David Nápravník     | 15 | 10 |    |     OK | 10 |    |    |    |         |    |    |
 | Jakub Komárek       | 15 | 10 | 10 |     OK |    |    |    |    |         |    |    |
-| Josefína            | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
-| DR                  |  8 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Josefína            | 10 | 10 |    |     OK | 15 |    |    |    |         |    |    |
+| DR                  |  8 | 10 |    |     OK | 12 |    |    |    |         |    |    |
 | Rado                | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
-| Miesilželezo        | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
-| Tobiáš Vavroch      | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Miesilželezo        | 15 | 10 |    |     OK | 15 |    |    |    |         |    |    |
+| Tobiáš Vavroch      | 10 | 10 |    |     OK | 10 |    |    |    |         |    |    |
 | Pogy                | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Kryštof Jungmann    | 10 |  9 | 10 |     OK |    |    |    |    |         |    |    |
 | Václav Steinhauser  | 15 |  7 |    |     OK |    |    |    |    |         |    |    |
