@@ -49,6 +49,7 @@ Domácí úlohy
 * Seznamy (do 6.4.)
 * Stavový prostor a regexy (do 20.4.)
 * Funkce (do 4.5.)
+* Trie (do 18.5.)
 
 ### Hodnocení
 
