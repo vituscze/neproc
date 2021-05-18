@@ -84,7 +84,7 @@ instance Monad Parser where
     return = pure
     (>>=)  = parserBind
 
--- Správnost implementace 'satisfy', 'parserReturn' a 'parserBind' pomůže
+-- Správnost implementace 'satisfy', 'parserPure' a 'parserBind' pomůže
 -- ověřit následující definice. Pokud se v GHCi zeptáte na hodnotu 'correct',
 -- měli byste dostat zpět 'True'.
 correct :: Bool
