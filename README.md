@@ -50,6 +50,7 @@ Domácí úlohy
 * Stavový prostor a regexy (do 20.4.)
 * Funkce (do 4.5.)
 * Trie (do 18.5.)
+* Parsování (do 1.6.)
 
 ### Hodnocení
 
