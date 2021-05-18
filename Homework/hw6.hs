@@ -59,13 +59,13 @@ orElse = undefined
 -- Máme základní parser a výběr mezi dvěma (a více) parsery. Zbývá implementovat
 -- spojování parserů.
 
-parserReturn :: a -> Parser a
-parserReturn = undefined
+parserPure :: a -> Parser a
+parserPure = undefined
 
--- 'parserReturn a' je parser, který vždy uspěje a vrátí hodnotu 'a'. Vstupní
+-- 'parserPure a' je parser, který vždy uspěje a vrátí hodnotu 'a'. Vstupní
 -- text ponechá beze změny.
 --
--- runParser (parserReturn 1) "abc" == Just (1,"abc")
+-- runParser (parserPure 1) "abc" == Just (1,"abc")
 
 parserBind :: Parser a -> (a -> Parser b) -> Parser b
 parserBind = undefined
@@ -77,11 +77,11 @@ instance Functor Parser where
     fmap = M.liftM
 
 instance Applicative Parser where
-    pure  = return
+    pure  = parserPure
     (<*>) = M.ap
 
 instance Monad Parser where
-    return = parserReturn
+    return = pure
     (>>=)  = parserBind
 
 -- Správnost implementace 'satisfy', 'parserReturn' a 'parserBind' pomůže
@@ -102,7 +102,7 @@ correct = and
     p = runParser $ do
         a <- satisfy (not . isSpace)
         b <- satisfy isSpace
-        return [a,b]
+        pure [a,b]
 
 -- 2) V této části nepoužívejte konstruktor 'Parser'. Místo toho parsery
 -- sestavte pomocí dříve definovaných funkcí.
