@@ -60,14 +60,14 @@ Domácí úlohy
 | Qwedux              | 15 | 10 |    |     OK | 11 |  9 |    |    |      OK | OK |    |
 | Bankai              | 10 | 10 |    |     OK | 15 | 15 |    |    |      OK | OK |    |
 | David Nápravník     | 15 | 10 |    |     OK | 10 | 10 |    |    |      OK | OK |    |
-| Jakub Komárek       | 15 | 10 | 10 |     OK | 10 |    |    |    |         |    |    |
+| Jakub Komárek       | 15 | 10 | 10 |     OK | 10 | 10 |    |    |      OK | OK |    |
 | Josefína            | 10 | 10 |    |     OK | 15 |  9 |    |    |      OK | OK |    |
 | DR                  |  8 | 10 |    |     OK | 12 |    |    |    |         |    |    |
-| Rado                | 10 | 10 |    |     OK | 14 |    |    |    |         |    |    |
-| Miesilželezo        | 15 | 10 |    |     OK | 15 |    |    |    |         |    |    |
-| Tobiáš Vavroch      | 10 | 10 |    |     OK | 10 |    |    |    |         |    |    |
+| Rado                | 10 | 10 |    |     OK | 14 |  9 |    |    |      OK | OK |    |
+| Miesilželezo        | 15 | 10 |    |     OK | 15 |  9 |    |    |      OK | OK |    |
+| Tobiáš Vavroch      | 10 | 10 |    |     OK | 10 |  8 |    |    |         |    |    |
 | Pogy                | 15 | 10 |    |     OK | 15 | 15 |    |    |      OK | OK |    |
-| Kryštof Jungmann    | 10 |  9 | 10 |     OK | 15 |    |    |    |         |    |    |
+| Kryštof Jungmann    | 10 |  9 | 10 |     OK | 15 |  9 |    |    |      OK | OK |    |
 | Václav Steinhauser  | 15 |  7 |    |     OK |    |    |    |    |         |    |    |
 | DADE                |    |  8 |    |        |    |    |    |    |         |    |    |
 | Katarína Čičvarová  |    | 10 |    |     OK |    |    |    |    |         |    |    |
