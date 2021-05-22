@@ -65,7 +65,7 @@ Domácí úlohy
 | DR                  |  8 | 10 |    |     OK | 12 |    |    |    |         |    |    |
 | Rado                | 10 | 10 |    |     OK | 14 |  9 |    |    |      OK | OK |    |
 | Miesilželezo        | 15 | 10 |    |     OK | 15 |  9 |    |    |      OK | OK |    |
-| Tobiáš Vavroch      | 10 | 10 |    |     OK | 10 |  8 |    |    |         |    |    |
+| Tobiáš Vavroch      | 10 | 10 |    |     OK | 10 |  8 |    |    |         | OK |    |
 | Pogy                | 15 | 10 |    |     OK | 15 | 15 |    |    |      OK | OK |    |
 | Kryštof Jungmann    | 10 |  9 | 10 |     OK | 15 |  9 |    |    |      OK | OK |    |
 | Václav Steinhauser  | 15 |  7 |    |     OK |    |    |    |    |         |    |    |
