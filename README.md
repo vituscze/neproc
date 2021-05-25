@@ -51,6 +51,7 @@ Domácí úlohy
 * Funkce (do 4.5.)
 * Trie (do 18.5.)
 * Parsování (do 1.6.)
+* Grafy (do konce semestru)
 
 ### Hodnocení
 
