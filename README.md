@@ -1,7 +1,7 @@
 Neprocedurální programování
 ===========================
 
-Cvičení v úterý 10:40.
+Cvičení v pondělí 10:40.
 
 Zdroje
 ------
