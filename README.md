@@ -57,19 +57,3 @@ Domácí úlohy
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
-| Lenka Kopfová       | 10 |  9 |    |     OK | 10 |    | 10 |    |      OK |    |    |
-| Qwedux              | 15 | 10 |    |     OK | 11 |  9 |    |    |      OK | OK |    |
-| Bankai              | 10 | 10 |    |     OK | 15 | 15 |    |    |      OK | OK |    |
-| David Nápravník     | 15 | 10 |    |     OK | 10 | 10 |    |    |      OK | OK |    |
-| Jakub Komárek       | 15 | 10 | 10 |     OK | 10 | 10 | 15 |    |      OK | OK |    |
-| Josefína            | 10 | 10 |    |     OK | 15 |  9 |    |    |      OK | OK |    |
-| DR                  |  8 | 10 |    |     OK | 12 |    |    |    |         |    |    |
-| Rado                | 10 | 10 |    |     OK | 14 |  9 |    |    |      OK | OK |    |
-| Miesilželezo        | 15 | 10 |    |     OK | 15 |  9 |    |    |      OK | OK |    |
-| Tobiáš Vavroch      | 10 | 10 |    |     OK | 10 |  8 |    |    |      OK | OK |    |
-| Pogy                | 15 | 10 |    |     OK | 15 | 15 |    |    |      OK | OK |    |
-| Kryštof Jungmann    | 10 |  9 | 10 |     OK | 15 |  9 |    |    |      OK | OK |    |
-| Václav Steinhauser  | 15 |  7 |    |     OK |    |    |    |    |         |    |    |
-| DADE                |    |  8 |    |        |    |    |    |    |         |    |    |
-| Katarína Čičvarová  |    | 10 |    |     OK |    |    |    |    |         |    |    |
-| Miroslav Baňár      |    |  9 |    |        |    |    |    |    |         |    |    |
