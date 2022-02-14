@@ -14,7 +14,7 @@ Zdroje
 Programovací nástroje
 ---------------------
 
-- Textový editor (např. Notepad++)
+- [VS Code](https://code.visualstudio.com/) ([Prolog plugin](https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog), [Haskell plugin](https://marketplace.visualstudio.com/items?itemName=haskell.haskell)), případně jiný editor (vim, Emacs, Notepad++, atp.)
 - [SWI Prolog](http://www.swi-prolog.org/)
 - [Haskell Platform](https://www.haskell.org/platform/)
 
@@ -30,7 +30,7 @@ Zápočtový program
 
 - Netriviální úloha řešená v Prologu nebo Haskellu
 - Součástí programu je také dokumentace (uživatelská, programátorská) a testovací data
-- Prezentace po dohodě, obvykle v labu MS
+- Prezentace po dohodě, online (Zoom, Discord) nebo osobně (obvykle v labu na MS)
 - Téma dohodou, obvykle se téma vybírá v polovině semestru
 - Seznam témat např. [zde](http://kti.mff.cuni.cz/~hric/vyuka/pl_prikl_win.pdf) nebo [zde](http://ksvi.mff.cuni.cz/~dvorak/vyuka/14/NPRG005x01/programy.html), případně téma vlastní
 
@@ -45,13 +45,6 @@ Domácí úlohy
 
 ### Zadané úlohy
 
-* Unární čísla (do 23.3.)
-* Seznamy (do 6.4.)
-* Stavový prostor a regexy (do 20.4.)
-* Funkce (do 4.5.)
-* Trie (do 18.5.)
-* Parsování (do 1.6.)
-* Grafy (do konce semestru)
 
 ### Hodnocení
 
