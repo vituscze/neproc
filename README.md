@@ -23,7 +23,6 @@ Podmínky pro zápočet
 
 - Domácí úlohy
 - Zápočtový program
-- **Zápočet je nutný k přihlášení na zkoušku**
 
 Zápočtový program
 -----------------
