@@ -16,7 +16,7 @@ Programovací nástroje
 
 - [VS Code](https://code.visualstudio.com/) ([Prolog plugin](https://marketplace.visualstudio.com/items?itemName=arthurwang.vsc-prolog), [Haskell plugin](https://marketplace.visualstudio.com/items?itemName=haskell.haskell)), případně jiný editor (vim, Emacs, Notepad++, atp.)
 - [SWI Prolog](http://www.swi-prolog.org/)
-- [Haskell Platform](https://www.haskell.org/platform/)
+- [GHCup](https://www.haskell.org/ghcup/)
 
 Podmínky pro zápočet
 --------------------
