@@ -45,6 +45,7 @@ Domácí úlohy
 ### Zadané úlohy
 
 - [Unární aritmetika](https://github.com/vituscze/neproc/blob/master/Homework/hw1.pl) (do 2022-03-06)
+- [Seznamy](https://github.com/vituscze/neproc/blob/master/Homework/hw2.pl) (do 2022-03-20)
 
 ### Hodnocení
 
