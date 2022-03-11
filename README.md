@@ -55,7 +55,7 @@ Domácí úlohy
 | Michaela Hubená     | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Jáchym Tomášek      | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | David Koňařík       | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Vencez              |  9 |    |    |        |    |    |    |    |         |    |    |
+| Vencez              | 10 |    |    |        |    |    |    |    |         |    |    |
 | Roumn               | 10 |    |    |        |    |    |    |    |         |    |    |
 | Duong Xuan Anh      | 10 |    |    |        |    |    |    |    |         |    |    |
 | Linda Kimrová       | 15 |    |    |     OK |    |    |    |    |         |    |    |
