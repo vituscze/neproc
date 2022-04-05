@@ -53,19 +53,19 @@ Domácí úlohy
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
-| bbq                 | 15 | 15 |    |     OK |    |    |    |    |         |    |    |
-| Michaela Hubená     | 15 | 15 |    |     OK |    |    |    |    |         |    |    |
-| Jáchym Tomášek      | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| bbq                 | 15 | 15 | 10 |     OK |    |    |    |    |         |    |    |
+| Michaela Hubená     | 15 | 15 |  9 |     OK |    |    |    |    |         |    |    |
+| Jáchym Tomášek      | 15 | 10 |  6 |     OK |    |    |    |    |         |    |    |
 | David Koňařík       | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
-| Vencez              | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Vencez              | 10 | 10 |  5 |     OK |    |    |    |    |         |    |    |
 | Roumn               | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Duong Xuan Anh      | 10 |  9 |    |     OK |    |    |    |    |         |    |    |
 | Linda Kimrová       | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Jan Plot            | 14 |  9 |    |     OK |    |    |    |    |         |    |    |
-| Marie Hledíková     | 15 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Marie Hledíková     | 15 | 10 |  9 |     OK |    |    |    |    |         |    |    |
 | Svetlana Ivanova    | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Štěpán Henrych      | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
 | pomeranč            | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
 | Katarína Čičvarová  |  8 |  9 |    |     OK |    |    |    |    |         |    |    |
-| Nikita Nesterenko   | 10 | 10 |    |     OK |    |    |    |    |         |    |    |
+| Nikita Nesterenko   | 10 | 10 | 10 |     OK |    |    |    |    |         |    |    |
 | Daniel Josef        | 10 |  9 |    |     OK |    |    |    |    |         |    |    |
