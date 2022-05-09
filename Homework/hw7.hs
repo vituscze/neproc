@@ -87,7 +87,7 @@ checkTopoSort (Graph g) topo = Map.foldrWithKey (\v es r -> all (go v) (map vert
     go vi vj = check $ do
         i <- elemIndices vi topo
         j <- elemIndices vj topo
-        return (i < j)
+        pure (i < j)
 
 -- >>> checkTopoSort example2 [0,1,2,3]
 -- True

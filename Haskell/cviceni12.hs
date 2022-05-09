@@ -171,7 +171,7 @@ times as bs =
 --     (>>=)  :: m a -> (a -> m b) -> m b  -- andThen, andThenL
 --
 -- Pozn. return má možná trochu nešťastné jméno. Narozdíl od return
--- v ostatních jazycích nekončí výpočet. Místo return můžeme používat
+-- v ostatních jazycích nekončí výpočet. Místo return budeme používat
 -- funkci pure (z typové třídy Applicative), která dělá to samé.
 
 weird :: Maybe Int
@@ -186,7 +186,7 @@ times' :: [a] -> [b] -> [(a, b)]
 times' as bs =
     as >>= \a ->
     bs >>= \b ->
-    return (a, b)
+    pure (a, b)
 
 lookupChain3' :: (Eq a, Eq b, Eq c)
               => a
@@ -196,7 +196,7 @@ lookupChain3' a ab bc cd =
     lookup a ab >>= \b ->
     lookup b bc >>= \c ->
     lookup c cd >>= \d ->
-    return (b, c, d)
+    pure (b, c, d)
 
 -- Použití >>= je v Haskellu tak časté, že pro něj existuje syntaktická
 -- zkratka, tzv. do notace.
@@ -208,7 +208,7 @@ times'' :: [a] -> [b] -> [(a, b)]
 times'' as bs = do
     a <- as
     b <- bs
-    return (a, b)
+    pure (a, b)
 
 failIf :: Bool -> Maybe ()
 failIf True = Nothing
@@ -219,7 +219,7 @@ weird' cond a ab = do
     b <- lookup a ab
     failIf (cond b)   -- Pokud nás hodnota z failIf nezajímá, můžeme
                       -- šipku vynechat.
-    return b
+    pure b
 
 -- Kromě toho můžeme ještě používat zkrácenou formu let.
 --
@@ -227,7 +227,7 @@ weird' cond a ab = do
 --    let z = x * x
 --    ...
 --
--- return na konci do-bloku není nutný, tak jak jsme viděli např. u funkce
+-- pure na konci do-bloku není nutný, tak jak jsme viděli např. u funkce
 -- root8.
 
 root8'' :: Complex Double -> [Complex Double]

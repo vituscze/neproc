@@ -81,8 +81,7 @@ instance Applicative Parser where
     (<*>) = M.ap
 
 instance Monad Parser where
-    return = pure
-    (>>=)  = parserBind
+    (>>=) = parserBind
 
 -- Správnost implementace 'satisfy', 'parserPure' a 'parserBind' pomůže
 -- ověřit následující definice. Pokud se v GHCi zeptáte na hodnotu 'correct',
