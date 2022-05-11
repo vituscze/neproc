@@ -55,19 +55,19 @@ Domácí úlohy
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
-| bbq                 | 15 | 15 | 10 |     OK | 15 |    |    |    |         |    |    |
-| Michaela Hubená     | 15 | 15 |  9 |     OK | 14 |    |    |    |         |    |    |
-| Jáchym Tomášek      | 15 | 10 |  6 |     OK |  9 |    |    |    |         |    |    |
-| David Koňařík       | 15 | 10 |    |     OK | 15 |    |    |    |         |    |    |
-| Vencez              | 10 | 10 |  5 |     OK | 10 |    |    |    |         |    |    |
-| Roumn               | 10 | 10 |    |     OK | 14 |    |    |    |         |    |    |
-| Duong Xuan Anh      | 10 |  9 |    |     OK | 15 |    |    |    |         |    |    |
-| Linda Kimrová       | 15 | 10 |    |     OK | 10 |    |    |    |         |    |    |
-| Jan Plot            | 14 |  9 |    |     OK |    |    |    |    |         |    |    |
-| Marie Hledíková     | 15 | 10 |  9 |     OK | 14 |    |    |    |         |    |    |
+| bbq                 | 15 | 15 | 10 |     OK | 15 | 15 |    |    |      OK | OK |    |
+| Michaela Hubená     | 15 | 15 |  9 |     OK | 14 | 15 |    |    |      OK | OK |    |
+| Jáchym Tomášek      | 15 | 10 |  6 |     OK |  9 | 13 |    |    |      OK | OK |    |
+| David Koňařík       | 15 | 10 |    |     OK | 15 | 13 |    |    |      OK | OK |    |
+| Vencez              | 10 | 10 |  5 |     OK | 10 | 10 |    |    |      OK | OK |    |
+| Roumn               | 10 | 10 |    |     OK | 14 | 10 |    |    |      OK | OK |    |
+| Duong Xuan Anh      | 10 |  9 |    |     OK | 15 |  6 |    |    |      OK |    |    |
+| Linda Kimrová       | 15 | 10 |    |     OK | 10 | 15 |    |    |      OK | OK |    |
+| Jan Plot            | 14 |  9 |    |     OK |    |  3 |    |    |         |    |    |
+| Marie Hledíková     | 15 | 10 |  9 |     OK | 14 | 10 |    |    |      OK | OK |    |
 | Svetlana Ivanova    | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Štěpán Henrych      | 10 | 10 |    |     OK | 10 |    |    |    |         |    |    |
-| pomeranč            | 10 | 10 |    |     OK | 10 |    |    |    |         |    |    |
-| Katarína Čičvarová  |  8 |  9 |    |     OK |  8 |    |    |    |         |    |    |
-| Nikita Nesterenko   | 10 | 10 | 10 |     OK | 10 |    |    |    |         |    |    |
-| Daniel Josef        | 10 |  9 |    |     OK | 10 |    |    |    |         |    |    |
+| Štěpán Henrych      | 10 | 10 |    |     OK | 10 | 10 |    |    |      OK |    |    |
+| pomeranč            | 10 | 10 |    |     OK | 10 |  9 |    |    |         |    |    |
+| Katarína Čičvarová  |  8 |  9 |    |     OK |  8 |  0 |    |    |         |    |    |
+| Nikita Nesterenko   | 10 | 10 | 10 |     OK | 10 | 10 |    |    |      OK | OK |    |
+| Daniel Josef        | 10 |  9 |    |     OK | 10 | 10 |    |    |      OK |    |    |
