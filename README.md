@@ -50,24 +50,25 @@ Domácí úlohy
 - [Seznamy v Haskellu](https://github.com/vituscze/neproc/blob/master/Homework/hw4.hs) (do 2022-04-24)
 - [Trie](https://github.com/vituscze/neproc/blob/master/Homework/hw5.hs) (do 2022-05-08)
 - [Parser](https://github.com/vituscze/neproc/blob/master/Homework/hw6.hs) (do 2022-05-22)
+- [Grafy](https://github.com/vituscze/neproc/blob/master/Homework/hw7.hs) (do 2022-09-30)
 
 ### Hodnocení
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
-| bbq                 | 15 | 15 | 10 |     OK | 15 | 15 |    |    |      OK | OK |    |
+| bbq                 | 15 | 15 | 10 |     OK | 15 | 15 | 15 |    |      OK | OK |    |
 | Michaela Hubená     | 15 | 15 |  9 |     OK | 14 | 15 |    |    |      OK | OK |    |
 | Jáchym Tomášek      | 15 | 10 |  6 |     OK |  9 | 13 |    |    |      OK | OK |    |
 | David Koňařík       | 15 | 10 |    |     OK | 15 | 13 |    |    |      OK | OK |    |
 | Vencez              | 10 | 10 |  5 |     OK | 10 | 10 |    |    |      OK | OK |    |
 | Roumn               | 10 | 10 |    |     OK | 14 | 10 |    |    |      OK | OK |    |
-| Duong Xuan Anh      | 10 |  9 |    |     OK | 15 |  6 |    |    |      OK |    |    |
+| Duong Xuan Anh      | 10 |  9 |    |     OK | 15 |  6 |  3 |    |      OK | OK |    |
 | Linda Kimrová       | 15 | 10 |    |     OK | 10 | 15 |    |    |      OK | OK |    |
 | Jan Plot            | 14 |  9 |    |     OK |    |  3 |    |    |         |    |    |
 | Marie Hledíková     | 15 | 10 |  9 |     OK | 14 | 10 |    |    |      OK | OK |    |
 | Svetlana Ivanova    | 15 |    |    |     OK |    |    |    |    |         |    |    |
-| Štěpán Henrych      | 10 | 10 |    |     OK | 10 | 10 |    |    |      OK |    |    |
-| pomeranč            | 10 | 10 |    |     OK | 10 |  9 |    |    |         |    |    |
-| Katarína Čičvarová  |  8 |  9 |    |     OK |  8 |  0 |    |    |         |    |    |
+| Štěpán Henrych      | 10 | 10 |    |     OK | 10 | 10 | 10 |    |      OK | OK |    |
+| pomeranč            | 10 | 10 |    |     OK | 10 |  9 |  7 |    |      OK | OK |    |
+| Katarína Čičvarová  |  8 |  9 |    |     OK |  8 |  0 |  2 |    |         |    |    |
 | Nikita Nesterenko   | 10 | 10 | 10 |     OK | 10 | 10 |    |    |      OK | OK |    |
-| Daniel Josef        | 10 |  9 |    |     OK | 10 | 10 |    |    |      OK |    |    |
+| Daniel Josef        | 10 |  9 |    |     OK | 10 | 10 |  8 |    |      OK | OK |    |
