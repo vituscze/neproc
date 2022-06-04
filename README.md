@@ -64,7 +64,7 @@ Domácí úlohy
 | Roumn               | 10 | 10 |    |     OK | 14 | 10 |    |    |      OK | OK |    |
 | Duong Xuan Anh      | 10 |  9 |    |     OK | 15 |  6 |  3 |    |      OK | OK |    |
 | Linda Kimrová       | 15 | 10 |    |     OK | 10 | 15 |    |    |      OK | OK |    |
-| Jan Plot            | 14 |  9 |    |     OK |    |  3 |    |    |         |    |    |
+| Jan Plot            | 14 |  9 |    |     OK |    |  3 |  6 |    |         |    |    |
 | Marie Hledíková     | 15 | 10 |  9 |     OK | 14 | 10 |    |    |      OK | OK |    |
 | Svetlana Ivanova    | 15 |    |    |     OK |    |    |    |    |         |    |    |
 | Štěpán Henrych      | 10 | 10 |    |     OK | 10 | 10 | 10 |    |      OK | OK |    |
