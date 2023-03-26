@@ -64,7 +64,7 @@ Domácí úlohy
 | Anna Dvořáková      |  9 |  9 |    | OK     |    |    |    |    |         |    |    |
 | Vilém Gutvald       | 11 | 10 |    | OK     |    |    |    |    |         |    |    |
 | Oliver Piter        | 10 |  9 |    | OK     |    |    |    |    |         |    |    |
-| Katarína Čičvarová  | 11 |    |    |        |    |    |    |    |         |    |    |
+| Katarína Čičvarová  | 11 |  8 |    | OK     |    |    |    |    |         |    |    |
 | Viktor Materna      | 10 |  8 |    | OK     |    |    |    |    |         |    |    |
 | Patrik Backo        | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
 | Frank Sinatra       |  9 |    |    |        |    |    |    |    |         |    |    |
