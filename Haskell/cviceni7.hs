@@ -155,5 +155,10 @@ absPlus x y = (if x < 0 then -x else x) + y
 -- Pro větší n-tice: pattern matching (bude později).
 --
 -- Kartézský součin
+--
+-- Další operace: takeWhile, dropWhile, zip, filter, map, foldr
 
 times xs ys = [(x, y) | x <- xs, y <- ys]
+
+-- Na procvičení: hledání pythagorejských trojic, klouzavý průměr,
+-- nejbližší vyšší mocnina dvojky (pomocí seznamů), hledání výskytu v řetěci
