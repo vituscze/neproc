@@ -67,7 +67,7 @@ Domácí úlohy
 | Katarína Čičvarová  | 11 |  8 |    | OK     |    |    |    |    |         |    |    |
 | Viktor Materna      | 10 |  8 |    | OK     |    |    |    |    |         |    |    |
 | Patrik Backo        | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
-| Frank Sinatra       |  9 |    |    |        |    |    |    |    |         |    |    |
+| Frank Sinatra       |  9 |  4 |    |        |    |    |    |    |         |    |    |
 | Šárka Uramová       | 10 |  6 |    | OK     |    |    |    |    |         |    |    |
 | Patrik Broček       |  9 |  8 |    | OK     |    |    |    |    |         |    |    |
 | Rastislav Nowak     | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
