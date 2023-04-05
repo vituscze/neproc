@@ -267,3 +267,5 @@ check' g = "g 0 gives " ++ msg (g 0)
   where
     msg []    = "empty list"
     msg (_:_) = "non-empty list"
+
+-- Příklady na procvičení: mocnění funkcí, součet, součin, mocnina pomocí mocnění funkcí, všechna rozdělení množiny na dvě podmnožiny
