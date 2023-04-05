@@ -27,7 +27,7 @@ primes = undefined
 -- >>> gap 1000
 -- (887, 907)
 --
-gap :: Int -> (Int, Int)
+gap :: Integer -> (Integer, Integer)
 gap = undefined
 
 -- Prvním argumentem je konec rozsahu, začátek bude vždy 2. Můžete předpokládat,
