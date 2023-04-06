@@ -55,22 +55,22 @@ Domácí úlohy
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
 | Termitronator       | 10 |  6 |    | OK     |    |    |    |    |         |    |    |
-| Adam Osuský         | 13 | 10 |    | OK     |    |    |    |    |         |    |    |
+| Adam Osuský         | 13 | 10 |  5 | OK     |    |    |    |    |         |    |    |
 | Tereza Ferenčíková  | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
 | Ads36               | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
 | Josef Bálek         | 13 | 10 |    | OK     |    |    |    |    |         |    |    |
 | Hana Roubalová      | 10 |  8 |    | OK     |    |    |    |    |         |    |    |
 | aaaaa               | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
 | Vojtěch Vilímek     | 14 |  9 |    | OK     |    |    |    |    |         |    |    |
-| Anna Dvořáková      |  9 |  9 |    | OK     |    |    |    |    |         |    |    |
-| Vilém Gutvald       | 11 | 10 |    | OK     |    |    |    |    |         |    |    |
+| Anna Dvořáková      |  9 |  9 |  5 | OK     |    |    |    |    |         |    |    |
+| Vilém Gutvald       | 11 | 10 | 10 | OK     |    |    |    |    |         |    |    |
 | Oliver Piter        | 10 |  9 |    | OK     |    |    |    |    |         |    |    |
 | Katarína Čičvarová  | 11 |  8 |    | OK     |    |    |    |    |         |    |    |
-| Viktor Materna      | 10 |  8 |    | OK     |    |    |    |    |         |    |    |
+| Viktor Materna      | 10 |  8 |  3 | OK     |    |    |    |    |         |    |    |
 | Patrik Backo        | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
-| Frank Sinatra       |  9 |  4 |    |        |    |    |    |    |         |    |    |
-| Šárka Uramová       | 10 |  6 |    | OK     |    |    |    |    |         |    |    |
-| Patrik Broček       |  9 |  8 |    | OK     |    |    |    |    |         |    |    |
+| Frank Sinatra       |  9 |  4 | 10 | OK     |    |    |    |    |         |    |    |
+| Šárka Uramová       | 10 |  6 |  7 | OK     |    |    |    |    |         |    |    |
+| Patrik Broček       |  9 |  8 | 10 | OK     |    |    |    |    |         |    |    |
 | Rastislav Nowak     | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
-| Martin Oravec       | 10 | 10 |    | OK     |    |    |    |    |         |    |    |
-| Denys Boyko         | 10 |  8 |    | OK     |    |    |    |    |         |    |    |
+| Martin Oravec       | 10 | 10 | 10 | OK     |    |    |    |    |         |    |    |
+| Denys Boyko         | 10 |  8 | 10 | OK     |    |    |    |    |         |    |    |
