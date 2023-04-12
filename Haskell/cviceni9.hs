@@ -257,3 +257,8 @@ if' False _ b = b
 
 -- > if' True 1 undefined
 -- 1
+
+-- Příklady na procvičení: test reflexivity, symetrie, tranzitivity
+-- hledání tříd ekvivalence, reflexivní uzávěr, zobecněný kartézký součin,
+-- skládání seznamu funkcí, hledání posloupnosti fcí maximalizujících výslednou
+-- hodnotu
