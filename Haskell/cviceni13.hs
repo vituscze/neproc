@@ -1,3 +1,5 @@
+module Main where
+
 import System.IO
 
 -- 13. cvičení 2017-05-16
@@ -139,7 +141,7 @@ echo = do
 
 forever :: (Monad m) => m a -> m b
 forever m = do
-    m
+    _ <- m
     forever m
 
 -- Pro provádění více akcí najednou můžeme použít:
