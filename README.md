@@ -49,6 +49,7 @@ Domácí úlohy
 - [Prohledávání](https://github.com/vituscze/neproc/blob/master/Homework/hw3.pl) (do 2023-04-04)
 - [Funkce](https://github.com/vituscze/neproc/blob/master/Homework/hw4.hs) (do 2023-04-18)
 - [Trie](https://github.com/vituscze/neproc/blob/master/Homework/hw5.hs) (do 2023-05-02)
+- [Parser](https://github.com/vituscze/neproc/blob/master/Homework/hw6.hs) (do 2023-05-16)
 
 ### Hodnocení
 
