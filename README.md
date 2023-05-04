@@ -55,23 +55,23 @@ Domácí úlohy
 
 | Jméno               | 1. | 2. | 3. | Prolog | 4. | 5. | 6. | 7. | Haskell |  Z | ZP |
 | ------------------- | --:| --:| --:|:------:| --:| --:| --:| --:|:-------:|:--:|:--:|
-| Termitronator       | 10 |  6 |    | OK     | 11 |    |    |    |         |    |    |
-| Adam Osuský         | 13 | 10 |  5 | OK     | 10 |    |    |    |         |    |    |
-| Tereza Ferenčíková  | 10 | 10 |    | OK     | 10 |    |    |    |         |    |    |
-| Ads36               | 10 | 10 |    | OK     | 10 |    |    |    |         |    |    |
-| Josef Bálek         | 13 | 10 |    | OK     | 10 |    |    |    |         |    |    |
-| Hana Roubalová      | 10 |  8 |    | OK     | 12 |    |    |    |         |    |    |
-| aaaaa               | 10 | 10 |    | OK     | 13 |    |    |    |         |    |    |
-| Vojtěch Vilímek     | 14 |  9 |    | OK     | 10 |    |    |    |         |    |    |
-| Anna Dvořáková      |  9 |  9 |  5 | OK     | 13 |    |    |    |         |    |    |
-| Vilém Gutvald       | 11 | 10 | 10 | OK     | 13 |    |    |    |         |    |    |
-| Oliver Piter        | 10 |  9 |    | OK     | 13 |    |    |    |         |    |    |
+| Termitronator       | 10 |  6 |    | OK     | 11 | 12 |    |    | OK      |    |    |
+| Adam Osuský         | 13 | 10 |  5 | OK     | 10 | 13 |    |    | OK      | OK |    |
+| Tereza Ferenčíková  | 10 | 10 |    | OK     | 10 |  9 |    |    |         |    |    |
+| Ads36               | 10 | 10 |    | OK     | 10 | 10 |    |    | OK      |    |    |
+| Josef Bálek         | 13 | 10 |    | OK     | 10 | 10 |    |    | OK      | OK |    |
+| Hana Roubalová      | 10 |  8 |    | OK     | 12 | 10 |    |    | OK      |    | OK |
+| aaaaa               | 10 | 10 |    | OK     | 13 | 13 |    |    | OK      | OK |    |
+| Vojtěch Vilímek     | 14 |  9 |    | OK     | 10 | 10 |    |    | OK      | OK |    |
+| Anna Dvořáková      |  9 |  9 |  5 | OK     | 13 |  5 |    |    |         |    |    |
+| Vilém Gutvald       | 11 | 10 | 10 | OK     | 13 | 11 |    |    | OK      | OK |    |
+| Oliver Piter        | 10 |  9 |    | OK     | 13 |  7 |    |    | OK      |    |    |
 | Katarína Čičvarová  | 11 |  8 |    | OK     |    |    |    |    |         |    |    |
-| Viktor Materna      | 10 |  8 |  3 | OK     |  8 |    |    |    |         |    |    |
-| Patrik Backo        | 10 | 10 |    | OK     | 13 |    |    |    |         |    |    |
-| Frank Sinatra       |  9 |  4 | 10 | OK     |  7 |    |    |    |         |    |    |
-| Šárka Uramová       | 10 |  6 |  7 | OK     | 13 |    |    |    |         |    |    |
-| Patrik Broček       |  9 |  8 | 10 | OK     | 11 |    |    |    |         |    |    |
-| Rastislav Nowak     | 10 | 10 |    | OK     | 11 |    |    |    |         |    |    |
-| Martin Oravec       | 10 | 10 | 10 | OK     | 10 |    |    |    |         |    |    |
-| Denys Boyko         | 10 |  8 | 10 | OK     | 10 |    |    |    |         |    |    |
+| Viktor Materna      | 10 |  8 |  3 | OK     |  8 | 10 |    |    |         |    |    |
+| Patrik Backo        | 10 | 10 |    | OK     | 13 | 13 |    |    | OK      | OK |    |
+| Frank Sinatra       |  9 |  4 | 10 | OK     |  7 | 10 |    |    |         |    |    |
+| Šárka Uramová       | 10 |  6 |  7 | OK     | 13 |  5 |    |    |         |    |    |
+| Patrik Broček       |  9 |  8 | 10 | OK     | 11 |  6 |    |    |         |    |    |
+| Rastislav Nowak     | 10 | 10 |    | OK     | 11 |  6 |    |    |         |    |    |
+| Martin Oravec       | 10 | 10 | 10 | OK     | 10 | 10 |    |    | OK      | OK |    |
+| Denys Boyko         | 10 |  8 | 10 | OK     | 10 | 12 |    |    | OK      | OK |    |
