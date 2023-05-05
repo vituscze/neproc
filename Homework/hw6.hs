@@ -71,7 +71,7 @@ parserBind :: Parser a -> (a -> Parser b) -> Parser b
 parserBind = undefined
 
 -- 'parserBind m f' nejprve spustí parser m. Pokud tenhle parser uspěje s hodnotou
--- 'a', tak pustí parser 'f a'.
+-- 'a', tak pustí parser 'f a' na zbylém textu.
 
 instance Functor Parser where
     fmap = M.liftM
