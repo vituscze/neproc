@@ -4,7 +4,7 @@ import Data.Map (Map)
 
 -- 7. úloha
 --
--- DEADLINE: do konce semestru
+-- DEADLINE: do konce srpna
 --
 -- Vyberte si jednu úlohu a vyřešte ji. Pokud odevzdáte obě, druhá se počítá
 -- jako bonus.
