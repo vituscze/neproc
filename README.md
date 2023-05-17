@@ -50,6 +50,7 @@ Domácí úlohy
 - [Funkce](https://github.com/vituscze/neproc/blob/master/Homework/hw4.hs) (do 2023-04-18)
 - [Trie](https://github.com/vituscze/neproc/blob/master/Homework/hw5.hs) (do 2023-05-02)
 - [Parser](https://github.com/vituscze/neproc/blob/master/Homework/hw6.hs) (do 2023-05-16)
+- [Grafy](https://github.com/vituscze/neproc/blob/master/Homework/hw7.hs) (do 2023-08-31)
 
 ### Hodnocení
 
