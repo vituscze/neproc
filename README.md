@@ -37,5 +37,5 @@ Domácí úlohy
 ------------
 
 - Úlohy se zadávají a odezdávají přes [ReCodEx](https://recodex.mff.cuni.cz/)
-- Pro zápočet je zapotřebí 50% bodů za úlohy z Prologu, 50% bodů za úlohy z Haskellu a 70% bodů celkem
+- Pro zápočet je zapotřebí 25 bodů za úlohy z Prologu, 35 bodů za úlohy z Haskellu a 84 bodů celkem
 - Bonusové body za pěkný a dobře komentovaný kód
