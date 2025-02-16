@@ -1,7 +1,7 @@
 Neprocedurální programování
 ===========================
 
-Cvičení v úterý 12:20.
+Cvičení v pátek 10:40.
 
 Zdroje
 ------
@@ -29,7 +29,7 @@ Zápočtový program
 
 - Netriviální úloha řešená v Prologu nebo Haskellu
 - Součástí programu je také dokumentace (uživatelská, programátorská) a testovací data
-- Prezentace po dohodě, osobně (obvykle v labu na MS) nebo v nouzi i online (Zoom, Discord)
+- Prezentace po dohodě, osobně nebo online (Zoom, Discord)
 - Téma dohodou, obvykle se téma vybírá v polovině semestru
 - Seznam témat např. [zde](http://kti.mff.cuni.cz/~hric/vyuka/pl_prikl_win.pdf) nebo [zde](http://ksvi.mff.cuni.cz/~dvorak/vyuka/14/NPRG005x01/programy.html), případně téma vlastní
 
