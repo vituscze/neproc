@@ -1,271 +1,262 @@
--- 8. cvičení 2017-04-11
---
--- Haskell je typovaný jazyk. Před kompilací/načtením se provede typová
--- kontrola a dále se pokračuje, pouze pokud je úspěšná.
---
--- Narozdíl od Pascalu, C, C++, C#, atp. se typy nemusejí explicitně psát
--- (kromě několika krajních případů), kompilátor si je odvodí sám.
---
 -- Pro připomenutí:
--- :t <expr>  napíše typ výrazu expr
 --
--- > :t 'x'
--- 'x' :: Char
+-- Všechny funkce v Haskellu mají jeden argument. Pokud potřebujeme funkci
+-- s více argumenty, použijeme Curryfikaci (vrátíme funkci, kde je první
+-- argument zafixovaný; částečná aplikace).
 --
--- > :t 1 < 2
--- 1 < 2 :: Bool
---
--- > :t ("abc", True)
--- ("abc", True) :: ([Char], Bool)
---
---
--- Funkce mají také typ
---
--- > :t not
--- not :: Bool -> Bool
---
--- Co funkce více argumentů?
+-- > map (max 5) [1..10]
+-- [5,5,5,5,5,6,7,8,9,10]
 
-pyth :: Double -> Double -> Double
-pyth a b = sqrt (a * a + b * b)
+i :: a -> a
+i x = x
 
--- Prozatím: všechno před poslední šipkou typy argumentů, za poslední šipkou typ
--- návratové hodnoty. Za chvíli uvidíme proč.
+-- > i length [1..5]
+-- 5
 --
--- Pár dalších základních typů:
---
--- Int           - 64 (resp 32) bitové celé číslo
--- Integer       - celé číslo s libovolnou přesností
--- Float, Double - floating point
--- Char          - znak
--- [X]           - seznam prvků typu X
--- (X, Y)        - dvojice obsahující hodnotu typu X a hodnotu typu Y
--- X -> Y        - funkce s argumentem typu X a návratovou hodnotou typu Y
---
---
--- > :t head
--- head :: [a] -> a
---
--- Funkce head funguje pro seznamy prvků libovolného typu. 'a' je v tomto
--- případě proměnná, za kterou se pak dosadí konkrétní typ.
---
--- Jak poznat proměnnou od konkrétního typu? Proměnné vždy začínají malým
--- písmenem.
---
--- > :t fst
--- fst :: (a, b) -> a
---
--- Poznámka:
--- Každý operátor můžeme použít jako funkci tak, že jej zabalíme do kulatých
--- závorek.
---
--- a + b  je totéž co  (+) a b
---
--- Funkce lze použít jako operátor, když je dáme do 'backticků'
---
--- div a b  je totéž co  a `div` b
---
---
--- Jaký je typ +?
---
--- > :t (+)
--- (+) :: (Num a) => a -> a -> a
---
--- (+) nefunguje pro libovolný typ a! Funguje jen pro typy, které podporují
--- základní aritmetické operace.
---
--- Pomocí :i můžeme zjistit, jaké operace můžeme použít, pokud víme že typ a
--- je Num. A můžeme také zjistit, pro které typy jsou tyto operace definované.
---
--- > :i Num
--- class Num a where
--- ...
--- instance Num Int ...
--- ...
---
--- Další typové třídy:
--- Eq, test na rovnost/nerovnost: (==), (/=)
--- Ord, porovnávání: (<), (<=), atd
--- Show, převod na řetězce
--- Read, převod z řetězců
--- Enum, např [x..y]
---
--- Pattern matching
+-- Proč tohle funguje?
 
-isZero :: Int -> Bool
-isZero 0 = True
-isZero x = False
 
-fib :: Integer -> Integer
-fib 0 = 0
-fib 1 = 1
-fib n = fib (n - 1) + fib (n - 2)
--- Pozor, hodně pomalé
-
--- Patterny se zkoušejí shora dolů. Pokud žádný neuspěje - runtime error
-
-encode :: Char -> Char
-encode 'a' = 'd'
-encode 'b' = 'q'
-
--- > encode 'c'
--- *** Exception: ...: Non-exhaustive patterns in function encode
+-- Poznámka ohledně whitespace. Jak Haskell pozná, že začínáte novou definici
+-- nebo pokračujete v předchozí? Narozdíl od C# resp. Prologu nemá Haskell ';'
+-- resp. '.'
 --
--- Další příklady:
-
-swap :: (a, b) -> (b, a)
-swap (x, y) = (y, x)
-
-first :: (a, b, c) -> a
-first (x, _, _) = x
-
-len :: [a] -> Int
-len []     = 0
-len (_:xs) = 1 + len xs
-
--- [] matchuje prázdný seznam
--- (x:xs) matchuje neprázdný seznam s hlavou x a zbytkem xs
--- (x1:x2:xs) matchuje seznam délky alespoň 2, x1 je první prvek, x2 druhý
--- [x] matchuje seznam s právě jedním prvkem
--- [x,y]
--- atp.
-
--- Zpátky k fukčním typům. Proč vypadají typy funkcí více argumentů takto?
+-- Odpověd je odsazení. Pár klíčových slov uvozuje tzv. layout (where, let,
+-- of, do). Haskell si pak zapamatuje odsazení následujícího kódu.
 --
--- a -> b -> c
---
--- Důvod je jednoduchý: všechny funkce v Haskellu jsou pouze unární. Jak to
--- funguje? Podívejme se zpátky na funkci pyth. Jakmile aplikujeme pyth
--- na nějaké číslo x, dostaneme zpátky novou funkci typu Double -> Double, kde
--- první číslo je fixované (a jeho hodnota je x).
+-- Pokud je odsazení další řádky větší, tak je to pokračování předchozí řádky.
+-- Pokud je odsazení stejné, tak je to nová řádka (třeba v případě where
+-- další lokální definice). Menší odsazení pak ukončuje layout.
 
-pyth3 :: Double -> Double
-pyth3 = pyth 3.0
+test :: Int -> Int
+test x =
+ x + 2  -- v pořádku, pokračování předchozí řádky
 
--- > pyth3 4.0
--- 5.0
---
--- > pyth3 10.0
--- 10.44030650891055
---
--- Tedy, a -> b -> c znamená:
---
--- a -> (b -> c)
--- ^    \______/
--- |        |
--- vstup    výstup
---
+test2 :: Int -> Int
+test2 x = z
+  where
+    y = x * x +
+        x       -- Pokračování předchozí řádky
+    z = y * y   -- Nová definice
 
-add :: Int -> Int -> Int
--- add x y = x + y
--- lépe
-add = (+)
+test3 = (+)     -- Konec where
 
-addTwo :: Int -> Int
--- addTwo x = add 2 x
--- lépe:
-addTwo = add 2
+-- Ukázali jsme si, že se funkce dají vracet jako návratové hodnoty a používat
+-- jako argumenty. Funkce také můžeme ukládat do datových struktur.
 
--- nebo
--- addTwo = (+) 2
+fns :: (Ord a, Integral a) => [a -> a]
+fns = [(+2), (*3), max 2, (`div` 2)]
+
+applyArg :: a -> (a -> b) -> b
+applyArg x f = f x
+
+-- > map (applyArg 5) fns
+-- [7,15,5,2]
 --
--- Syntaktická zkratka:
--- (+ 2) 3 --> 3 + 2
--- (2 +) 3 --> 2 + 3
--- (/ 2)
+-- Funkci applyArg použijeme pravděpodobně právě jednou. Můžeme dosáhnout
+-- stejného výsledku bez toho, abychom zbytečně definovali extra funkce?
 --
--- Funkce, které vracejí funkce jako návratové hodnoty jsou v Haskellu skoro
--- všude. Můžeme mít ale i funkce, jejichž argumenty jsou funkce!
-
-twice :: (a -> a) -> a -> a
-twice f x = f (f x)
-
--- > twice (+2) 4
--- 8
+-- Odpovědí jsou lambda výrazy (možná taky znáte jako anonymní funkce).
+-- Lambdy jsou vlastně něco jako funkční literály.
 --
--- Pozor: a -> a -> a -> a  vs  (a -> a) -> a -> a
+-- Syntax:
+--
+--   \ arg1 arg2 ... argN -> body
+--
+-- > :t \x y -> not x || y
+-- \x y -> not x || y :: Bool -> Bool -> Bool
+--
+-- Za tělo funkce se považuje všechno vpravo od ->. Pokud rozsah těla lambdy
+-- chceme omezit, stačí vhodně uzávorkovat.
+--
+-- Předchozí příklad můžeme napsat jako:
+--
+-- > map (\f -> f 5) fns
+-- [7,15,5,2]
+
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ []     _      = []
+zipWith' _ _      []     = []
+zipWith' f (x:xs) (y:ys) = f x y:zipWith' f xs ys
+
+-- > zipWith (+) [1..5] [10,20..50]
+-- [11,22,33,44,55]
+--
+-- > zipWith (\a b -> floor (a^2 / b)) [1..5] [5..10]
+-- [0,0,1,2,2]
+--
+-- Na argumentech můžeme provádět jednoduchý pattern matching, pokud
+-- potřebujeme něco složitějšího, tak musíme použít case.
+--
+-- > map (\(a,b) -> a * b) [(4,2),(2,6),(0,10)]
+-- [8,12,0]
+--
+-- Na funkce více argumentů se můžeme díky lambdám dívat takto:
+
+f1 a b c = a * b + c
+
+f2 = \a -> \b -> \c -> a * b + c
+
+-- Tyto dvě definice jsou ekvivalentní.
+--
+--
+-- Skládání datových struktur.
+--
+-- Většina funkcí, které pracují nad seznamy, má podobnou strukturu.
+-- Případ pro prádzný seznam, případ pro neprádzný seznam s rekurzivním
+-- voláním na zbytek seznamu.
+--
+-- Můžeme tohle zobecnit?
+
+foldRight :: (a -> b -> b) -> b -> [a] -> b
+foldRight f z []     = z
+foldRight f z (x:xs) = f x (foldRight f z xs)
+
+-- Standardní knihovna: foldr
+
+sum' :: (Num a) => [a] -> a
+sum' = foldr (+) 0
+
+product' :: (Num a) => [a] -> a
+product' = foldr (*) 1
 
 map' :: (a -> b) -> [a] -> [b]
-map' _ []     = []
-map' f (x:xs) = f x:map' f xs
+map' f = foldr (\x r -> f x:r) []
 
--- Standardní knihovna: map
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' x = foldr (\y r -> x == y || r) False
+
+-- Idea:
 --
--- > map (^2) [1..10]
--- [1,4,9,16,25,36,49,64,81,100]
-
-filter' :: (a -> Bool) -> [a] -> [a]
-filter' _ [] = []
-filter' p (x:xs) =
-    if p x
-    then x:filter' p xs
-    else   filter' p xs
-
--- Standardní knihovna: filter
---
--- > filter odd [1..10]
--- [1,3,5,7,9]
-
-takeWhile' :: (a -> Bool) -> [a] -> [a]
-takeWhile' _ [] = []
-takeWhile' p (x:xs) =
-    if p x
-    then x:takeWhile' p xs
-    else []
-
--- Standardní knihovna: takeWhile
---
--- Další velice užitečná funkce je comp - skládání funkcí.
-
-comp :: (b -> c) -> (a -> b) -> a -> c
-comp f g x = f (g x)
-
--- Standardní knihovna: (.)
---
--- > takeWhile (not . null) ["a", "b", "c", "", "d"]
--- ["a","b","c"]
+--   (:)                                 f
+--   / \                                / \
+--  1  (:)       == foldr f z =>       1   f
+--     / \                                / \
+--    2  (:)                             2   f
+--       / \                                / \
+--      3   []                             3   z
 --
 --
--- Pattern guards
+-- Skládání druhým směrem.
 
-filter'' :: (a -> Bool) -> [a] -> [a]
-filter'' _ [] = []
-filter'' p (x:xs)
-    | p x       = x:filter'' p xs
-    | otherwise =   filter'' p xs
+foldLeft :: (b -> a -> b) -> b -> [a] -> b
+foldLeft f acc []     = acc
+foldLeft f acc (x:xs) = foldLeft f (f acc x) xs
 
--- otherwise je jednoduše definováno jako True
--- Pokud se žádný guard nevyhodnotí na True, zkusí se další pattern.
+-- Standardní knihovna: foldl
 --
--- Lokální definice
+-- Reprezentuje to, co známe z Prologu jako akumulátor.
+--
+--   (:)                                  f
+--   / \                                 / \
+--  1  (:)       == foldl f z =>        f   3
+--     / \                             / \
+--    2  (:)                          f   2
+--       / \                         / \
+--      3   []                      z   1
 
-map'' :: (a -> b) -> [a] -> [b]
-map'' f = go
-  where
-    go []     = []
-    go (x:xs) = f x:go xs
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x:acc) []
 
--- Alternativně můžeme použít let-in, narozdíl od where je to výraz.
+-- foldr1 a foldl1 jsou verze foldr a foldl, které pracují pouze na neprázdných
+-- seznamech, počáteční hodnotou je první prvek seznamu.
 
-cubeArea :: Double -> Double
-cubeArea x =
-    let squareArea = x * x
-    in  6 * squareArea
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldr1 max
 
--- Stejně tak pro pattern matching existuje alternativa, která se dá použít
--- jako výraz.
+-- Definované výše:
+--   fns = [(+2), (*3), max 2, (`div` 2)]
+--
+-- > foldr (.) id fns 7
+-- 11
+--
+--
+-- Občas v kódu najdete operátor $, který je definovaný takto:
+--
+-- ($) :: (a -> b) -> a -> b
+-- f $ x = f x
+--
+-- Nedělá nic zajímavého, ale má nízkou prioritu, takže se dá použít
+-- pro odbourávání závorek.
+--
+-- > (max 2 . (*2) . (^2)) 5
+-- 50
+--
+-- > max 2 . (*2) . (^2) $ 5
+-- 50
+--
+--
+-- Líné vyhodnocování
+--
+-- Vraťme se zpět k funkci elem'.
+--
+--   elem' :: (Eq a) => a -> [a] -> Bool
+--   elem' x = foldr (\y r -> x == y || r) False
+--
+-- > elem' 2 [1..]
+-- True
+--
+-- Proč jsme dostali True a výpočet se nezacyklil?
+--
+--   (1 == 2) || ((2 == 2) || ((3 == 2) ... ))
+--
+-- Short-circuit pro ||. Tak jak to známe v tradičních jazycích.
+-- Ale...
 
-check :: (Int -> [Int]) -> String
-check g = "g 0 gives " ++ case g 0 of
-    []    -> "empty list"
-    (_:_) -> "non-empty list"
+or' True _ = True
+or' _    x = x
 
--- Tohle by bylo přehlednější s použitím lokální definice.
+elem'' :: (Eq a) => a -> [a] -> Bool
+elem'' x = foldr (\y r -> or' (x == y) r) False
 
-check' :: (Int -> [Int]) -> String
-check' g = "g 0 gives " ++ msg (g 0)
-  where
-    msg []    = "empty list"
-    msg (_:_) = "non-empty list"
+-- > elem'' 2 [1..]
+-- True
+--
+-- Náš or' také umí short-circuit, jakto? Haskell vyhodnocuje jen to, co je
+-- pro výpočet nezbytně nutné. Pokud zjistíme, že prvním argumentem funkce or'
+-- je True, tak rovnou vracíme True a na druhý argument se ani nepodíváme.
+--
+-- Místo toho, abychom funkce volali na nějaký nekončný výpočet (např.
+-- let x = x in x) a pak sledovali, jestli se výpočet zastaví nebo ne, můžeme
+-- použít hodnotu undefined, která "shodí" program, pokud se ji někdo pokusí
+-- vyhodnotit.
+--
+-- > undefined
+-- *** Exception: Prelude.undefined
+--
+-- > True || undefined
+-- True
+--
+-- > undefined || True
+-- *** Exception: Prelude.undefined
+--
+-- > length [undefined, undefined, undefined]
+-- 3
+--
+-- > head (1:undefined)
+-- 1
+--
+-- Pár zajímavých definic:
 
--- Příklady na procvičení: mocnění funkcí, součet, součin, mocnina pomocí mocnění funkcí, všechna rozdělení množiny na dvě podmnožiny
+ones :: [Integer]
+ones = 1:ones
+
+nats :: [Integer]
+nats = 0:map (+1) nats
+
+fibs :: [Integer]
+fibs = 0:1:zipWith (+) fibs (tail fibs)
+
+-- Dokonce můžeme implementovat vlastní if, který skutečně vyhodnotí pouze
+-- jednu větev.
+
+if' :: Bool -> a -> a -> a
+if' True  a _ = a
+if' False _ b = b
+
+-- > if' True 1 undefined
+-- 1
+
+-- Příklady na procvičení: test reflexivity, symetrie, tranzitivity
+-- hledání tříd ekvivalence, reflexivní uzávěr, zobecněný kartézký součin,
+-- skládání seznamu funkcí, hledání posloupnosti fcí maximalizujících výslednou
+-- hodnotu

@@ -1,264 +1,203 @@
--- 9. cvičení 2017-04-18
+-- Nové datové typy se vytvářejí pomocí klíčového slova 'data'.
 --
--- Pro připomenutí:
+-- data <jméno> = <definice>
 --
--- Všechny funkce v Haskellu mají jeden argument. Pokud potřebujeme funkci
--- s více argumenty, použijeme Curryfikaci (vrátíme funkci, kde je první
--- argument zafixovaný; částečná aplikace).
+-- Jméno musí začínat velkým písmenem (typy, které začínají malým písmenem
+-- jsou typové proměnné). Definice je pak výčet 'konstruktorů' - možných
+-- hodnot datového typu - oddělený svislítkem '|'.
 --
--- > map (max 5) [1..10]
--- [5,5,5,5,5,6,7,8,9,10]
+-- např. definice typu Bool by vypadala takto:
+--
+--   data Bool = False | True
+--
+-- Tohle jednoduše definuje Bool jako typ se dvěma konstantami - False a True.
+--
+-- Jednotlivé konstruktory mohou mít položky.
 
-i :: a -> a
-i x = x
+data Extended = PlusInfinity | MinusInfinity | Finite Integer
 
--- > i length [1..5]
--- 5
+-- PlusInfinity a MinusInfinity jsou konstanty, Finite obsahuje jednu položku
+-- typu Integer.
 --
--- Proč tohle funguje?
+-- > :t Finite
+-- Finite :: Integer -> Extended
+--
+-- > :t PlusInfinity
+-- PlusInfinity :: Extended
+--
+-- Pokud dostaneme hodnotu typu Extended, můžeme ji rozebrat stejně jako
+-- např. seznamy - pattern matching.
 
+leq :: Extended -> Extended -> Bool
+leq MinusInfinity _             = True
+leq _             PlusInfinity  = True
+leq (Finite x)    (Finite y)    = x <= y
+leq _             _             = False
 
--- Poznámka ohledně whitespace. Jak Haskell pozná, že začínáte novou definici
--- nebo pokračujete v předchozí? Narozdíl od C# resp. Prologu nemá Haskell ';'
--- resp. '.'
+-- > PlusInfinity
+-- <interactive>:2:1: error:
+--     * No instance for (Show Extended) arising from a use of `print'
+--     * In a stmt of an interactive GHCi command: print it
 --
--- Odpověd je odsazení. Pár klíčových slov uvozuje tzv. layout (where, let,
--- of, do). Haskell si pak zapamatuje odsazení následujícího kódu.
+-- GHCi neví, jak zobrazit hodnotu PlusInfinity!
 --
--- Pokud je odsazení další řádky větší, tak je to pokračování předchozí řádky.
--- Pokud je odsazení stejné, tak je to nová řádka (třeba v případě where
--- další lokální definice). Menší odsazení pak ukončuje layout.
+-- Potřebujeme implementovat Show pro typ Extended. Pro pár základních typových
+-- tříd (Eq, Ord, Show, ...) to GHC umí udělat za nás.
+--
+-- data Extended = PlusInfinity | MinusInfinity | Finite Integer
+--     deriving (Show)
+--
+-- data Point = Point Double Double
+--   deriving (Show, Eq)  -- Ord nedává smysl
+--
+-- getX :: Point -> Double
+-- getX (Point x _) = x
+--
+-- getY :: Point -> Double
+-- getY (Point _ y) = y
+--
+-- Pokud máme datový typ, který má pouze jednen konstruktor, tak můžeme tyhle funkce
+-- dostat zadarmo. Stačí tento typ definovat jako 'record'.
 
-test :: Int -> Int
-test x =
- x + 2  -- v pořádku, pokračování předchozí řádky
+data Point = Point { getX :: Double, getY :: Double }
+    deriving (Show, Eq)
 
-test2 :: Int -> Int
-test2 x = z
-  where
-    y = x * x +
-        x       -- Pokračování předchozí řádky
-    z = y * y   -- Nová definice
+-- > :t getX
+-- getX :: Point -> Double
+--
+-- V předchozí definici jsme použili jméno Point dvakrát? Nedojde ke konfliktu?
+-- Z kontextu se vždy dá jednoznačně určit, jestli se jedná o jméno typu
+-- nebo o jméno konstruktoru.
+--
+-- Také můžeme definovat rekurzivní typy.
 
-test3 = (+)     -- Konec where
+data IntTree = IntLeaf | IntNode Int IntTree IntTree
+    deriving (Show, Eq)
 
--- Ukázali jsme si, že se funkce dají vracet jako návratové hodnoty a používat
--- jako argumenty. Funkce také můžeme ukládat do datových struktur.
+insert :: Int -> IntTree -> IntTree
+insert x IntLeaf = IntNode x IntLeaf IntLeaf
+insert x (IntNode y l r)
+    | x <  y    = IntNode y (insert x l) r
+    | x == y    = IntNode x l r
+    | otherwise = IntNode y l (insert x r)
 
-fns :: (Ord a, Integral a) => [a -> a]
-fns = [(+2), (*3), max 2, (`div` 2)]
+-- Pokud definujeme strom takovýmto způsobem, budeme potřebovat kopii pro
+-- každý datový typ. Řešení: datový typ parametrizujeme typovou proměnnou.
 
-applyArg :: a -> (a -> b) -> b
-applyArg x f = f x
+data Tree a = Leaf | Node a (Tree a) (Tree a)
+    deriving (Show, Eq)
 
--- > map (applyArg 5) fns
--- [7,15,5,2]
---
--- Funkci applyArg použijeme pravděpodobně právě jednou. Můžeme dosáhnout
--- stejného výsledku bez toho, abychom zbytečně definovali extra funkce?
---
--- Odpovědí jsou lambda výrazy (možná taky znáte jako anonymní funkce).
--- Lambdy jsou vlastně něco jako funkční literály.
---
--- Syntax:
---
---   \ arg1 arg2 ... argN -> body
---
--- > :t \x y -> not x || y
--- \x y -> not x || y :: Bool -> Bool -> Bool
---
--- Za tělo funkce se považuje všechno vpravo od ->. Pokud rozsah těla lambdy
--- chceme omezit, stačí vhodně uzávorkovat.
---
--- Předchozí příklad můžeme napsat jako:
---
--- > map (\f -> f 5) fns
--- [7,15,5,2]
+insert' :: (Ord a) => a -> Tree a -> Tree a
+insert' x Leaf = Node x Leaf Leaf
+insert' x (Node y l r)
+    | x <  y    = Node y (insert' x l) r
+    | x == y    = Node x l r
+    | otherwise = Node y l (insert' x r)
 
-zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith' _ []     _      = []
-zipWith' _ _      []     = []
-zipWith' f (x:xs) (y:ys) = f x y:zipWith' f xs ys
+-- Původní IntTree je tedy Tree Int (podobně jako [Int]).
+--
+-- > :t Leaf
+-- Leaf :: Tree a
+--
+-- > :t Node
+-- Node :: a -> Tree a -> Tree a -> Tree a
+--
+-- Všimněte si, že podobně jako [] vytváří Leaf strom, jehož prvky mají
+-- libovolný typ.
+--
+-- Parametrů může být i více.
+--
+--   data Either a b = Left a | Right b
+--
+-- Either a b obsahuje buď hodnotu typu a nebo hodnotu typu b.
+--
+-- > :t Left
+-- Left :: a -> Either a b
+--
+-- > :t Right
+-- Right :: b -> Either a b
+--
+-- Kromě vlastních datových typů můžeme vytvářet synonyma pro již existující
+-- typy. Jedná se pouze o syntaktickou zkratku, z hlediska kompilátoru jsou
+-- synonymum a typ, který reprezentuje, shodné.
+--
+-- type String = [Char]
 
--- > zipWith (+) [1..5] [10,20..50]
--- [11,22,33,44,55]
---
--- > zipWith (\a b -> floor (a^2 / b)) [1..5] [5..10]
--- [0,0,1,2,2]
---
--- Na argumentech můžeme provádět jednoduchý pattern matching, pokud
--- potřebujeme něco složitějšího, tak musíme použít case.
---
--- > map (\(a,b) -> a * b) [(4,2),(2,6),(0,10)]
--- [8,12,0]
---
--- Na funkce více argumentů se můžeme díky lambdám dívat takto:
+type CharTree = Tree Char
 
-f1 a b c = a * b + c
+-- Některé typové třídy se dají odvodit automaticky pomocí deriving, ale někdy
+-- nám defaultní instance nevyhovuje nebo odvodit nelze.
 
-f2 = \a -> \b -> \c -> a * b + c
+data BoolFn = BoolFn (Bool -> Bool)
 
--- Tyto dvě definice jsou ekvivalentní.
+-- Např. Eq automaticky odvodit nelze.
 --
+-- > :i Eq
+-- class Eq a where
+--   (==) :: a -> a -> Bool
+--   (/=) :: a -> a -> Bool
 --
--- Skládání datových struktur.
---
--- Většina funkcí, které pracují nad seznamy, má podobnou strukturu.
--- Případ pro prádzný seznam, případ pro neprádzný seznam s rekurzivním
--- voláním na zbytek seznamu.
---
--- Můžeme tohle zobecnit?
+-- Vytvoříme tedy instanci manuálně:
 
-foldRight :: (a -> b -> b) -> b -> [a] -> b
-foldRight f z []     = z
-foldRight f z (x:xs) = f x (foldRight f z xs)
+instance Eq BoolFn where
+    BoolFn f == BoolFn g =
+        all (\x -> f x == g x) [False, True]
 
--- Standardní knihovna: foldr
+-- (/=) se pak automaticky dodefinuje podle (==), uvidíme níže.
+--
+-- instance Eq BoolFn říká, že definujeme instanci třídy Eq pro typ BoolFn.
+-- Za where pak následují definice releventních hodnot (v našem případě
+-- funkce (==)).
 
-sum' :: (Num a) => [a] -> a
-sum' = foldr (+) 0
+instance Show BoolFn where
+    show (BoolFn f) = concat
+        [ "BoolFn (let f True = "
+        , show $ f True
+        , "; f False = "
+        , show $ f False
+        , " in f)"
+        ]
 
-product' :: (Num a) => [a] -> a
-product' = foldr (*) 1
-
-map' :: (a -> b) -> [a] -> [b]
-map' f = foldr (\x r -> f x:r) []
-
-elem' :: (Eq a) => a -> [a] -> Bool
-elem' x = foldr (\y r -> x == y || r) False
-
--- Idea:
+-- Jakmile implementujeme instanci třídy Eq pro náš typ, tak můžeme používat
+-- i všechny ostatní funkce, které Eq používají, např. elem:
 --
---   (:)                                 f
---   / \                                / \
---  1  (:)       == foldr f z =>       1   f
---     / \                                / \
---    2  (:)                             2   f
---       / \                                / \
---      3   []                             3   z
---
---
--- Skládání druhým směrem.
-
-foldLeft :: (b -> a -> b) -> b -> [a] -> b
-foldLeft f acc []     = acc
-foldLeft f acc (x:xs) = foldLeft f (f acc x) xs
-
--- Standardní knihovna: foldl
---
--- Reprezentuje to, co známe z Prologu jako akumulátor.
---
---   (:)                                  f
---   / \                                 / \
---  1  (:)       == foldl f z =>        f   3
---     / \                             / \
---    2  (:)                          f   2
---       / \                         / \
---      3   []                      z   1
-
-reverse' :: [a] -> [a]
-reverse' = foldl (\acc x -> x:acc) []
-
--- foldr1 a foldl1 jsou verze foldr a foldl, které pracují pouze na neprázdných
--- seznamech, počáteční hodnotou je první prvek seznamu.
-
-maximum' :: (Ord a) => [a] -> a
-maximum' = foldr1 max
-
--- Definované výše:
---   fns = [(+2), (*3), max 2, (`div` 2)]
---
--- > foldr (.) id fns 7
--- 11
---
---
--- Občas v kódu najdete operátor $, který je definovaný takto:
---
--- ($) :: (a -> b) -> a -> b
--- f $ x = f x
---
--- Nedělá nic zajímavého, ale má nízkou prioritu, takže se dá použít
--- pro odbourávání závorek.
---
--- > (max 2 . (*2) . (^2)) 5
--- 50
---
--- > max 2 . (*2) . (^2) $ 5
--- 50
---
---
--- Líné vyhodnocování
---
--- Vraťme se zpět k funkci elem'.
---
---   elem' :: (Eq a) => a -> [a] -> Bool
---   elem' x = foldr (\y r -> x == y || r) False
---
--- > elem' 2 [1..]
+-- > BoolFn id `elem` [BoolFn not, BoolFn (not . not)]
 -- True
---
--- Proč jsme dostali True a výpočet se nezacyklil?
---
---   (1 == 2) || ((2 == 2) || ((3 == 2) ... ))
---
--- Short-circuit pro ||. Tak jak to známe v tradičních jazycích.
--- Ale...
 
-or' True _ = True
-or' _    x = x
+data Optional a = Empty | Value a
 
-elem'' :: (Eq a) => a -> [a] -> Bool
-elem'' x = foldr (\y r -> or' (x == y) r) False
-
--- > elem'' 2 [1..]
--- True
+-- instance Eq (Optional a) where
+--     Empty   == Empty   = True
+--     Value x == Value y = ???
+--     _       == _       = False
 --
--- Náš or' také umí short-circuit, jakto? Haskell vyhodnocuje jen to, co je
--- pro výpočet nezbytně nutné. Pokud zjistíme, že prvním argumentem funkce or'
--- je True, tak rovnou vracíme True a na druhý argument se ani nepodíváme.
+-- Na místo ??? zjevně patří x == y, ale o typu a nic nevíme, speciálně nevíme,
+-- jestli se vůbec dá porovnávat.
 --
--- Místo toho, abychom funkce volali na nějaký nekončný výpočet (např.
--- let x = x in x) a pak sledovali, jestli se výpočet zastaví nebo ne, můžeme
--- použít hodnotu undefined, která "shodí" program, pokud se ji někdo pokusí
--- vyhodnotit.
+-- Kvůli tomu se do definice instancí dají přidat podmínky na vnitřní typy:
+
+instance (Eq a) => Eq (Optional a) where
+    Empty   == Empty   = True
+    Value x == Value y = x == y
+    _       == _       = False
+
+-- Pokud se hodnoty typu a dají porovnávat, pak lze porovnávat i hodnoty typu
+-- Optional a.
 --
--- > undefined
--- *** Exception: Prelude.undefined
---
--- > True || undefined
--- True
---
--- > undefined || True
--- *** Exception: Prelude.undefined
---
--- > length [undefined, undefined, undefined]
--- 3
---
--- > head (1:undefined)
--- 1
---
--- Pár zajímavých definic:
+-- Můžeme také definovat nové typové třídy.
 
-ones :: [Integer]
-ones = 1:ones
+class HasValue a where
+    hasValue :: a -> Bool
 
-nats :: [Integer]
-nats = 0:map (+1) nats
+-- Pokud chce nějaký typ být součástí třídy HasValue, musí poskytnout
+-- implementaci funkce hasValue. Např.
 
-fibs :: [Integer]
-fibs = 0:1:zipWith (+) fibs (tail fibs)
+instance HasValue (Optional a) where
+    hasValue (Value _) = True
+    hasValue _         = False
 
--- Dokonce můžeme implementovat vlastní if, který skutečně vyhodnotí pouze
--- jednu větev.
+instance HasValue [a] where
+    hasValue = not . null
 
-if' :: Bool -> a -> a -> a
-if' True  a _ = a
-if' False _ b = b
-
--- > if' True 1 undefined
--- 1
-
--- Příklady na procvičení: test reflexivity, symetrie, tranzitivity
--- hledání tříd ekvivalence, reflexivní uzávěr, zobecněný kartézký součin,
--- skládání seznamu funkcí, hledání posloupnosti fcí maximalizujících výslednou
--- hodnotu
+-- Jen pro připomenutí: typové třídy jsou Haskellské řešení tzv. "přetěžování",
+-- tj. jedna funkce, která pracuje pro více typů.

@@ -1,5 +1,3 @@
-% 1. cvičení, 2017-02-21
-
 % Program v Prologu je databáze faktů a odvozovacích pravidel popsaných
 % pomocí Hornovských klauzulí. Ty v Prologu vypadají takto:
 %   H :- B1, B2, ... Bn.
@@ -102,3 +100,8 @@ manzeleSym(X, Y) :- manzele(Y, X).
 
 % Syntaktická zkratka:
 % manzeleSym(X, Y) :- manzele(X, Y); manzele(Y, X).
+
+% Pozor: pokud se pokusíme vytvořit symetrickou verzi bez pomocného predikátu takto:
+manzele_(jirka, jitka).
+manzele_(X, Y) :- manzele_(Y, X).
+% potom se dotazy typu manzele(adam, marie) zacyklí.

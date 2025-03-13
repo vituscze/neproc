@@ -1,42 +1,3 @@
-% 3. cvičení, 2017-03-07
-
-% Zmínit: Proč fail/false nefunguje pro ošetření dělení nulou?
-
-% Pro zopakování:
-% Seznam je buď prázdný ([]), nebo je tvořen hlavou H a zbytkem seznamu T
-% ([H|T]).
-%
-% Syntaktické zkratky:
-% [A|[B|[C|[]]]] = [A,B|[C|[]]] = [A,B,C|[]] = [A,B,C]
-
-elem(X, [X|_]).
-elem(X, [_|T]) :- elem(X, T).
-% Standardní knihovna: member
-%
-% Často se používá jako member(-, +)
-% member(X, [a,b,c]).
-% X = a;
-% X = b;
-% X = c;
-% false.
-
-addFront(X, XS, [X|XS]).
-% addFront(a, [b,c], R).
-% R = [a,b,c].
-%
-% addFront(X, XS, [a,b,c]).
-% X = a,
-% XS = [b,c].
-
-addBack(X, [], [X]).
-addBack(X, [Y|YS], [Y|R]) :- addBack(X, YS, R).
-% addBack([a,b], c, R).
-% R = [a,b,c].
-%
-% addBack(XS, X, [a,b,c]).
-% XS = [a,b],
-% X = c.
-
 % delete(X, S, R) smaže jeden výskyt X v seznamu S.
 %
 % delete(a, [a,b,c,a,d,e], R).
@@ -72,13 +33,6 @@ deleteAll(X, [X|XS], R) :-
 deleteAll(X, [Y|YS], [Y|R]) :-
   deleteAll(X, YS, R).
 deleteAll(_, [], []).
-
-% Spojování seznamů.
-%
-% Standardní knihovna: append
-app([], YS, YS).
-app([X|XS], YS, [X|R]) :-
-  app(XS, YS, R).
 
 % Aritmetika v Prologu
 %
@@ -116,6 +70,33 @@ len([_|T], R) :-
 %
 % X a Y musí být aritmetické výrazy bez volných proměnných.
 
+% Otáčení seznamu.
+% Problém: kvadratická časová složitost. Přidání na konec seznamu je
+% O(n) operace, dohromady
+% n + (n - 1) + (n - 1) + ... + 2 + 1 = n(n + 1)/2 = O(n^2)
+revBad([], []).
+revBad([X|XS], R2) :-
+  revBad(XS, R),
+  append(R, [X], R2).
+
+% Řešení: použijeme pomocnou proměnnou, ve které postupně konstruujeme výsledek.
+% Tato proměnná je tzv. akumulátor.
+rev(XS, R) :- rev_(XS, [], R).
+
+rev_([], A, A).
+rev_([X|XS], A, R) :-
+  rev_(XS, [X|A], R).
+
+% TCO - Tail Call Optimization
+% Pokud je poslední podcíl rekurzivní výskyt definovaného predikátu, předchozí
+% podcíle jsou deterministické a neexistuje další nevyzkoušená větev výpočtu,
+% můžeme rekurzi implementovat efektivně (nemusí se vytvářet stack frame).
+
+lenTCO(X, R) :- lenTCO_(X, 0, R).
+
+lenTCO_([], A, A).
+lenTCO_([_|T], A, R) :- A2 is A + 1, lenTCO_(T, A2, R).
+
 % Permutace pomocí select/3.
 perm([], []).
 perm([X|XS], R) :-
@@ -135,3 +116,18 @@ comb(N, XS, [X|R]) :-
   N2 is N - 1,
   split(XS, X, Rem),
   comb(N2, Rem, R).
+
+% Poznámka: V Prologu existují i artimetické predikáty, které
+% fungují správně v obou směrech. Mají trochu větší overhead než
+% is a podobné predikáty. Najdeme je v modulu clpfd (constraint
+% logic programming with finite domains).
+
+:- use_module(library(clpfd)).
+
+test(X, Y) :- X #= 2 * Y + 3.
+
+% ?- test(3, Y).
+% Y = 0.
+%
+% ?- test(X, 3).
+% X = 9.

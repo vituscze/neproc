@@ -1,5 +1,3 @@
-% 5. cvičení, 2017-03-21
-
 % Porovnávání termů
 %
 % Operátory @<, @=<, @>, @>=, ==, \==, predikát compare. <, >, atp. lze použít
@@ -115,7 +113,42 @@ sat(F) :-
 % (nedeterministicky) vytvoří model a pak jen zkusíme, jestli je F
 % pravdivá v tomto modelu.
 
+% Slévání seznamů, které vyhazuje duplikátní prvky.
+mergeU(XS, [], XS) :- !.
+mergeU([], YS, YS) :- !.
+mergeU([X|XS], [Y|YS], R) :-
+  ( X @< Y -> mergeU(XS, [Y|YS], S), R = [X|S]
+  ; X == Y -> mergeU(XS, YS, S), R = [X|S]  % Takto vypadá "else-if" v Prologu.
+  ; mergeU([X|XS], YS, S), R = [Y|S]
+  ).
+
+vars(X, [X]) :- atom(X).
+vars(non F, R) :- vars(F, R).
+vars(F, RR) :-
+  F =.. [H, L, R],  % Lze splnit pouze pokud F byl (binární) složený term. Viz níže.
+  member(H, [ekv, imp, or, and]),  % H je hlava složeného termu F.
+  vars(L, R1),  % L je první argument.
+  vars(R, R2),  % R je druhý argument.
+  mergeU(R1, R2, RR).
+
+% Operátor =..
+%
+% Skládání/rozebírání termů. Lze použít oběma směry.
+%
+% ?- X =.. [f,5,g(x)].
+% X = f(5,g(x)).
+%
+% ?- 1+2*3 =.. X.
+% X = [+,1,2*3].
+%
+% Pozor!
+% F =.. [_,x,y].
+% ERROR: ...
+%
+% Další specifičtější operace:
+% functor(Term, Func, Arity)
+% arg(N,Term,Arg)
+
 % Doplňte definice následujících predikátů.
-vars(F, Vars).
 genModel(Vars, Model).
 eval(F, Model, Value).

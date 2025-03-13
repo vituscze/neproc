@@ -1,205 +1,276 @@
--- 10. cvičení 2017-04-25
+-- Pro připomenutí:
 --
--- Nové datové typy se vytvářejí pomocí klíčového slova 'data'.
+-- Definice nových datových typů pomocí 'data'.
 --
--- data <jméno> = <definice>
---
--- Jméno musí začínat velkým písmenem (typy, které začínají malým písmenem
--- jsou typové proměnné). Definice je pak výčet 'konstruktorů' - možných
--- hodnot datového typu - oddělený svislítkem '|'.
---
--- např. definice typu Bool by vypadala takto:
---
---   data Bool = False | True
---
--- Tohle jednoduše definuje Bool jako typ se dvěma konstantami - False a True.
---
--- Jednotlivé konstruktory mohou mít položky.
+--   data <jméno> <arg1> ... <argN> = <ctor1> | ... | <ctorN>
 
-data Extended = PlusInfinity | MinusInfinity | Finite Integer
-
--- PlusInfinity a MinusInfinity jsou konstanty, Finite obsahuje jednu položku
--- typu Integer.
---
--- > :t Finite
--- Finite :: Integer -> Extended
---
--- > :t PlusInfinity
--- PlusInfinity :: Extended
---
--- Pokud dostaneme hodnotu typu Extended, můžeme ji rozebrat stejně jako
--- např. seznamy - pattern matching.
-
-leq :: Extended -> Extended -> Bool
-leq MinusInfinity _             = True
-leq _             PlusInfinity  = True
-leq (Finite x)    (Finite y)    = x <= y
-leq _             _             = False
-
--- > PlusInfinity
--- <interactive>:2:1: error:
---     * No instance for (Show Extended) arising from a use of `print'
---     * In a stmt of an interactive GHCi command: print it
---
--- GHCi neví, jak zobrazit hodnotu PlusInfinity!
---
--- Potřebujeme implementovat Show pro typ Extended. Pro pár základních typových
--- tříd (Eq, Ord, Show, ...) to GHC umí udělat za nás.
---
--- data Extended = PlusInfinity | MinusInfinity | Finite Integer
---     deriving (Show)
---
--- data Point = Point Double Double
---   deriving (Show, Eq)  -- Ord nedává smysl
---
--- getX :: Point -> Double
--- getX (Point x _) = x
---
--- getY :: Point -> Double
--- getY (Point _ y) = y
---
--- Pokud máme datový typ, který má pouze jednen konstruktor, tak můžeme tyhle funkce
--- dostat zadarmo. Stačí tento typ definovat jako 'record'.
-
-data Point = Point { getX :: Double, getY :: Double }
+data Extended = MinusInf | PlusInf | Finite Integer
     deriving (Show, Eq)
 
--- > :t getX
--- getX :: Point -> Double
---
--- V předchozí definici jsme použili jméno Point dvakrát? Nedojde ke konfliktu?
--- Z kontextu se vždy dá jednoznačně určit, jestli se jedná o jméno typu
--- nebo o jméno konstruktoru.
---
--- Také můžeme definovat rekurzivní typy.
-
-data IntTree = IntLeaf | IntNode Int IntTree IntTree
+data Tree a = Leaf | Node (Tree a) a (Tree a)
     deriving (Show, Eq)
 
-insert :: Int -> IntTree -> IntTree
-insert x IntLeaf = IntNode x IntLeaf IntLeaf
-insert x (IntNode y l r)
-    | x <  y    = IntNode y (insert x l) r
-    | x == y    = IntNode x l r
-    | otherwise = IntNode y l (insert x r)
-
--- Pokud definujeme strom takovýmto způsobem, budeme potřebovat kopii pro
--- každý datový typ. Řešení: datový typ parametrizujeme typovou proměnnou.
-
-data Tree a = Leaf | Node a (Tree a) (Tree a)
+data RoseTree a = Rose a [RoseTree a]
     deriving (Show, Eq)
 
-insert' :: (Ord a) => a -> Tree a -> Tree a
-insert' x Leaf = Node x Leaf Leaf
-insert' x (Node y l r)
-    | x <  y    = Node y (insert' x l) r
-    | x == y    = Node x l r
-    | otherwise = Node y l (insert' x r)
+-- Pokud chceme, aby nově definovaný datový typ patřil do nějaké typové třídy,
+-- můžeme buď použít 'deriving' nebo explicitně definujeme instanci.
 
--- Původní IntTree je tedy Tree Int (podobně jako [Int]).
---
--- > :t Leaf
--- Leaf :: Tree a
---
--- > :t Node
--- Node :: a -> Tree a -> Tree a -> Tree a
---
--- Všimněte si, že podobně jako [] vytváří Leaf strom, jehož prvky mají
--- libovolný typ.
---
--- Parametrů může být i více.
---
---   data Either a b = Left a | Right b
---
--- Either a b obsahuje buď hodnotu typu a nebo hodnotu typu b.
---
--- > :t Left
--- Left :: a -> Either a b
---
--- > :t Right
--- Right :: b -> Either a b
---
--- Kromě vlastních datových typů můžeme vytvářet synonyma pro již existující
--- typy. Jedná se pouze o syntaktickou zkratku, z hlediska kompilátoru jsou
--- synonymum a typ, který reprezentuje, shodné.
---
--- type String = [Char]
+instance Ord Extended where
+    compare MinusInf   MinusInf   = EQ
+    compare MinusInf   _          = LT
+    compare (Finite x) (Finite y) = compare x y
+    compare PlusInf    PlusInf    = EQ
+    compare _          PlusInf    = LT
+    compare _          _          = GT
 
-type CharTree = Tree Char
+-- Nové typové třídy se vytvářejí pomocí 'class'.
 
--- Některé typové třídy se dají odvodit automaticky pomocí deriving, ale někdy
--- nám defaultní instance nevyhovuje nebo odvodit nelze.
+class HasValue a where
+    hasValue :: a -> Bool
 
-data BoolFn = BoolFn (Bool -> Bool)
-
--- Např. Eq automaticky odvodit nelze.
+-- > :t hasValue
+-- hasValue :: (HasValue a) => a -> Bool
 --
 -- > :i Eq
 -- class Eq a where
 --   (==) :: a -> a -> Bool
 --   (/=) :: a -> a -> Bool
 --
--- Vytvoříme tedy instanci manuálně:
-
-instance Eq BoolFn where
-    BoolFn f == BoolFn g =
-        all (\x -> f x == g x) [False, True]
-
--- (/=) se pak automaticky dodefinuje podle (==), uvidíme níže.
+-- > :i Num
+-- class Num a where
+--   (+) :: a -> a -> a
+--   (-) :: a -> a -> a
+--   (*) :: a -> a -> a
+--   negate :: a -> a
+--   abs :: a -> a
+--   signum :: a -> a
+--   fromInteger :: Integer -> a
 --
--- instance Eq BoolFn říká, že definujeme instanci třídy Eq pro typ BoolFn.
--- Za where pak následují definice releventních hodnot (v našem případě
--- funkce (==)).
+-- Typová synonyma se vytvářejí pomocí 'type'.
 
-instance Show BoolFn where
-    show (BoolFn f) = concat
-        [ "BoolFn (let f True = "
-        , show $ f True
-        , "; f False = "
-        , show $ f False
-        , " in f)"
-        ]
+type CharTree = Tree Char
 
--- Jakmile implementujeme instanci třídy Eq pro náš typ, tak můžeme používat
--- i všechny ostatní funkce, které Eq používají, např. elem:
+-- Poznámka: 'newtype' je něco mezi 'data' a 'type'. Podobně jako 'data'
+-- definuje nový typ, ale stejně jako 'type' nemá žádný efekt na runtime.
 --
--- > BoolFn id `elem` [BoolFn not, BoolFn (not . not)]
--- True
+-- Omezení: pouze jeden konstruktor s jednou položkou.
 
-data Optional a = Empty | Value a
+newtype Z7 = Z7 { getZ7 :: Int }
+    deriving (Eq, Show)
 
--- instance Eq (Optional a) where
---     Empty   == Empty   = True
---     Value x == Value y = ???
---     _       == _       = False
+op1 :: (Int -> Int) -> Z7 -> Z7
+op1 f (Z7 a) = Z7 $ f a `mod` 7
+
+op2 :: (Int -> Int -> Int) -> Z7 -> Z7 -> Z7
+op2 (?) (Z7 a) (Z7 b) = Z7 $ (a ? b) `mod` 7
+
+instance Num Z7 where
+    (+)    = op2 (+)
+    (-)    = op2 (-)
+    (*)    = op2 (*)
+    negate = op1 negate
+    abs    = id
+    signum = op1 signum
+
+    fromInteger = Z7 . fromInteger . (`mod` 7)
+
+-- Stejně jako máme (datové) konstruktory pro vytváření hodnot, tak máme i
+-- tzv. typové konstruktory, které vytvářejí konkrétní typy. S několika
+-- typovými konstruktory jsme se už setkali: [] (seznamy), Maybe, Either, Tree
 --
--- Na místo ??? zjevně patří x == y, ale o typu a nic nevíme, speciálně nevíme,
--- jestli se vůbec dá porovnávat.
+-- Tree sám o sobě není typ. Tree Int ale už ano. Tree tedy dostane jeden
+-- argument a vytvoří (zkonstruuje) konkrétní typ.
 --
--- Kvůli tomu se do definice instancí dají přidat podmínky na vnitřní typy:
-
-instance (Eq a) => Eq (Optional a) where
-    Empty   == Empty   = True
-    Value x == Value y = x == y
-    _       == _       = False
-
--- Pokud se hodnoty typu a dají porovnávat, pak lze porovnávat i hodnoty typu
--- Optional a.
+-- Víceméně to odpovídá rozdílu mezi
 --
--- Můžeme také definovat nové typové třídy.
+--   Dictionary<Key, Value>
+--   Dictionary
+--
+-- Druhý typ je v jistém smyslu neúplný.
+--
+-- Jak poznat, co je co? Nejprve zavedeme pojem 'kind'. Stejně jako hodnoty
+-- mají typ, tak i typy mají svůj typ - kind.
+--
+-- Všechny základní typy mají kind '*'.
+--
+-- > :k Int
+-- Int :: *
+--
+-- > :k Char
+-- Char :: *
+--
+-- > :k [Int]
+-- [Int] :: *
+--
+-- > :k Int -> Int
+-- Int -> Int :: *
+--
+-- Typové konstruktory mají zajímavější kind.
+--
+-- > :k Tree
+-- Tree :: * -> *
+--
+-- '* -> *' značí, že Tree potřebuje jeden konkrétní typ (jehož kind je '*')
+-- a pak vyprodukuje konkrétní typ ('*'). A skutečně:
+--
+-- > :k Tree Int
+-- Tree Int :: *
+--
+-- > :k Either
+-- Either :: * -> * -> *
+--
+-- 'Either' potřebuje dva konkrétní typy než dostaneme konkrétní typ.
+--
+-- > :k Either Int
+-- Either Int :: * -> *
+--
+-- > :k Either Int Char
+-- Either Int Char :: *
 
-class HasValue a where
-    hasValue :: a -> Bool
+data F a b = F (b a)
 
--- Pokud chce nějaký typ být součástí třídy HasValue, musí poskytnout
--- implementaci funkce hasValue. Např.
+-- > :k F
+-- F :: * -> (* -> *) -> *
+--
+-- K čemu je tohle dobré? Typové třídy se dají definovat i pro typové
+-- konstruktory, tj. i pro věci, jejichž kind je různý od '*'.
 
-instance HasValue (Optional a) where
-    hasValue (Value _) = True
-    hasValue _         = False
+class Collection c where
+    toList :: c a -> [a]
 
-instance HasValue [a] where
-    hasValue = not . null
+    contains :: (Ord a) => a -> c a -> Bool
+    contains a c = a `elem` toList c
 
--- Jen pro připomenutí: typové třídy jsou Haskellské řešení tzv. "přetěžování",
--- tj. jedna funkce, která pracuje pro více typů.
+-- 'c' má kind '* -> *', tj. instance můžeme definovat pro typové konstruktory,
+-- které mají kind '* -> *' - [], Tree, Maybe, atp.
+--
+-- Collection obsahuje dvě funkce: toList a contains. contains má navíc
+-- defaultní implementaci. Když definujeme instanci třídy Collection, contains
+-- potom není nutné explicitně definovat. Nicméně explicitní implementace může
+-- být užitečná, pokud je defaultní implementace neefektivní
+
+instance Collection [] where
+    toList = id
+
+instance Collection Maybe where
+    toList (Just x) = [x]
+    toList _        = []
+
+instance Collection Tree where
+    toList Leaf = []
+    toList (Node l x r) = toList l ++ [x] ++ toList r
+
+    contains _ Leaf = False
+    contains x (Node l y r)
+        | x <  y    = contains x l
+        | x == y    = True
+        | otherwise = contains x r
+
+-- Podívejme se na často používanou standardní typovou třídu, která je
+-- definovaná pro typové konstruktory kindu '* -> *'.
+--
+-- > :i Functor
+-- class Functor (f :: * -> *) where
+--   fmap :: (a -> b) -> f a -> f b
+--   ...
+--
+-- Pokud za 'f' dáme '[]', dostaneme
+--
+--   fmap :: (a -> b) -> [] a -> [] b
+--   fmap :: (a -> b) -> [a]  -> [b]
+--
+-- Tento typ už jsme dříve viděli: je to funkce 'map'. Typová třída 'Functor'
+-- zobecňuje pojem mapování pro více než jen seznamy.
+--
+-- > :i Functor
+-- ...
+-- instance Functor [] -- Defined in `GHC.Base'
+-- instance Functor Maybe -- Defined in `GHC.Base'
+-- ...
+--
+-- > fmap show (Just 1)
+-- Just "1"
+--
+-- > fmap show Nothing
+-- Nothing
+
+instance Functor Tree where
+    fmap _ Leaf         = Leaf
+    fmap f (Node l x r) = Node (fmap f l) (f x) (fmap f r)
+
+instance Functor RoseTree where
+    fmap f (Rose a r) = Rose (f a) (map (fmap f) r)
+
+-- instance Functor (Either e) where
+--     fmap _ (Left e)  = Left e
+--     fmap f (Right a) = Right (f a)
+--
+-- Semigroup: množina s asociativní binární operací
+-- Monoid: Semigroup s neutrálním prvkem
+--
+-- > :i Semigroup
+-- class Semigroup a where
+--     (<>) :: a -> a -> a
+--     ...
+--
+-- > :i Monoid
+-- class Monoid a where
+--     mempty :: a
+--     ...
+--
+-- instance Semigroup [a] where
+--     (<>) = (++)
+--
+-- instance Monoid [a] where
+--     mempty = []
+--
+-- Pro číselné typy známe dva monoidy: sčítání s nulou, násobení s jedničkou.
+
+newtype Sum a = Sum { getSum :: a }
+newtype Product a = Product { getProduct :: a }
+
+instance (Num a) => Semigroup (Sum a) where
+    Sum a <> Sum b = Sum (a + b)
+
+instance (Num a) => Monoid (Sum a) where
+    mempty = Sum 0
+
+instance (Num a) => Semigroup (Product a) where
+    Product a <> Product b = Product (a * b)
+
+instance (Num a) => Monoid (Product a) where
+    mempty = Product 1
+
+-- Proč se bavíme o monoidech? Nedávno jsme si ukazovali funkce 'foldr' a
+-- 'foldl'. Podobně jako 'Functor' zobecňuje 'map' (na 'fmap'), tak 'Foldable'
+-- zobecňuje 'foldr' (na 'foldMap').
+--
+-- > :i Foldable
+-- class Foldable (t :: * -> *) where
+--   foldMap :: Monoid m => (a -> m) -> t a -> m
+
+instance Foldable Tree where
+    foldMap _ Leaf = mempty
+    foldMap f (Node l x r) = foldMap f l <> f x <> foldMap f r
+
+-- > let t = Node (Node Leaf 2 Leaf) 4 (Node Leaf 6 Leaf)
+-- > foldr (+) 0 t
+-- 12
+--
+-- > length t
+-- 3
+--
+-- Pomocí 'foldMap' implementujte:
+
+length' :: (Foldable t) => t a -> Int
+length' = undefined
+
+sum' :: (Foldable t, Num a) => t a -> a
+sum' = undefined
+
+product' :: (Foldable t, Num a) => t a -> a
+product' = undefined
+
+toList' :: (Foldable t) => t a -> [a]
+toList' = undefined

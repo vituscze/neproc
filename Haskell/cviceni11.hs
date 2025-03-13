@@ -1,278 +1,247 @@
--- 11. cvičení 2017-05-02
---
--- Pro připomenutí:
---
--- Definice nových datových typů pomocí 'data'.
---
---   data <jméno> <arg1> ... <argN> = <ctor1> | ... | <ctorN>
+import Data.Complex
 
-data Extended = MinusInf | PlusInf | Finite Integer
-    deriving (Show, Eq)
-
-data Tree a = Leaf | Node (Tree a) a (Tree a)
-    deriving (Show, Eq)
-
-data RoseTree a = Rose a [RoseTree a]
-    deriving (Show, Eq)
-
--- Pokud chceme, aby nově definovaný datový typ patřil do nějaké typové třídy,
--- můžeme buď použít 'deriving' nebo explicitně definujeme instanci.
-
-instance Ord Extended where
-    compare MinusInf   MinusInf   = EQ
-    compare MinusInf   _          = LT
-    compare (Finite x) (Finite y) = compare x y
-    compare PlusInf    PlusInf    = EQ
-    compare _          PlusInf    = LT
-    compare _          _          = GT
-
--- Nové typové třídy se vytvářejí pomocí 'class'.
-
-class HasValue a where
-    hasValue :: a -> Bool
-
--- > :t hasValue
--- hasValue :: (HasValue a) => a -> Bool
+-- Minule jsme se podívali na typovou třídu Functor.
 --
--- > :i Eq
--- class Eq a where
---   (==) :: a -> a -> Bool
---   (/=) :: a -> a -> Bool
+-- class Functor f where
+--     fmap :: (a -> b) -> f a -> f b
 --
--- > :i Num
--- class Num a where
---   (+) :: a -> a -> a
---   (-) :: a -> a -> a
---   (*) :: a -> a -> a
---   negate :: a -> a
---   abs :: a -> a
---   signum :: a -> a
---   fromInteger :: Integer -> a
+-- Dva typické příklady typových konstruktorů, které jsou součástí třídy
+-- Functor, jsou: Maybe a []
 --
--- Typová synonyma se vytvářejí pomocí 'type'.
+-- instance Functor Maybe where
+--     fmap _ Nothing  = Nothing
+--     fmap f (Just a) = Just (f a)
+--
+-- instance Functor [] where
+--     fmap = map
+--
+-- Dalším krokem je typová třída Monad, což je mnohem silnější verze třídy
+-- Functor. Nejdřív ale začneme konkrétním příkladem.
+--
+-- > :t lookup
+-- lookup :: (Eq a) => a -> [(a, b)] -> Maybe b
+--
+-- Pokud chceme najít hodnotu pro daný klíč ve dvou (nebo více) asociativních
+-- seznamech najedou, můžeme použít např.
 
-type CharTree = Tree Char
+lookup2, lookup2' :: (Eq a) => a -> [(a, b)] -> [(a, c)] -> Maybe (b, c)
+lookup2 a ab ac = case lookup a ab of
+    Nothing -> Nothing
+    Just b  -> case lookup a ac of
+        Nothing -> Nothing
+        Just c  -> Just (b, c)
 
--- Poznámka: 'newtype' je něco mezi 'data' a 'type'. Podobně jako 'data'
--- definuje nový typ, ale stejně jako 'type' nemá žádný efekt na runtime.
---
--- Omezení: pouze jeden konstruktor s jednou položkou.
+-- Pro tři a více seznamů už by tahle funkce začala být nepřehledná, přitom
+-- ale neděláme nic zajímavého. Naštěstí můžeme použít case i takhle:
 
-newtype Z7 = Z7 { getZ7 :: Int }
-    deriving (Eq, Show)
+lookup2' a ab ac = case (lookup a ab, lookup a ac) of
+    (Just b, Just c) -> Just (b, c)
+    _                -> Nothing
 
-op1 :: (Int -> Int) -> Z7 -> Z7
-op1 f (Z7 a) = Z7 $ f a `mod` 7
+-- Často se náme ale může stát, že klíč, který budeme hledat v druhém (třetím,
+-- atp.) seznamu závisí na nalezené hodnotě z prvního seznamu.
 
-op2 :: (Int -> Int -> Int) -> Z7 -> Z7 -> Z7
-op2 (?) (Z7 a) (Z7 b) = Z7 $ (a ? b) `mod` 7
+lookupChain :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe (b, c)
+lookupChain a ab bc = case lookup a ab of
+    Nothing -> Nothing
+    Just b  -> case lookup b bc of
+        Nothing -> Nothing
+        Just c  -> Just (b, c)
 
-instance Num Z7 where
-    (+)    = op2 (+)
-    (-)    = op2 (-)
-    (*)    = op2 (*)
-    negate = op1 negate
-    abs    = id
-    signum = op1 signum
+-- Tady už nám předchozí trik nepomůže a musíme použít "case kaskádu".
+--
+-- Musí to jít lépe! Všimněte si, co se v téhle funkci děje: Nejprve se podíváme
+-- na první lookup. Pokud neuspěl, tak končíme. Pokud uspěl, tak vezeme
+-- nalezenou hodnotu a použijeme ji v další části kódu.
+--
+-- Tohle jsme schopni s použitím funkcí vyššího řádu jednoduše reprezentovat.
 
-    fromInteger = Z7 . fromInteger . (`mod` 7)
+andThen :: Maybe a -> (a -> Maybe b) -> Maybe b
+andThen Nothing  _ = Nothing  -- První akce neuspěla, konec.
+andThen (Just a) f = f a      -- První akce uspěla, vezmeme hodnotu a předáme
+                              -- ji zbytku (zde v podobě funkce).
 
--- Stejně jako máme (datové) konstruktory pro vytváření hodnot, tak máme i
--- tzv. typové konstruktory, které vytvářejí konkrétní typy. S několika
--- typovými konstruktory jsme se už setkali: [] (seznamy), Maybe, Either, Tree
---
--- Tree sám o sobě není typ. Tree Int ale už ano. Tree tedy dostane jeden
--- argument a vytvoří (zkonstruuje) konkrétní typ.
---
--- Víceméně to odpovídá rozdílu mezi
---
---   Dictionary<Key, Value>
---   Dictionary
---
--- Druhý typ je v jistém smyslu neúplný.
---
--- Jak poznat, co je co? Nejprve zavedeme pojem 'kind'. Stejně jako hodnoty
--- mají typ, tak i typy mají svůj typ - kind.
---
--- Všechny základní typy mají kind '*'.
---
--- > :k Int
--- Int :: *
---
--- > :k Char
--- Char :: *
---
--- > :k [Int]
--- [Int] :: *
---
--- > :k Int -> Int
--- Int -> Int :: *
---
--- Typové konstruktory mají zajímavější kind.
---
--- > :k Tree
--- Tree :: * -> *
---
--- '* -> *' značí, že Tree potřebuje jeden konkrétní typ (jehož kind je '*')
--- a pak vyprodukuje konkrétní typ ('*'). A skutečně:
---
--- > :k Tree Int
--- Tree Int :: *
---
--- > :k Either
--- Either :: * -> * -> *
---
--- 'Either' potřebuje dva konkrétní typy než dostaneme konkrétní typ.
---
--- > :k Either Int
--- Either Int :: * -> *
---
--- > :k Either Int Char
--- Either Int Char :: *
+lookupChain' :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe c
+lookupChain' a ab bc =
+    lookup a ab `andThen` \b ->
+    lookup b bc
 
-data F a b = F (b a)
+-- Jsme na dobré cestě, ale funkce lookupChain' nám vrátí pouze druhý nalezený
+-- prvek, zatímco originální implementace vracela oba nalezené prvky. To lze
+-- ale snadno opravit, buď za použití funkce fmap, nebo dalším použitím andThen.
 
--- > :k F
--- F :: * -> (* -> *) -> *
+lookupChain'' :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe (b, c)
+lookupChain'' a ab bc =
+    lookup a ab `andThen` \b  ->
+    lookup b bc `andThen` \c ->
+    Just (b, c)
+
+-- resp. (pozor, hodně apostrofů)
+
+lookupChain''' :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe (b, c)
+lookupChain''' a ab bc =
+    lookup a ab `andThen` \b ->
+    fmap (\c -> (b, c)) (lookup b bc)
+
+-- Další důležitý poznatek je ten, že Just je v určitém smyslu neutrální
+-- operace.
 --
--- K čemu je tohle dobré? Typové třídy se dají definovat i pro typové
--- konstruktory, tj. i pro věci, jejichž kind je různý od '*'.
+-- Just x `andThen` f     ==  f x
+-- v      `andThen` Just  ==  v
 
-class Collection c where
-    toList :: c a -> [a]
+done :: a -> Maybe a
+done = Just
 
-    contains :: (Ord a) => a -> c a -> Bool
-    contains a c = a `elem` toList c
+lookupChain3 :: (Eq a, Eq b, Eq c)
+             => a                                 -- První klíč
+             -> [(a, b)] -> [(b, c)] -> [(c, d)]  -- Asociativní seznamy
+             -> Maybe (b, c, d)
+lookupChain3 a ab bc cd =
+    lookup a ab `andThen` \b ->
+    lookup b bc `andThen` \c ->
+    lookup c cd `andThen` \d ->
+    done (b, c, d)
 
--- 'c' má kind '* -> *', tj. instance můžeme definovat pro typové konstruktory,
--- které mají kind '* -> *' - [], Tree, Maybe, atp.
+-- Na Maybe a se můžeme dívat jako na výpočet, který buď vyprodukuje hodnotu
+-- typu a, nebo skončí neúspěchem. andThen nám potom umožňuje skládat tyto
+-- "výpočty s neúspěchem".
 --
--- Collection obsahuje dvě funkce: toList a contains. contains má navíc
--- defaultní implementaci. Když definujeme instanci třídy Collection, contains
--- potom není nutné explicitně definovat. Nicméně explicitní implementace může
--- být užitečná, pokud je defaultní implementace neefektivní
+-- Můžeme najít podobnou operaci pro jiné typy?
 
-instance Collection [] where
-    toList = id
+sqrt' :: Complex Double -> [Complex Double]
+sqrt' z = [mkPolar r' theta', mkPolar (-r') theta']
+  where
+    (r, theta) = polar z
 
-instance Collection Maybe where
-    toList (Just x) = [x]
-    toList _        = []
+    theta' = theta / 2
+    r'     = sqrt r
 
-instance Collection Tree where
-    toList Leaf = []
-    toList (Node l x r) = toList l ++ [x] ++ toList r
+-- Pokud bychom chtěli spočítat 4. odmocninu, tak sqrt' můžeme aplikovat
+-- dvakrát. To se dá udělat např. takhle:
 
-    contains _ Leaf = False
-    contains x (Node l y r)
-        | x <  y    = contains x l
-        | x == y    = True
-        | otherwise = contains x r
+root4 :: Complex Double -> [Complex Double]
+root4 x = concat (map sqrt' (sqrt' x))
 
--- Podívejme se na často používanou standardní typovou třídu, která je
--- definovaná pro typové konstruktory kindu '* -> *'.
+-- Nejdříve namapujeme, tak pomocí funkce concat zploštíme dvojitý seznam.
+
+mystery x f = concat $ map f x
+
+-- > :t mystery
+-- mystery :: [a] -> (a -> [b]) -> [b]
 --
--- > :i Functor
--- class Functor (f :: * -> *) where
---   fmap :: (a -> b) -> f a -> f b
---   ...
---
--- Pokud za 'f' dáme '[]', dostaneme
---
---   fmap :: (a -> b) -> [] a -> [] b
---   fmap :: (a -> b) -> [a]  -> [b]
---
--- Tento typ už jsme dříve viděli: je to funkce 'map'. Typová třída 'Functor'
--- zobecňuje pojem mapování pro více než jen seznamy.
---
--- > :i Functor
--- ...
--- instance Functor [] -- Defined in `GHC.Base'
--- instance Functor Maybe -- Defined in `GHC.Base'
--- ...
---
--- > fmap show (Just 1)
--- Just "1"
---
--- > fmap show Nothing
--- Nothing
+-- Tohle je povědomé! Porovnejte typ této funkce s typem funkce andThen.
 
-instance Functor Tree where
-    fmap _ Leaf         = Leaf
-    fmap f (Node l x r) = Node (fmap f l) (f x) (fmap f r)
+andThenL :: [a] -> (a -> [b]) -> [b]
+andThenL = mystery
 
-instance Functor RoseTree where
-    fmap f (Rose a r) = Rose (f a) (map (fmap f) r)
+root8, root8' :: Complex Double -> [Complex Double]
+root8 x =
+    sqrt' x `andThenL` \y ->
+    sqrt' y `andThenL` \z ->
+    sqrt' z
 
--- instance Functor (Either e) where
---     fmap _ (Left e)  = Left e
---     fmap f (Right a) = Right (f a)
+-- Nebo jednoduše
+
+root8' x = sqrt' x `andThenL` sqrt' `andThenL` sqrt'
+
+-- Na seznam se obvykle díváme pouze jako na strukturu obsahující data. Ale
+-- podobně jako na Maybe a můžeme nahlížet jako na výpočet, který může skončit
+-- neúspěchem, tak [a] je výpočet, který může nabývat více hodnot. Trochu
+-- jako nedeterminismus v Prologu.
 --
--- Semigroup: množina s asociativní binární operací
--- Monoid: Semigroup s neutrálním prvkem
+-- Zbývá nám najít ekvivalent pro operaci done. Musí být neutrální vzhledem
+-- k andThenL, což nám dává jen jednu možnost.
+
+doneL :: a -> [a]
+doneL a = [a]
+
+times :: [a] -> [b] -> [(a, b)]
+times as bs =
+    as `andThenL` \a ->
+    bs `andThenL` \b ->
+    doneL (a, b)
+
+-- Máme dva konkrétní příklady, teď tento koncept "spojování výpočtů" můžeme
+-- generalizovat.
 --
--- > :i Semigroup
--- class Semigroup a where
---     (<>) :: a -> a -> a
---     ...
+-- class Applicative m => Monad m where
+--     return :: a -> m a                  -- done, doneL
+--     (>>=)  :: m a -> (a -> m b) -> m b  -- andThen, andThenL
 --
--- > :i Monoid
--- class Monoid a where
---     mempty :: a
---     ...
+-- Pozn. return má možná trochu nešťastné jméno. Narozdíl od return
+-- v ostatních jazycích nekončí výpočet. Místo return budeme používat
+-- funkci pure (z typové třídy Applicative), která dělá to samé.
+
+weird :: Maybe Int
+weird =
+    return 1 >>= \_ ->
+    Nothing
+
+-- > weird == Nothing
+-- True
+
+times' :: [a] -> [b] -> [(a, b)]
+times' as bs =
+    as >>= \a ->
+    bs >>= \b ->
+    pure (a, b)
+
+lookupChain3' :: (Eq a, Eq b, Eq c)
+              => a
+              -> [(a, b)] -> [(b, c)] -> [(c, d)]
+              -> Maybe (b, c, d)
+lookupChain3' a ab bc cd =
+    lookup a ab >>= \b ->
+    lookup b bc >>= \c ->
+    lookup c cd >>= \d ->
+    pure (b, c, d)
+
+-- Použití >>= je v Haskellu tak časté, že pro něj existuje syntaktická
+-- zkratka, tzv. do notace.
 --
--- instance Semigroup [a] where
---     (<>) = (++)
+-- Na zarovnání záleží, jedině tak pozná Haskell, jestli začínáme novou řádku,
+-- pokračujeme předchozí nebo končíme do blok.
+
+times'' :: [a] -> [b] -> [(a, b)]
+times'' as bs = do
+    a <- as
+    b <- bs
+    pure (a, b)
+
+failIf :: Bool -> Maybe ()
+failIf True = Nothing
+failIf _    = Just ()
+
+weird' :: (Eq a) => (b -> Bool) -> a -> [(a, b)] -> Maybe b
+weird' cond a ab = do
+    b <- lookup a ab
+    failIf (cond b)   -- Pokud nás hodnota z failIf nezajímá, můžeme
+                      -- šipku vynechat.
+    pure b
+
+-- Kromě toho můžeme ještě používat zkrácenou formu let.
 --
--- instance Monoid [a] where
---     mempty = []
+-- do x <- y
+--    let z = x * x
+--    ...
 --
--- Pro číselné typy známe dva monoidy: sčítání s nulou, násobení s jedničkou.
+-- pure na konci do-bloku není nutný, tak jak jsme viděli např. u funkce
+-- root8.
 
-newtype Sum a = Sum { getSum :: a }
-newtype Product a = Product { getProduct :: a }
+root8'' :: Complex Double -> [Complex Double]
+root8'' x = do
+    y <- sqrt' x
+    z <- sqrt' y
+    sqrt' z
 
-instance (Num a) => Semigroup (Sum a) where
-    Sum a <> Sum b = Sum (a + b)
-
-instance (Num a) => Monoid (Sum a) where
-    mempty = Sum 0
-
-instance (Num a) => Semigroup (Product a) where
-    Product a <> Product b = Product (a * b)
-
-instance (Num a) => Monoid (Product a) where
-    mempty = Product 1
-
--- Proč se bavíme o monoidech? Nedávno jsme si ukazovali funkce 'foldr' a
--- 'foldl'. Podobně jako 'Functor' zobecňuje 'map' (na 'fmap'), tak 'Foldable'
--- zobecňuje 'foldr' (na 'foldMap').
+-- do notace lze přeložit zpět do obyčejného výrazu:
 --
--- > :i Foldable
--- class Foldable (t :: * -> *) where
---   foldMap :: Monoid m => (a -> m) -> t a -> m
-
-instance Foldable Tree where
-    foldMap _ Leaf = mempty
-    foldMap f (Node l x r) = foldMap f l <> f x <> foldMap f r
-
--- > let t = Node (Node Leaf 2 Leaf) 4 (Node Leaf 6 Leaf)
--- > foldr (+) 0 t
--- 12
+-- do a <- ma    ===  ma >>= \a ->
+--    mb              mb
 --
--- > length t
--- 3
+-- do ma         ===  ma >>= \_ ->
+--    mb              mb
 --
--- Pomocí 'foldMap' implementujte:
-
-length' :: (Foldable t) => t a -> Int
-length' = undefined
-
-sum' :: (Foldable t, Num a) => t a -> a
-sum' = undefined
-
-product' :: (Foldable t, Num a) => t a -> a
-product' = undefined
-
-toList' :: (Foldable t) => t a -> [a]
-toList' = undefined
+-- do let x = y  ===  let x = y
+--    ma              in  ma
+--

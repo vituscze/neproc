@@ -1,32 +1,3 @@
-% 4. cvičení, 2017-03-14
-
-% Otáčení seznamu.
-% Problém: kvadratická časová složitost. Přidání na konec seznamu je
-% O(n) operace, dohromady
-% n + (n - 1) + (n - 1) + ... + 2 + 1 = n(n + 1)/2 = O(n^2)
-revBad([], []).
-revBad([X|XS], R2) :-
-  revBad(XS, R),
-  append(R, [X], R2).
-
-% Řešení: použijeme pomocnou proměnnou, ve které postupně konstruujeme výsledek.
-% Tato proměnná je tzv. akumulátor.
-rev(XS, R) :- rev_(XS, [], R).
-
-rev_([], A, A).
-rev_([X|XS], A, R) :-
-  rev_(XS, [X|A], R).
-
-% TCO - Tail Call Optimization
-% Pokud je poslední podcíl rekurzivní výskyt definovaného predikátu, předchozí
-% podcíle jsou deterministické a neexistuje další nevyzkoušená větev výpočtu,
-% můžeme rekurzi implementovat efektivně (nemusí se vytvářet stack frame).
-
-lenTCO(X, R) :- lenTCO_(X, 0, R).
-
-lenTCO_([], A, A).
-lenTCO_([_|T], A, R) :- A2 is A + 1, lenTCO_(T, A2, R).
-
 % Přístup k prostřednímu prvku seznamu bez použití aritmetiky.
 middle(XS, R) :- middle_(XS, XS, R).
 

@@ -1,5 +1,3 @@
-% 2. cvičení, 2017-02-27
-
 % Kromě jednoduchých atomů (konstant) můžeme v Prologu také vytvářet složené
 % termy.
 
@@ -130,13 +128,31 @@ same2 :- [1,2|R] = [1|[2|R]].
 % Hledání prvku v seznamu. Porovnávání za nás řeší unifikace.
 elem(X,[X|_]).
 elem(X,[_|S]) :- elem(X, S).
+% Standardní knihovna: member
+%
+% Často se používá jako member(-, +)
+% member(X, [a,b,c]).
+% X = a;
+% X = b;
+% X = c;
+% false.
 
 % Přidávání prvku na začátek seznamu.
 addFront(X, R, [X|R]).
+% Typicky není zapotřebí definovat - místo addFront(A, B, C)
+% stačí napsat C = [A|B].
 
 % A na konec seznamu.
 addBack(X, [], [X]).
 addBack(X, [Y|Ys], [Y|R]) :- addBack(X, Ys, R).
+
+% Spojování seznamů.
+%
+% Standardní knihovna: append
+app([], YS, YS).
+app([X|XS], YS, [X|R]) :-
+  app(XS, YS, R).
+% addBack(X, Xs, Ys) :- append(Xs, [X], Ys).
 
 % Pomocné predikáty.
 toNat(N, R) :-

@@ -1,249 +1,290 @@
-import Data.Complex
+module Main where
 
--- 12. cvičení 2017-05-09
+import System.IO
+
+-- Minule jsme se podívali na dvě konkrétní monády - Maybe a [].
 --
--- Minule jsme se podívali na typovou třídu Functor.
+-- instance Monad Maybe where
+--     return = Just
 --
--- class Functor f where
---     fmap :: (a -> b) -> f a -> f b
+--     Nothing >>= _ = Nothing
+--     Just a  >>= f = f a
 --
--- Dva typické příklady typových konstruktorů, které jsou součástí třídy
--- Functor, jsou: Maybe a []
+-- instance Monad [] where
+--     return a = [a]
 --
--- instance Functor Maybe where
---     fmap _ Nothing  = Nothing
---     fmap f (Just a) = Just (f a)
+--     a >>= f = concat (map f a)
 --
--- instance Functor [] where
---     fmap = map
 --
--- Dalším krokem je typová třída Monad, což je mnohem silnější verze třídy
--- Functor. Nejdřív ale začneme konkrétním příkladem.
+-- > :i Monad
+-- class Applicative m => Monad (m :: * -> *) where
+--   (>>=) :: m a -> (a -> m b) -> m b
+--   return :: a -> m a
 --
--- > :t lookup
--- lookup :: (Eq a) => a -> [(a, b)] -> Maybe b
+-- V předpokladech se objevuje typová třída Applicative. Applicative je
+-- silnější než Functor, ale slabší než Monad. V novějších verzích GHC je
+-- tedy nutné definovat instanci Applicative, ale pokud máme k dispozici
+-- instanci Monad, lze tohle udělat snadno.
 --
--- Pokud chceme najít hodnotu pro daný klíč ve dvou (nebo více) asociativních
--- seznamech najedou, můžeme použít např.
-
-lookup2, lookup2' :: (Eq a) => a -> [(a, b)] -> [(a, c)] -> Maybe (b, c)
-lookup2 a ab ac = case lookup a ab of
-    Nothing -> Nothing
-    Just b  -> case lookup a ac of
-        Nothing -> Nothing
-        Just c  -> Just (b, c)
-
--- Pro tři a více seznamů už by tahle funkce začala být nepřehledná, přitom
--- ale neděláme nic zajímavého. Naštěstí můžeme použít case i takhle:
-
-lookup2' a ab ac = case (lookup a ab, lookup a ac) of
-    (Just b, Just c) -> Just (b, c)
-    _                -> Nothing
-
--- Často se náme ale může stát, že klíč, který budeme hledat v druhém (třetím,
--- atp.) seznamu závisí na nalezené hodnotě z prvního seznamu.
-
-lookupChain :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe (b, c)
-lookupChain a ab bc = case lookup a ab of
-    Nothing -> Nothing
-    Just b  -> case lookup b bc of
-        Nothing -> Nothing
-        Just c  -> Just (b, c)
-
--- Tady už nám předchozí trik nepomůže a musíme použít "case kaskádu".
+--   instance Applicative Maybe where
+--       pure  = return
+--       (<*>) = ap
 --
--- Musí to jít lépe! Všimněte si, co se v téhle funkci děje: Nejprve se podíváme
--- na první lookup. Pokud neuspěl, tak končíme. Pokud uspěl, tak vezeme
--- nalezenou hodnotu a použijeme ji v další části kódu.
+--   ap mf ma = do f <- mf; a <- ma; return (f a)
 --
--- Tohle jsme schopni s použitím funkcí vyššího řádu jednoduše reprezentovat.
-
-andThen :: Maybe a -> (a -> Maybe b) -> Maybe b
-andThen Nothing  _ = Nothing  -- První akce neuspěla, konec.
-andThen (Just a) f = f a      -- První akce uspěla, vezmeme hodnotu a předáme
-                              -- ji zbytku (zde v podobě funkce).
-
-lookupChain' :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe c
-lookupChain' a ab bc =
-    lookup a ab `andThen` \b ->
-    lookup b bc
-
--- Jsme na dobré cestě, ale funkce lookupChain' nám vrátí pouze druhý nalezený
--- prvek, zatímco originální implementace vracela oba nalezené prvky. To lze
--- ale snadno opravit, buď za použití funkce fmap, nebo dalším použitím andThen.
-
-lookupChain'' :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe (b, c)
-lookupChain'' a ab bc =
-    lookup a ab `andThen` \b  ->
-    lookup b bc `andThen` \c ->
-    Just (b, c)
-
--- resp. (pozor, hodně apostrofů)
-
-lookupChain''' :: (Eq a, Eq b) => a -> [(a, b)] -> [(b, c)] -> Maybe (b, c)
-lookupChain''' a ab bc =
-    lookup a ab `andThen` \b ->
-    fmap (\c -> (b, c)) (lookup b bc)
-
--- Další důležitý poznatek je ten, že Just je v určitém smyslu neutrální
--- operace.
+-- Vhodnější je implementovat pure přímo v instanci typové třídy Applicative;
+-- return už potom dostaneme automaticky.
 --
--- Just x `andThen` f     ==  f x
--- v      `andThen` Just  ==  v
-
-done :: a -> Maybe a
-done = Just
-
-lookupChain3 :: (Eq a, Eq b, Eq c)
-             => a                                 -- První klíč
-             -> [(a, b)] -> [(b, c)] -> [(c, d)]  -- Asociativní seznamy
-             -> Maybe (b, c, d)
-lookupChain3 a ab bc cd =
-    lookup a ab `andThen` \b ->
-    lookup b bc `andThen` \c ->
-    lookup c cd `andThen` \d ->
-    done (b, c, d)
-
--- Na Maybe a se můžeme dívat jako na výpočet, který buď vyprodukuje hodnotu
--- typu a, nebo skončí neúspěchem. andThen nám potom umožňuje skládat tyto
--- "výpočty s neúspěchem".
+-- Dalším (velice důležitým) příkladem monády je typový konstruktor IO, který
+-- reprezentuje výpočty se vstupem a výstupem (obecněji klasické "imperativní"
+-- programy). Definice IO je dána konkrétní implementací, takže pro nás je to
+-- black box.
 --
--- Můžeme najít podobnou operaci pro jiné typy?
+-- > :t getLine
+-- getLine :: IO String
+--
+-- getLine je "vstupně-výstupní" výpočet, který produkuje hodnotu typu String a
+-- to tak, že načte jednu řádku ze standardního vstupu.
+--
+-- > getLine
+-- hi
+-- "hi"
+--
+-- > :t putStrLn
+-- putStrLn :: String -> IO ()
+--
+-- putStrLn je funkce, která vezme String a vrací IO akci, která daný řetězec
+-- vypíše na standardní výstup. Výsledná hodnota má typ (), což je datový typ
+-- obsahující právě jednu hodnotu. Můžete se na to dívat jako na void
+-- z C-čkových jazyků.
+--
+-- > putStrLn "hello"
+-- hello
 
-sqrt' :: Complex Double -> [Complex Double]
-sqrt' z = [mkPolar r' theta', mkPolar (-r') theta']
+greet :: IO ()
+greet = do
+    putStrLn "What is your name?"
+    name <- getLine
+    putStrLn $ "Hello " ++ name ++ "!"
+
+-- Je užitečné si uvědomit, že IO String neobsahuje String. Je to pouze popis
+-- akce, která (snad) vyprodukuje String na konci.
+--
+-- Můžeme to přirovnat k rozdílu mezi dortem a receptem na dort. Recept na dort
+-- samozřejmě žádný dort neobsahuje, dort dostaneme teprve až recept úspěšně
+-- "provedeme".
+--
+-- Speciálně tedy nehledejte funkci typu:
+--
+--   extract :: IO a -> a
+--
+-- Pokud chceme vytvořit binárku (tj. spustitelný soubor), musíme definovat
+-- speciální hodnotu main.
+
+main :: IO ()
+main = greet
+
+-- Pak můžeme jednoduše pustit GHC na zdrojový kód.
+--
+-- (v příkazové řádce)
+-- > ghc cviceni13.hs
+-- [1 of 1] Compiling Main             ( cviceni13.hs, cviceni13.o )
+-- Linking cviceni13.exe ...
+-- > cviceni13.exe
+-- What is your name?
+-- world
+-- Hello world!
+
+getTwoLines :: IO String
+getTwoLines = do
+    l1 <- getLine
+    l2 <- getLine
+    pure $ l1 ++ "\n" ++ l2
+
+-- Dobrý nápad je strukturovat program tak, aby byl v IO jen kód, který tam
+-- musí být.
+--
+-- Např. je mnohem lepší mít:
+--
+--   process :: Input -> Output
+--
+--   readAndProcess :: IO Output
+--   readAndProcess = do
+--       d <- getData
+--       let d' = process d
+--       pure d'
+--
+-- místo jedné akce, která dělá vše najednou.
+--
+--   process :: IO Output
+--   process = do
+--       d <- getData
+--       ...           -- Spousta kódu, který řeší zpracování d
+--       pure d'
+--
+-- Než se přesuneme k práci se soubory, podívejme se na pár dalších funkcí,
+-- které lze použít s monádami.
+
+when :: (Monad m) => Bool -> m () -> m ()
+when c m = if c then m else pure ()
+
+unless :: (Monad m) => Bool -> m () -> m ()
+unless = when . not
+
+echo :: IO ()
+echo = do
+    l <- getLine
+    putStrLn l
+    unless (null l) echo
+
+forever :: (Monad m) => m a -> m b
+forever m = do
+    _ <- m
+    forever m
+
+-- Pro provádění více akcí najednou můžeme použít:
+--
+-- sequence  :: (Monad m) => [m a] -> m [a]
+-- sequence_ :: (Monad m) => [m a] -> m ()
+
+getThreeLines :: IO [String]
+getThreeLines = sequence [getLine, getLine, getLine]
+
+-- sequence_ je varianta, která zahazuje výsledky. To se může hodit, pokud
+-- nás výsledky akcí nezajímají, jako např. u putStrLn.
+--
+--   print :: (Show a) => a -> IO ()
+--   print = putStrLn . show
+--
+--
+-- Práce se soubory.
+--
+-- Většina funkcí se nachází v modulu System.IO (viz první řádka tohoto
+-- souboru).
+--
+-- Pro otevírání a zavírání souboru máme následující funkce:
+--
+--   openFile :: FilePath -> IOMode -> IO Handle
+--   hClose   :: Handle -> IO ()
+--
+-- Pro zápis a čtení pak:
+--
+--   hPutStrLn :: Handle -> String -> IO ()
+--   hGetLine  :: Handle -> IO String
+--
+-- > :i IOMode
+-- data IOMode = ReadMode | WriteMode | AppendMode | ReadWriteMode
+
+writeTmp :: IO ()
+writeTmp = do
+    h <- openFile "tmp.txt" WriteMode
+    hPutStrLn h "stuff"
+    hClose h
+
+-- Pokud nechceme explicitně řešit otevírání a zavírání, můžeme použít:
+--
+--   withFile :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
+
+writeTmp' :: IO ()
+writeTmp' = withFile "tmp.txt" WriteMode $ \h -> hPutStrLn h "stuff"
+
+-- Zkuste si naprogramovat vlastní verzi withFile.
+
+withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
+withFile' = undefined
+
+-- Pro IO existuje obrovské množství funkcí, tady jsme viděli jen špičku
+-- ledovce.
+--
+--
+-- Podívejme se na další monádu.
+--
+-- Jak víme, Haskell je čistě funkcionální jazyk, což speciálně znamená, že
+-- nelze měnit hodnotu proměnných. Pokud jsme potřebovali mít nějakou informaci,
+-- která se postupně mění, tak jsme to prozatím řešili tak, že jsme přidali
+-- další argument a návratovou hodnotu.
+
+data Tree a = Leaf | Node (Tree a) a (Tree a)
+    deriving (Show)
+
+label :: Int -> Tree a -> (Tree Int, Int)
+label c  Leaf         = (Leaf, c)
+label c1 (Node l _ r) = (Node l' x' r', c4)
   where
-    (r, theta) = polar z
+    (l', c2) = label c1 l
+    (x', c3) = (c2, c2 + 1)
+    (r', c4) = label c3 r
 
-    theta' = theta / 2
-    r'     = sqrt r
+-- Tenhle proces můžeme generalizovat.
 
--- Pokud bychom chtěli spočítat 4. odmocninu, tak sqrt' můžeme aplikovat
--- dvakrát. To se dá udělat např. takhle:
+newtype State s a = State { runState :: s -> (a, s) }
 
-root4 :: Complex Double -> [Complex Double]
-root4 x = concat (map sqrt' (sqrt' x))
+postIncrement :: State Int Int
+postIncrement = State $ \s -> (s, s + 1)
 
--- Nejdříve namapujeme, tak pomocí funkce concat zploštíme dvojitý seznam.
-
-mystery x f = concat $ map f x
-
--- > :t mystery
--- mystery :: [a] -> (a -> [b]) -> [b]
+-- Na argument s se můžeme dívat jako na hodnotu proměnné před změnou, na
+-- s + 1 na výstupu pak jako na hodnotu proměnné po změně.
 --
--- Tohle je povědomé! Porovnejte typ této funkce s typem funkce andThen.
+-- Budou se nám ještě hodit dvě operace, které s tímto stavem pracují.
 
-andThenL :: [a] -> (a -> [b]) -> [b]
-andThenL = mystery
+get :: State s s
+get = State $ \s -> (s, s)
 
-root8, root8' :: Complex Double -> [Complex Double]
-root8 x =
-    sqrt' x `andThenL` \y ->
-    sqrt' y `andThenL` \z ->
-    sqrt' z
+put :: s -> State s ()
+put s = State $ \_ -> ((), s)
 
--- Nebo jednoduše
+-- Teď jen potřebujeme skládaní těchto operací.
 
-root8' x = sqrt' x `andThenL` sqrt' `andThenL` sqrt'
+instance Functor (State s) where
+    fmap f (State m) = State $ \s -> let (a, s') = m s in (f a, s')
 
--- Na seznam se obvykle díváme pouze jako na strukturu obsahující data. Ale
--- podobně jako na Maybe a můžeme nahlížet jako na výpočet, který může skončit
--- neúspěchem, tak [a] je výpočet, který může nabývat více hodnot. Trochu
--- jako nedeterminismus v Prologu.
+instance Applicative (State s) where
+    pure a = State $ \s -> (a, s)
+
+    State mf <*> State ma = State $ \s ->
+        let (f, s')  = mf s
+            (a, s'') = ma s'
+        in  (f a, s'')
+
+instance Monad (State s) where
+    -- return není zapotřebí, už jsme implementovali pure
+    State m >>= f = State $ \s ->
+        let (a, s') = m s
+        in  runState (f a) s'
+
+-- Předchozí funkci label můžeme přepsat takto:
+
+label' :: Tree a -> State Int (Tree Int)
+label' Leaf         = pure Leaf
+label' (Node l _ r) = do
+    l' <- label' l
+    x' <- postIncrement
+    r' <- label' r
+    pure (Node l' x' r')
+
+-- Ještě poznámka na závěr. Možná vás napadla otázka, jestli je možné implementovat funkci
+-- extract :: (Monad m) => m a -> a.
 --
--- Zbývá nám najít ekvivalent pro operaci done. Musí být neutrální vzhledem
--- k andThenL, což nám dává jen jednu možnost.
-
-doneL :: a -> [a]
-doneL a = [a]
-
-times :: [a] -> [b] -> [(a, b)]
-times as bs =
-    as `andThenL` \a ->
-    bs `andThenL` \b ->
-    doneL (a, b)
-
--- Máme dva konkrétní příklady, teď tento koncept "spojování výpočtů" můžeme
--- generalizovat.
+-- Předpokládejme, že funkci extract máme k dispozici, pak můžeme definovat:
 --
--- class Applicative m => Monad m where
---     return :: a -> m a                  -- done, doneL
---     (>>=)  :: m a -> (a -> m b) -> m b  -- andThen, andThenL
+--   import System.Random
 --
--- Pozn. return má možná trochu nešťastné jméno. Narozdíl od return
--- v ostatních jazycích nekončí výpočet. Místo return budeme používat
--- funkci pure (z typové třídy Applicative), která dělá to samé.
-
-weird :: Maybe Int
-weird =
-    return 1 >>= \_ ->
-    Nothing
-
--- > weird == Nothing
--- True
-
-times' :: [a] -> [b] -> [(a, b)]
-times' as bs =
-    as >>= \a ->
-    bs >>= \b ->
-    pure (a, b)
-
-lookupChain3' :: (Eq a, Eq b, Eq c)
-              => a
-              -> [(a, b)] -> [(b, c)] -> [(c, d)]
-              -> Maybe (b, c, d)
-lookupChain3' a ab bc cd =
-    lookup a ab >>= \b ->
-    lookup b bc >>= \c ->
-    lookup c cd >>= \d ->
-    pure (b, c, d)
-
--- Použití >>= je v Haskellu tak časté, že pro něj existuje syntaktická
--- zkratka, tzv. do notace.
+--   f :: Int -> Int
+--   f x = x + extract (randomRIO (0, 100))
 --
--- Na zarovnání záleží, jedině tak pozná Haskell, jestli začínáme novou řádku,
--- pokračujeme předchozí nebo končíme do blok.
-
-times'' :: [a] -> [b] -> [(a, b)]
-times'' as bs = do
-    a <- as
-    b <- bs
-    pure (a, b)
-
-failIf :: Bool -> Maybe ()
-failIf True = Nothing
-failIf _    = Just ()
-
-weird' :: (Eq a) => (b -> Bool) -> a -> [(a, b)] -> Maybe b
-weird' cond a ab = do
-    b <- lookup a ab
-    failIf (cond b)   -- Pokud nás hodnota z failIf nezajímá, můžeme
-                      -- šipku vynechat.
-    pure b
-
--- Kromě toho můžeme ještě používat zkrácenou formu let.
+-- kde randomRIO je funkce typu (Int, Int) -> IO Int, která vygeneruje náhodné číslo v daném
+-- rozmezí. Z definice je zřejmé, že se funkce f nemůže chovat jako matematická funkce, tj.
+-- pokud f zavoláme dvakrát se stejným argumentem, nemusíme dostat stejné výsledky. V obecnosti
+-- tedy funkci extract implementovat nelze.
 --
--- do x <- y
---    let z = x * x
---    ...
+-- To ovšem neznamená, že podobné funkce neexistují pro specifické monády. Např. pro Maybe máme:
 --
--- pure na konci do-bloku není nutný, tak jak jsme viděli např. u funkce
--- root8.
-
-root8'' :: Complex Double -> [Complex Double]
-root8'' x = do
-    y <- sqrt' x
-    z <- sqrt' y
-    sqrt' z
-
--- do notace lze přeložit zpět do obyčejného výrazu:
+--   extractMaybe :: a -> Maybe a -> a
+--   extractMaybe d Nothing  = d
+--   extractMaybe _ (Just x) = x
 --
--- do a <- ma    ===  ma >>= \a ->
---    mb              mb
+-- a pro State máme:
 --
--- do ma         ===  ma >>= \_ ->
---    mb              mb
---
--- do let x = y  ===  let x = y
---    ma              in  ma
+--   extractState :: s -> State s a -> a
+--   extractState s (State f) = fst (f s)
 --
