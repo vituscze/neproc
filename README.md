@@ -1,7 +1,7 @@
 Neprocedurální programování
 ===========================
 
-Cvičení v pátek 10:40.
+Cvičení v pátek 10:40 v SU2.
 
 Zdroje
 ------
