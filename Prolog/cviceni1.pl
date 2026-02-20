@@ -105,3 +105,34 @@ manzeleSym(X, Y) :- manzele(Y, X).
 manzele_(jirka, jitka).
 manzele_(X, Y) :- manzele_(Y, X).
 % potom se dotazy typu manzele(adam, marie) zacyklí.
+
+% Lze následující mapa obarvit třemi barvami?
+% https://ksvi.mff.cuni.cz/~dingle/2025-6/npp/exercises_1/europe.png
+color(Country) :- Country = red; Country = green; Country = blue.
+
+puzzle(Germany, Poland, Czechia, Austria, Slovakia, Hungary, Ukraine) :-
+    color(Germany),
+    color(Poland),
+    color(Czechia),
+    color(Austria),
+    color(Slovakia),
+    color(Hungary),
+    color(Ukraine),
+    Germany \= Poland,
+    Germany \= Czechia,
+    Germany \= Austria,
+    Poland \= Ukraine,
+    Poland \= Slovakia,
+    Poland \= Czechia,
+    Czechia \= Slovakia,
+    Czechia \= Austria,
+    Austria \= Slovakia,
+    Austria \= Hungary,
+    Slovakia \= Ukraine,
+    Slovakia \= Hungary,
+    Hungary \= Ukraine.
+
+% ?- puzzle(G, P, C, A, S, H, U).
+% false
+
+% Poku přidáme Country = yellow do predikátu color, puzzle najde řešení.
